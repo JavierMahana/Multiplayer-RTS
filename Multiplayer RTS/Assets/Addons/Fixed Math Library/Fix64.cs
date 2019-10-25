@@ -10,6 +10,20 @@ namespace FixMath.NET
     /// </summary>
     public partial struct Fix64 : IEquatable<Fix64>, IComparable<Fix64>
     {
+        //añadidos extras mios.
+        /// <summary>
+        /// Linear interpolation
+        /// </summary>
+        /// <param name="a"> start </param>
+        /// <param name="b"> finish </param>
+        /// <param name="t"> 0 is "a" 1 is "b" </param>
+        /// <returns></returns>
+        public static Fix64 Lerp(Fix64 a, Fix64 b, Fix64 t)
+        {
+            return a + (b - a) * t;
+        }
+
+
         readonly long m_rawValue;
 
         // Precision of this type is 2^-32, that is 2,3283064365386962890625E-10
