@@ -42,8 +42,8 @@ public struct Layout
     public FixVector2 HexToPixel(Hex h)
     {
         Orientation M = orientation;
-        Fix64 x = (M.f11 * (Fix64)h.q + M.f21 * (Fix64)h.r) * size.x;
-        Fix64 y =  (M.f12 * (Fix64)h.q + M.f22 * (Fix64)h.r) * size.y;
+        Fix64 x = (M.f11 * (Fix64)h.q + M.f12 * (Fix64)h.r) * size.x;
+        Fix64 y =  (M.f21 * (Fix64)h.q + M.f22 * (Fix64)h.r) * size.y;
 
         return new FixVector2(x + origin.x, y + origin.y);
     }

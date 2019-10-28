@@ -5,6 +5,7 @@ using System;
 
 namespace FixMath.NET
 {
+    [Serializable]
     public struct FixVector2 
     {
         public Fix64 x, y;
