@@ -11,11 +11,13 @@ using System;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
-
+    public bool togleOfflineMode;
 
     #region Unity CallBacks
     private void Start()
     {
+        if (togleOfflineMode) { OfflineMode.SetOffLineMode(true); }
+
         if (PhotonNetwork.IsConnected)
         {
             StartSimulation();

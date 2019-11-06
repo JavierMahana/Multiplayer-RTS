@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using Unity.Mathematics;
-
+using FixMath.NET;
+using FixMath;
 
 namespace Javier.Testing
 {

@@ -16,7 +16,7 @@ public class LockstepLockSystem : ComponentSystem
     public static bool LockstepActivated = false;
     public const int NUMBER_OF_TURNS_IN_THE_FUTURE_THE_COMMANDS_EXECUTE = 2;
     #endregion
-    private bool logg = true;
+    private bool logg = false;
     private int lastGameTickWithOpenLocktep = int.MinValue;
     private const int TICKS_REQUIRED_FOR_LOCKSTEP_TURN = 4;
 
