@@ -6,8 +6,9 @@ using FixMath;
 using System;
 using FixMath.NET;
 
-public struct Hex 
+public struct Hex : IEquatable<Hex>
 {
+
     public readonly int q, r, s;
     public Hex(int q, int r, int s)
     {
@@ -139,6 +140,44 @@ public struct Hex
     public int Distance(Hex b)
     {
         return (this - b).Lenght();
+    }
+    public bool Equals(Hex other)
+    {
+        if (other == this) return true;
+        return false;
+    }
+
+
+    public override string ToString()
+    {
+        return $"Hex ({q}|{r}|{s})";
+    }
+    public override int GetHashCode()
+    {
+        unchecked // Overflow is fine, just wrap
+        {
+            int hash = 17;
+            // Suitable nullity checks etc, of course :)
+            hash = hash * 23 + q.GetHashCode();
+            hash = hash * 23 + r.GetHashCode();
+            hash = hash * 23 + s.GetHashCode();
+            return hash;
+        }
+    }
+    public override bool Equals(object obj)
+    {
+        if (obj == null || !(obj is Hex)) return false;
+
+        Hex p = (Hex)obj;
+        return q == p.q && r == p.r && s == p.s;
+    }
+    public static bool operator ==(Hex a, Hex b)
+    {
+        return a.q == b.q && a.r == b.r && a.s == b.s;
+    }
+    public static bool operator !=(Hex a, Hex b)
+    {
+        return !(a.q == b.q && a.r == b.r && a.s == b.s);
     }
 
 }
