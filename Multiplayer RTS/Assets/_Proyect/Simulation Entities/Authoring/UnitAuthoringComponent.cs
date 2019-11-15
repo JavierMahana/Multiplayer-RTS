@@ -5,15 +5,53 @@ using FixMath.NET;
 
 [DisallowMultipleComponent]
 [RequiresEntityConversion]
+//starts on reinforcement mode by default
 public class UnitAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
 {
     public float waypointReachedDistance;
     public float speed;
-    public Transform[] waypoints;
-
+    public int turnsTorefreshPath;
+    public Transform group;
+    public bool destroyParentGO;
 
     public bool log;
+    private void InitUnitEntity(Entity entity, Layout layout, EntityManager dstManager, Entity parent)
+    {
+        var fractionalHex = layout.WorldToFractionalHex(new FixVector2((Fix64)transform.position.x, (Fix64)transform.position.y));
+        var pos = layout.HexToWorld(fractionalHex);
 
+
+
+
+        
+
+        dstManager.AddComponentData(entity, new HexPosition() { HexCoordinates = fractionalHex });
+        dstManager.AddSharedComponentData<Parent>(entity, new Parent() { ParentEntity = parent });
+        dstManager.AddComponentData<OnReinforcement>(entity, new OnReinforcement());
+        dstManager.AddComponentData<RefreshPathTimer>(entity, new RefreshPathTimer() { TurnsRequired = turnsTorefreshPath, TurnsWithoutRefresh = 0 });
+        dstManager.AddComponentData(entity, new PathWaypointIndex() { Value = 0 });
+        var buffer = dstManager.AddBuffer<PathWaypoint>(entity);
+        dstManager.AddComponentData(entity, new Speed() { Value = (Fix64)speed });
+        dstManager.AddComponentData(entity, new WaypointReachedDistance() { Value = (Fix64)waypointReachedDistance });
+        dstManager.AddComponentData<DirectionAverage>(entity, new DirectionAverage() { Value = FractionalHex.Zero, PreviousDirection1 = FractionalHex.Zero, PreviousDirection2 = FractionalHex.Zero });
+        dstManager.AddComponentData<SteeringTarget>(entity, new SteeringTarget());
+
+        //dstManager.AddComponentData(entity, new MouseClickTriggerPathfinding());
+    }
+    private Entity InitGroupEntity(Layout layout, EntityManager dstManager)
+    {
+        var entity = dstManager.CreateEntity();
+
+        var worldPos = group.position;
+        var hexPos = layout.WorldToFractionalHex(new FixVector2((Fix64)worldPos.x, (Fix64)worldPos.y));
+
+        dstManager.AddComponentData<Group>(entity, new Group());
+        dstManager.AddComponentData<HexPosition>(entity, new HexPosition() { HexCoordinates = hexPos });
+        dstManager.AddComponentData<DirectionAverage>(entity, new DirectionAverage() { Value = FractionalHex.Zero, PreviousDirection1 = FractionalHex.Zero, PreviousDirection2 = FractionalHex.Zero });
+
+        
+        return entity;
+    }
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
         if (MapManager.ActiveMap == null)
@@ -27,24 +65,10 @@ public class UnitAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
 
 
         Layout layout = MapManager.ActiveMap.layout;
-        if (log) Debug.Log($"transform.position; {(Fix64)transform.position.x}, {(Fix64)transform.position.y} ", this);
-        var fractionalHex = layout.WorldToFractionalHex(new FixVector2((Fix64)transform.position.x, (Fix64)transform.position.y));
-        if (log) Debug.Log($"hexagonal pos; {fractionalHex.q}|{fractionalHex.r}|{fractionalHex.s}");
-        var pos = layout.HexToWorld(fractionalHex);
-        if (log) Debug.Log($"world pos converting from hexagonal; {pos.x}, {pos.y} ", this);
 
+        var parentEntity = InitGroupEntity(layout, dstManager);
+        InitUnitEntity(entity, layout, dstManager, parentEntity);
 
-
-        dstManager.AddComponentData(entity, new HexPosition() { HexCoordinates = fractionalHex });
-        var buffer = dstManager.AddBuffer<PathWaypoint>(entity);
-        foreach (var waypoint in waypoints)
-        {
-            var waypointPostion = (Vector2)waypoint.position;
-            Hex waypointHex = layout.WorldToHex(new FixVector2((Fix64)waypointPostion.x, (Fix64)waypointPostion.y));
-            buffer.Add(new PathWaypoint() { Value = waypointHex });
-        }
-        dstManager.AddComponentData(entity, new PathWaypointIndex() { Value = 0 });
-        dstManager.AddComponentData(entity, new Speed() { Value = (Fix64)speed });
-        dstManager.AddComponentData(entity, new WaypointReachedDistance() { Value = (Fix64)waypointReachedDistance });
+        if(destroyParentGO)Destroy(group.gameObject);
     }
 }
