@@ -36,14 +36,13 @@ namespace Javier.Testing
         public void TestingClosestPointInLineProduct()
         {
             var direction = new FractionalHex((Fix64)1,(Fix64)(-1)).Normalized();
-            var directionManhathan = direction.NormailezedManhathan();
+            var directionManhathan = direction.NormalizedManhathan();
 
             var start = new Hex(0, 0);
-            var goal = new Hex(2, -2);
+            var goal = new FractionalHex((Fix64).5, (Fix64) (- .5));
 
-            var distanceUWU = FractionalHex.ColsestPointInLine((FractionalHex)start, direction, (FractionalHex)goal);
-            var dot = FractionalHex.DotProduct(direction, (FractionalHex)(goal - start));
-            Assert.AreEqual(2 , (int)distanceUWU);
+            var distanceUWU = FractionalHex.ClosestPointInLine((FractionalHex)start, direction, (FractionalHex)goal);            
+            Assert.AreEqual(0.5f , (float)distanceUWU);
         }
 
         [Test]

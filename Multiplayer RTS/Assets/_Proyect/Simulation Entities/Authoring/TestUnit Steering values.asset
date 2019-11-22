@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613615190f5941c4b965e540f79fe02e, type: 3}
   m_Name: TestUnit Steering values
   m_EditorClassIdentifier: 
-  targetWeight: 1
-  directionWight: 0
-  flockWeight: 0
-  alienationWeight: 0
-  cohesionWeight: 0
-  separationWeight: 0
+  targetWeight: 2
+  directionWight: 1
+  flockWeight: 3
+  alienationWeight: 3
+  cohesionWeight: 1
+  separationWeight: 3
   satisfactionArea: 0.05
-  separationDistance: 0
+  separationDistance: 0.1

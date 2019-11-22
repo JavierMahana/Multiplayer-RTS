@@ -175,14 +175,13 @@ public class SteeringSystem : ComponentSystem
             var finalDirection = ((flockDirection * flockWeight)
                                  + (targetDirection * targetWeight)
                                  + (previousDirection * previousDirectionWeight))
-                                 .Normalized();
+                                 .NormalizedManhathan();
             
             var maxMovement = speed * MainSimulationLoopSystem.SimulationDeltaTime;
 
             desiredMovement.Value = finalDirection * maxMovement;
 
-            if (true) { }
-            else if (IsClosestPointInASegementToAPointInsideItsContent(
+            if (NotFullSpeedMovementIsNeeded(
                 finalDirection, maxMovement, currentPosition, target.TargetPosition, out FractionalHex closestPosiblePositionToTarget))
             {                      
                 desiredMovement.Value = closestPosiblePositionToTarget - currentPosition;
@@ -301,29 +300,27 @@ public class SteeringSystem : ComponentSystem
     /// 
     /// </summary>
     /// <param name="direction">IMPORTANT: this must be a normalized vector</param>
-    /// <param name="segmentLenght"></param>
+    /// <param name="maxSpeed"></param>
     /// <param name="originPoint"></param>
-    /// <param name="point"></param>
-    /// <param name="closestPointInSegment"></param>
+    /// <param name="targetPoint"></param>
+    /// <param name="closestPointInMovementSegment"></param>
     /// <returns>returns true if the closeest point is not the start niether the end of the segment</returns>
-    public static bool IsClosestPointInASegementToAPointInsideItsContent(FractionalHex direction, Fix64 segmentLenght, FractionalHex originPoint, FractionalHex point, out FractionalHex closestPointInSegment)
+    public static bool NotFullSpeedMovementIsNeeded(FractionalHex direction, Fix64 maxSpeed, FractionalHex originPoint, FractionalHex targetPoint, out FractionalHex closestPointInMovementSegment)
     {
-        var pointBytheOrigin = point - originPoint;
-
-        Fix64 dot = FractionalHex.DotProduct(direction, pointBytheOrigin);
-        if (dot <= Fix64.Zero)
+        var distanceFromTheClosestPointToTarget = FractionalHex.ClosestPointInLine(originPoint, direction, targetPoint);
+        if (distanceFromTheClosestPointToTarget <= Fix64.Zero)
         {
-            closestPointInSegment = originPoint;
+            closestPointInMovementSegment = originPoint;
             return false;
         }
-        else if (dot >= segmentLenght)
+        else if (distanceFromTheClosestPointToTarget >= maxSpeed)
         {
-            closestPointInSegment = originPoint + (direction * segmentLenght);
+            closestPointInMovementSegment = originPoint + (direction * maxSpeed);
             return false;
         }
         else 
         {
-            closestPointInSegment = originPoint + (direction * dot);
+            closestPointInMovementSegment = originPoint + (direction * distanceFromTheClosestPointToTarget);
             return true;
         }
     }

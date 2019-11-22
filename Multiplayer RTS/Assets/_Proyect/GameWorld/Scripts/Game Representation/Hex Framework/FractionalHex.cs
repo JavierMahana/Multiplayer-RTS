@@ -74,7 +74,7 @@ public struct FractionalHex
         var normalized = mag != Fix64.Zero ? new FractionalHex(q / mag, r / mag) : FractionalHex.Zero ;
         return normalized;
     }
-    public FractionalHex NormailezedManhathan()
+    public FractionalHex NormalizedManhathan()
     {
         Fix64 lenght = this.Lenght();
         var normalized = lenght != Fix64.Zero ? new FractionalHex(q / lenght, r / lenght) : FractionalHex.Zero;
@@ -93,19 +93,19 @@ public struct FractionalHex
         return (a.q * b.q) + (a.r * b.r) + (a.s * b.s);
     }
     /// <summary>
-    /// 
+    /// it returns the closest point along the direction to the point. the return point is at 90° from the start and the dest point
     /// </summary>
     /// <param name="lineOrigin"></param>
     /// <param name="lineDirection"></param>
-    /// <param name="point"></param>
+    /// <param name="targetPoint"></param>
     /// <returns>it returns the closest point along the direction to the point. the return point is at 90° from the start and the dest point</returns>
-    public static Fix64 ColsestPointInLine(FractionalHex lineOrigin, FractionalHex lineDirection, FractionalHex point)
+    public static Fix64 ClosestPointInLine(FractionalHex lineOrigin, FractionalHex lineDirection, FractionalHex targetPoint)
     {
-        var directionToPointNormalized = (point - lineOrigin).Normalized();
+        var directionToPointNormalized = (targetPoint - lineOrigin).Normalized();
         var lineDirectionNormalized = lineDirection.Normalized();
         var cos = DotProduct(lineDirectionNormalized, directionToPointNormalized);//->  A*B / |A|*|B|
 
-        var proyectionLenght = cos * (point - lineOrigin).Lenght();
+        var proyectionLenght = cos * (targetPoint - lineOrigin).Lenght();
         return proyectionLenght;
     }
     public Hex Round()
