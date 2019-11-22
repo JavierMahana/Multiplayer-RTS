@@ -7,5 +7,5 @@ using Unity.Entities;
 public struct MoveCommand 
 {        
     public Entity Target;
-    public MovementTarget MoveComponent;    
+    public DestinationHex Destination;    
 }

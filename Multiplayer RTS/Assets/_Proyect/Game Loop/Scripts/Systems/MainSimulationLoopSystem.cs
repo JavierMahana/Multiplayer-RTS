@@ -32,6 +32,7 @@ public class MainSimulationLoopSystem : ComponentSystem
     private OnGroupCheckSystem onGroupCheckSystem;
     private PathRefreshSystem pathRefreshSystem;
     private PathFindingSystem pathFindingSystem;
+    private PathChangeIndexSystem pathChangeIndexSystem;
     private FindMovementTargetSystem findMovementTargetSystem;
     private SteeringSystem steeringSystem;
     private TranslationSystem translationSystem;
@@ -42,11 +43,12 @@ public class MainSimulationLoopSystem : ComponentSystem
         lockstepSystemGroup = World.GetOrCreateSystem<LockstepSystemGroup>();
         lockstepSystemGroup.AddSystemToUpdateList(World.GetOrCreateSystem<CommandExecutionSystem>());
         lockstepSystemGroup.AddSystemToUpdateList(World.GetOrCreateSystem<VolatileCommandSystem>());
-
+        lockstepSystemGroup.AddSystemToUpdateList(World.GetOrCreateSystem<CommandableSafetySystem>());
 
         onGroupCheckSystem = World.GetOrCreateSystem<OnGroupCheckSystem>();
         pathRefreshSystem = World.GetOrCreateSystem<PathRefreshSystem>();
         pathFindingSystem= World.GetOrCreateSystem<PathFindingSystem>();
+        pathChangeIndexSystem = World.GetOrCreateSystem<PathChangeIndexSystem>();
         findMovementTargetSystem = World.GetOrCreateSystem<FindMovementTargetSystem>();
         steeringSystem = World.GetOrCreateSystem<SteeringSystem>();
         translationSystem = World.GetOrCreateSystem<TranslationSystem>();
@@ -85,10 +87,23 @@ public class MainSimulationLoopSystem : ComponentSystem
             UnprocessedTime += deltaTime;
 
             if (SimulationDeltaTime <= UnprocessedTime)
-            {                
+            {
+                //var entitis = World.EntityManager.GetAllEntities();
+                //foreach (var entiti in entitis)
+                //{
+                //    if (entiti.Index == 101) 
+                //    {
+                //        var pos = EntityManager.GetComponentData<HexPosition>(entiti);
+                //        var des = EntityManager.GetComponentData<DesiredMovement>(entiti);
+                //        Debug.Log($"entity 101: positon: {pos.HexCoordinates}. rounded position: {pos.HexCoordinates.Round()}. The desiredMov: {des.Value}");
+                //    }
+                //}
+                //entitis.Dispose();
+
                 onGroupCheckSystem.Update();
                 pathRefreshSystem.Update();
                 pathFindingSystem.Update();
+                pathChangeIndexSystem.Update();
                 findMovementTargetSystem.Update();
                 steeringSystem.Update();
                 translationSystem.Update();

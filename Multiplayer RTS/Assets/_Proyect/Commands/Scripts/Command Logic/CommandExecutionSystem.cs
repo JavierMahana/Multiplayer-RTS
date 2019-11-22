@@ -11,12 +11,13 @@ using UnityEngine;
 [DisableAutoCreation]
 public class CommandExecutionSystem : ComponentSystem
 {
+    private bool loggExecutionTurn = false;
     protected override void OnUpdate()
     {
         //Move Commands
         if (CommandStorageSystem.QueuedMoveCommands.TryGetValue(MainSimulationLoopSystem.CurrentLockstepTurn, out var MoveCommands))
         {
-            Debug.Log($"Executing a comand in the turn: {MainSimulationLoopSystem.CurrentLockstepTurn}");
+            if(loggExecutionTurn)Debug.Log($"Executing a comand in the turn: {MainSimulationLoopSystem.CurrentLockstepTurn}");
             foreach (MoveCommand command in MoveCommands)
             {
                 if (CommandUtils.CommandIsValid(command, World))
@@ -26,12 +27,14 @@ public class CommandExecutionSystem : ComponentSystem
             }
         }
         //Other Commands
+
     }
 
 
 
     private void ExecuteCommand(MoveCommand command)    
     {
-        EntityManager.SetComponentData(command.Target, command.MoveComponent);
+        PostUpdateCommands.SetComponent(command.Target, command.Destination);
+        PostUpdateCommands.AddComponent(command.Target, new RefreshPathNow());
     }
 }

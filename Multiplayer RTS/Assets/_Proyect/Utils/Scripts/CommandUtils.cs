@@ -6,18 +6,16 @@ using UnityEngine;
 
 
 public static class CommandUtils 
-{
-
+{    
     public static object[] Serialize(MoveCommand command)
     {
         int entityIndex = command.Target.Index;
         int entityVersion = command.Target.Version;
 
-        float targetX = command.MoveComponent.TargetPostion.x;
-        float targetY = command.MoveComponent.TargetPostion.y;
-        float targetZ = command.MoveComponent.TargetPostion.z;
+        int targetQ = command.Destination.Value.q;
+        int targetR = command.Destination.Value.r;
 
-        object[] data = new object[] {entityIndex, entityVersion, targetX, targetY, targetZ };
+        object[] data = new object[] {entityIndex, entityVersion, targetQ, targetR };
         return data;
     }
 
@@ -30,9 +28,9 @@ public static class CommandUtils
                 Index = (int)data[0],
                 Version = (int)data[1]
             },
-            MoveComponent = new MovementTarget() 
+            Destination = new DestinationHex() 
             {
-                TargetPostion = new float3((float)data[2], (float)data[3], (float)data[4])
+                Value = new Hex((int)data[2], (int)data[3])
             }
             
         };
@@ -45,6 +43,8 @@ public static class CommandUtils
     {
         return TargetIsValid(command.Target, world);
     }
+
+    //then the 
     private static bool TargetIsValid(Entity commandTarget, World world = null)
     {
         if (world == null)

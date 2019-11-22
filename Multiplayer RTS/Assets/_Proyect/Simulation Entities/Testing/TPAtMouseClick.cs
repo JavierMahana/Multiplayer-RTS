@@ -4,7 +4,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 
 [Serializable]
-public struct Steer : IComponentData
+public struct TPAtMouseClick : IComponentData
 {
     // Add fields to your component here. Remember that:
     //

@@ -71,7 +71,14 @@ public struct FractionalHex
     public FractionalHex Normalized()
     {
         Fix64 mag = this.Magnitude();
-        return new FractionalHex(q / mag, r / mag);
+        var normalized = mag != Fix64.Zero ? new FractionalHex(q / mag, r / mag) : FractionalHex.Zero ;
+        return normalized;
+    }
+    public FractionalHex NormailezedManhathan()
+    {
+        Fix64 lenght = this.Lenght();
+        var normalized = lenght != Fix64.Zero ? new FractionalHex(q / lenght, r / lenght) : FractionalHex.Zero;
+        return normalized;
     }
 
     public static FractionalHex Lerp(FractionalHex a, FractionalHex b, Fix64 t)
@@ -80,6 +87,26 @@ public struct FractionalHex
             Fix64.Lerp(a.q, b.q, t),
             Fix64.Lerp(a.r, b.r, t)
             );
+    }
+    public static Fix64 DotProduct(FractionalHex a, FractionalHex b)
+    {
+        return (a.q * b.q) + (a.r * b.r) + (a.s * b.s);
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="lineOrigin"></param>
+    /// <param name="lineDirection"></param>
+    /// <param name="point"></param>
+    /// <returns>it returns the closest point along the direction to the point. the return point is at 90° from the start and the dest point</returns>
+    public static Fix64 ColsestPointInLine(FractionalHex lineOrigin, FractionalHex lineDirection, FractionalHex point)
+    {
+        var directionToPointNormalized = (point - lineOrigin).Normalized();
+        var lineDirectionNormalized = lineDirection.Normalized();
+        var cos = DotProduct(lineDirectionNormalized, directionToPointNormalized);//->  A*B / |A|*|B|
+
+        var proyectionLenght = cos * (point - lineOrigin).Lenght();
+        return proyectionLenght;
     }
     public Hex Round()
     {
@@ -102,5 +129,39 @@ public struct FractionalHex
             si = -qi - ri;
         }
         return new Hex(qi, ri);
+    }
+
+
+
+    public override string ToString()
+    {
+        return $"Hex ({q}|{r}|{s})";
+    }
+    public override int GetHashCode()
+    {
+        unchecked // Overflow is fine, just wrap
+        {
+            int hash = 17;
+            // Suitable nullity checks etc, of course :)
+            hash = hash * 23 + q.GetHashCode();
+            hash = hash * 23 + r.GetHashCode();
+            hash = hash * 23 + s.GetHashCode();
+            return hash;
+        }
+    }
+    public override bool Equals(object obj)
+    {
+        if (obj == null || !(obj is Hex) && !(obj is FractionalHex)) return false;
+
+        FractionalHex p = (FractionalHex)obj;
+        return q == p.q && r == p.r && s == p.s;
+    }
+    public static bool operator ==(FractionalHex a, FractionalHex b)
+    {
+        return a.q == b.q && a.r == b.r && a.s == b.s;
+    }
+    public static bool operator !=(FractionalHex a, FractionalHex b)
+    {
+        return !(a.q == b.q && a.r == b.r && a.s == b.s);
     }
 }

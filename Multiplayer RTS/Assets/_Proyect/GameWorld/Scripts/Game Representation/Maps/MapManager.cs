@@ -68,7 +68,8 @@ public class MapManager : SerializedMonoBehaviour
 
             var current = GameObject.Instantiate(templateObject);
             var pos2D = hexLayout.HexToWorld(hex);
-            current.transform.position = new Vector3((float)pos2D.x, (float)pos2D.y);
+            current.transform.position = new Vector3((float)pos2D.x, (float)pos2D.y, HexTranslationSystem.MAP_Z_VALUE);
+            current.transform.SetParent(originPoint, true);
             current.GetComponent<MeshRenderer>().sharedMaterial = material;
 
             loadedTempMapObjects.Objects.Add(current);

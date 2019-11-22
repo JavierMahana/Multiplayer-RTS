@@ -11,21 +11,7 @@ using Unity.Collections;
 
 namespace Javier.Testing
 {
-    public class Syst : ComponentSystem
-    {
-        public int a = 0;
-        public int b = 0;
-        protected override void OnUpdate()
-        {
-            
-            Entities.ForEach((ref MovementTarget t) => 
-            {
-                a++;
-                if (a == 1) return;
-                b++;
-            });
-        }
-    }
+
 
 
 
@@ -47,34 +33,18 @@ namespace Javier.Testing
     public class TestingVariedThings
     {
         [Test]
-        public void ReturnKeywordInsideAForechFuncitionOnlyReturnsForTheSpeciedElement() 
+        public void TestingClosestPointInLineProduct()
         {
-            var world = new World("vvvv");
-            var syst = world.GetOrCreateSystem<Syst>();
+            var direction = new FractionalHex((Fix64)1,(Fix64)(-1)).Normalized();
+            var directionManhathan = direction.NormailezedManhathan();
 
-            NativeArray<Entity> entities = new NativeArray<Entity>(10, Allocator.Temp);
-            var archetype = world.EntityManager.CreateArchetype(typeof(MovementTarget));
-            world.EntityManager.CreateEntity(archetype, entities);
+            var start = new Hex(0, 0);
+            var goal = new Hex(2, -2);
 
-            syst.Update();
-
-            Assert.AreEqual(syst.a, 10);
-            Assert.AreEqual(syst.b, 9);
-
-            entities.Dispose();
-            world.Dispose();
+            var distanceUWU = FractionalHex.ColsestPointInLine((FractionalHex)start, direction, (FractionalHex)goal);
+            var dot = FractionalHex.DotProduct(direction, (FractionalHex)(goal - start));
+            Assert.AreEqual(2 , (int)distanceUWU);
         }
-        [Test]
-        public void BoxingArrays()
-        {
-            MoveCommand[] c = new MoveCommand[] { new MoveCommand() {MoveComponent = new MovementTarget() {TargetPostion = new float3(1,1,1) } }, new MoveCommand(), new MoveCommand() };
-            object o = c;
-            MoveCommand[] moveCommands = (MoveCommand[])o;
-
-            Assert.IsTrue(moveCommands.Length == 3);
-            Assert.AreEqual(new float3(1,1,1), moveCommands[0].MoveComponent.TargetPostion);
-        }
-
 
         [Test]
         public void UsingTypeFunctionsWorksFineWithInterfaces()

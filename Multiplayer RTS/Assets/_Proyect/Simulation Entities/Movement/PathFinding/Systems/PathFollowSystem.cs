@@ -8,51 +8,51 @@ using Unity.Transforms;
 using static Unity.Mathematics.math;
 using UnityEngine;
 
-[DisableAutoCreation]
-//obsoleta
-public class PathFollowSystem : ComponentSystem
-{
-    protected override void OnUpdate()
-    {
-        //change waypoint if the current one is reached
-        Entities.WithAll<PathWaypoint>().ForEach((Entity entity,ref PathWaypointIndex waypointIndex, ref WaypointReachedDistance waypointReachedDistance, ref HexPosition hexPosition) => 
-        {
-            var buffer = World.EntityManager.GetBuffer<PathWaypoint>(entity);
-            if (buffer.Length == 0) { return; }
+//[DisableAutoCreation]
+////obsoleta
+//public class PathFollowSystem : ComponentSystem
+//{
+//    protected override void OnUpdate()
+//    {
+//        //change waypoint if the current one is reached
+//        Entities.WithAll<PathWaypoint>().ForEach((Entity entity,ref PathWaypointIndex waypointIndex, ref WaypointReachedDistance waypointReachedDistance, ref HexPosition hexPosition) => 
+//        {
+//            var buffer = World.EntityManager.GetBuffer<PathWaypoint>(entity);
+//            if (buffer.Length == 0) { return; }
 
-            Hex targetWaypoint = buffer[waypointIndex.Value];
+//            Hex targetWaypoint = buffer[waypointIndex.Value];
 
-            var distance = hexPosition.HexCoordinates.Distance((FractionalHex)targetWaypoint);
-            if (distance <= waypointReachedDistance.Value)
-            {
-                if (buffer.Length <= waypointIndex.Value + 1)
-                {
-                    //the final waypoint have been reached.
-                    return;
-                }
-                waypointIndex = new PathWaypointIndex() { Value = waypointIndex.Value + 1 };
-            }
-        });
+//            var distance = hexPosition.HexCoordinates.Distance((FractionalHex)targetWaypoint);
+//            if (distance <= waypointReachedDistance.Value)
+//            {
+//                if (buffer.Length <= waypointIndex.Value + 1)
+//                {
+//                    //the final waypoint have been reached.
+//                    return;
+//                }
+//                waypointIndex = new PathWaypointIndex() { Value = waypointIndex.Value + 1 };
+//            }
+//        });
        
 
-        //move towards next waypoint
-        Entities.WithAll<PathWaypoint>().ForEach((Entity entity, ref HexPosition hexPosition, ref PathWaypointIndex waypointIndex, ref Speed speed) => 
-        {
-            var buffer = World.EntityManager.GetBuffer<PathWaypoint>(entity);
-            if (buffer.Length == 0) { return; }
+//        //move towards next waypoint
+//        Entities.WithAll<PathWaypoint>().ForEach((Entity entity, ref HexPosition hexPosition, ref PathWaypointIndex waypointIndex, ref Speed speed) => 
+//        {
+//            var buffer = World.EntityManager.GetBuffer<PathWaypoint>(entity);
+//            if (buffer.Length == 0) { return; }
 
-            Hex targetWaypoint = buffer[waypointIndex.Value];
-            FractionalHex currentPos = hexPosition.HexCoordinates;
+//            Hex targetWaypoint = buffer[waypointIndex.Value];
+//            FractionalHex currentPos = hexPosition.HexCoordinates;
 
-            var distanceVector = (FractionalHex)targetWaypoint - currentPos;
-            var direction = distanceVector / distanceVector.Magnitude();
-            var newPosition = currentPos + (direction * MainSimulationLoopSystem.SimulationDeltaTime * speed.Value);
+//            var distanceVector = (FractionalHex)targetWaypoint - currentPos;
+//            var direction = distanceVector / distanceVector.Magnitude();
+//            var newPosition = currentPos + (direction * MainSimulationLoopSystem.SimulationDeltaTime * speed.Value);
 
-            hexPosition = new HexPosition() { HexCoordinates = newPosition };
+//            hexPosition = new HexPosition() { HexCoordinates = newPosition };
         
-        });        
-    }
-}
+//        });        
+//    }
+//}
 
 #region job stuff
 

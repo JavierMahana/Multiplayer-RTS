@@ -13,16 +13,13 @@ public class PathFindingSystem : ComponentSystem
 {
     protected override void OnUpdate()
     {
-        Debug.Log("Updating pathfinding");
-
-        ActiveMap activeMap = MapManager.ActiveMap;
+        ActiveMap activeMap = MapManager.ActiveMap;        
         if (activeMap == null){ return; }
         Dictionary<Entity, List<Hex>> Paths = new Dictionary<Entity, List<Hex>>();
 
         //clean buffer and restart waypoint
         Entities.WithAll<PathWaypoint, TriggerPathfinding>().ForEach((Entity entity, ref PathWaypointIndex waypointIndex) => 
         {
-            Debug.Log(" yoUpdating pathfinding");
             DynamicBuffer<PathWaypoint> buffer = World.EntityManager.GetBuffer<PathWaypoint>(entity);
             buffer.Clear();
 
@@ -32,12 +29,20 @@ public class PathFindingSystem : ComponentSystem
         //shortestPath
         Entities.ForEach((Entity entity, ref TriggerPathfinding pathSolicitude, ref HexPosition hexPosition) => 
         {
-            Debug.Log(" yoUpdating pathfinding");
             var path = new List<Hex>(); 
 
             Hex startHex = hexPosition.HexCoordinates.Round();
+            Hex destinationHex = pathSolicitude.Destination;
+            Debug.Assert(activeMap.map.StaticMapValues.TryGetValue(startHex, out bool b), $"entity index: {entity.Index} the star hex {startHex} is a invalid start place. the position is {hexPosition.HexCoordinates}");
+            Debug.Assert(activeMap.map.StaticMapValues.TryGetValue(destinationHex, out bool c), $"the destination hex {destinationHex} is a invalid start place");
+            if (startHex == destinationHex)
+            {
+                path.Add(startHex);
+                Paths.Add(entity, path);
+                return;
+            }
             var startNode = new PathfindingNode(startHex, 0, 0, startHex);
-            var destinationHex = pathSolicitude.Destination;
+            
 
             var openList = new NativeList<PathfindingNode>(Allocator.Temp);
             var closedList = new NativeList<PathfindingNode>(Allocator.Temp);
@@ -67,6 +72,9 @@ public class PathFindingSystem : ComponentSystem
                     }
                     path.Reverse();
                     Paths.Add(entity, path);
+
+                    openList.Dispose();
+                    closedList.Dispose();
                     return;
                 }
 
@@ -100,6 +108,10 @@ public class PathFindingSystem : ComponentSystem
                 }
             }
 
+
+            //we may end up here if the destinaation isn't recheable from the start
+            //a posible solution is to return the path to the closest reachable hex to the destination
+            Debug.LogError($"The pathfinding was a failure for of index:{entity.Index}. The start node is: {startHex} and is open:{activeMap.map.StaticMapValues[startHex]}. the end node is: {destinationHex} and is open:{activeMap.map.StaticMapValues[destinationHex]}");
             openList.Dispose();
             closedList.Dispose();
         });
@@ -107,14 +119,13 @@ public class PathFindingSystem : ComponentSystem
         //clean the buffer and then add the path there
         Entities.WithAll<PathWaypoint>().ForEach((Entity entity, ref TriggerPathfinding pathSolicitude) => 
         {
-            Debug.Log(" yoUpdating pathfinding");
             DynamicBuffer<PathWaypoint> buffer = World.EntityManager.GetBuffer<PathWaypoint>(entity);
             buffer.Clear();
 
             List<Hex> path;
-            Debug.Assert(Paths.TryGetValue(entity, out path));
+            Debug.Assert(Paths.TryGetValue(entity, out path), "the entity doesn't have a path. this is because the pathfinding failed before");
 
-            Debug.Log($"path added of lenght: {path.Count}");
+            //Debug.Log($"path added of lenght: {path.Count}");
             foreach (Hex waypoint in path)
             {
                 buffer.Add(new PathWaypoint() { Value = waypoint });

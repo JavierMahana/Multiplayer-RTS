@@ -33,15 +33,26 @@ public class PathRefreshSystem : ComponentSystem
         PostUpdateCommands.AddComponent(entity, new TriggerPathfinding() { Destination = parentPosition.HexCoordinates.Round() });
         refreshPathTimer.TurnsWithoutRefresh = 0;
     }
-    private void TriggerPathFindingOnCommandedGroup()
+    private void TriggerPathFindingOnCommandedGroup(Entity entity, Hex destinationHex, ref RefreshPathTimer refreshPathTimer)
     {
-        throw new NotImplementedException();
+        //luego esto requerira más logica
+        PostUpdateCommands.AddComponent(entity, new TriggerPathfinding() { Destination = destinationHex });
+        refreshPathTimer.TurnsWithoutRefresh = 0;
     }
+
 
     protected override void OnUpdate()
     {
+        Entities.WithAll<RefreshPathNow, Group>().ForEach(
+        (Entity entity, ref DestinationHex destination, ref RefreshPathTimer timer) =>
+        {   
+            Debug.Log($"refreshing the path");
+            TriggerPathFindingOnCommandedGroup(entity, destination.Value, ref timer);
+            PostUpdateCommands.RemoveComponent<RefreshPathNow>(entity);
+        });
+
         Entities.WithAll<RefreshPathNow, OnReinforcement>().ForEach(
-            (Entity entity, Parent parent, ref RefreshPathTimer timer) => 
+        (Entity entity, Parent parent, ref RefreshPathTimer timer) => 
         {
             Debug.Log($"refreshing the path");
             TriggerPathFindingOnReinforcementUnit(entity, parent, ref timer);
@@ -55,11 +66,26 @@ public class PathRefreshSystem : ComponentSystem
         });
 
         Entities.WithAll<OnReinforcement, PathRefreshSystemState>().ForEach(
-            (Entity entity, Parent parent, ref RefreshPathTimer refreshPathTimer) => 
+        (Entity entity, Parent parent, ref RefreshPathTimer refreshPathTimer) => 
         {
             if (refreshPathTimer.TurnsRequired <= refreshPathTimer.TurnsWithoutRefresh)
             {
                 TriggerPathFindingOnReinforcementUnit(entity, parent, ref refreshPathTimer);
+            }
+            else
+            {
+                refreshPathTimer.TurnsWithoutRefresh += 1;
+            }
+        });
+
+
+
+        Entities.WithAll<Group, PathRefreshSystemState>().ForEach(
+        (Entity entity,ref DestinationHex destination, ref RefreshPathTimer refreshPathTimer) => 
+        {
+            if (refreshPathTimer.TurnsRequired <= refreshPathTimer.TurnsWithoutRefresh)
+            {
+                TriggerPathFindingOnCommandedGroup(entity, destination.Value, ref refreshPathTimer);
             }
             else
             {

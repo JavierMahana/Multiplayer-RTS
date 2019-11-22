@@ -1,15 +1,19 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
+using Sirenix.OdinInspector;
 
 namespace FixMath.NET
-{
-
+{    
+    [Serializable]    
     /// <summary>
     /// Represents a Q31.32 fixed-point number.
     /// </summary>
     public partial struct Fix64 : IEquatable<Fix64>, IComparable<Fix64>
     {
+
+
         //añadidos extras mios.
         /// <summary>
         /// Linear interpolation
@@ -24,7 +28,7 @@ namespace FixMath.NET
         }
 
 
-        readonly long m_rawValue;
+        public readonly long m_rawValue;
 
         // Precision of this type is 2^-32, that is 2,3283064365386962890625E-10
         public static readonly decimal Precision = (decimal)(new Fix64(1L));//0.00000000023283064365386962890625m;

@@ -70,8 +70,6 @@ public class OnGroupCheckSystem : ComponentSystem
 
                 PostUpdateCommands.RemoveComponent<OnGroup>(entity);
             }
-
-
         });
         Entities.WithAll<OnReinforcement>().ForEach((Entity entity, Parent parent, ref HexPosition position) =>
         {

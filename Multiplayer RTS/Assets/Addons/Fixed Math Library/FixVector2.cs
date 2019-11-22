@@ -10,6 +10,10 @@ namespace FixMath.NET
     {
         public Fix64 x, y;
 
+        public static explicit operator FixVector2(Vector3 v) 
+        {
+            return new FixVector2((Fix64) v.x, (Fix64)v.y);
+        }
         public static FixVector2 operator *(FixVector2 a, float b)
         {
             return new FixVector2(a.x * (Fix64)b, a.y * (Fix64)b);

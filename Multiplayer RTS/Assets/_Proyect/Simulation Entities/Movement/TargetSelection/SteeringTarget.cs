@@ -7,4 +7,5 @@ using Unity.Mathematics;
 public struct SteeringTarget : IComponentData
 {
     public FractionalHex TargetPosition;
+    public bool StopAtTarget;
 }

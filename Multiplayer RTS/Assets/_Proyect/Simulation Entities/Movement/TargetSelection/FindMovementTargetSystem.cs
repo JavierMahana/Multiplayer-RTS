@@ -16,8 +16,6 @@ public class FindMovementTargetSystem : ComponentSystem
 
     protected override void OnUpdate()
     {
-        Debug.Log("Updating target system");
-
         List<FractionalHex> groupPosition = new List<FractionalHex>();
         List<FractionalHex> groupDirection = new List<FractionalHex>();
         Dictionary<Entity, int> groupIndices = new Dictionary<Entity, int>();
@@ -41,17 +39,36 @@ public class FindMovementTargetSystem : ComponentSystem
             }
             var parentPos = groupPosition[parentGroupIndex];
             var parentDirection = groupDirection[parentGroupIndex];
-            target.TargetPosition = parentPos + parentDirection * TARGET_OFFSET_FROM_GROUP_CENTER ;
+
+
+            target.TargetPosition = parentPos + parentDirection * TARGET_OFFSET_FROM_GROUP_CENTER;
+
+
+            if (parentDirection == FractionalHex.Zero)
+                target.StopAtTarget = true;
+            else
+                target.StopAtTarget = false;
         });
-        Entities.WithAll<PathWaypoint>().WithAny<OnReinforcement, Group>().ForEach((Entity entity, ref SteeringTarget target, ref PathWaypointIndex waypointIndex) =>
+
+
+
+        Entities.WithAll<PathWaypoint>().WithAny<OnReinforcement, Group>().ForEach(
+        (Entity entity, ref HexPosition position, ref SteeringTarget target, ref PathWaypointIndex waypointIndex) =>
         {
             var buffer = EntityManager.GetBuffer<PathWaypoint>(entity);
-            
-            if (waypointIndex.Value <= buffer.Length)
+
+            if (waypointIndex.Value >= buffer.Length)
             {
-                //Debug.LogError($"the path index of: {entity} have an invalid index fo path buffer ");
+                Debug.Log("There are not waypoints for the current index");
+                target.TargetPosition = position.HexCoordinates;
                 return;
             }
+
+            if (waypointIndex.Value == buffer.Length - 1)
+                target.StopAtTarget = true;
+            else
+                target.StopAtTarget = false;
+
             target.TargetPosition = (FractionalHex)buffer[waypointIndex.Value].Value;
         });
     }
