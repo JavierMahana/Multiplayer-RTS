@@ -11,6 +11,7 @@ using System;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    public static List<int> PlayerTeams { get; private set; } = new List<int>();
     public bool togleOfflineMode;
 
     #region Unity CallBacks
@@ -20,10 +21,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsConnected)
         {
+            SetTeams();
             StartSimulation();
         }
         else if (OfflineMode.OffLineMode)
         {
+            SetTeamsOnOfflineMode();
             StartSimulation();
         }
         else
@@ -35,8 +38,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     #endregion
 
     #region Photon Callbacks
-
-
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         EndSimulation();
@@ -51,6 +52,39 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
     #region Private Methods
+    private void SetTeams()
+    {
+        var playerProperties = PhotonNetwork.LocalPlayer.CustomProperties;
+        if (playerProperties.TryGetValue("team", out object team))
+        {
+            PlayerTeams.Add((int)team);
+        }
+        else 
+        {
+            Debug.LogError("the properties of the player don't containt a team element");
+        }
+    }
+    private void SetTeamsOnOfflineMode()
+    {
+        var teamQuerry = World.Active.EntityManager.CreateEntityQuery(typeof(Team));
+
+        var allTeamComponents = teamQuerry.ToComponentDataArray<Team>(Unity.Collections.Allocator.TempJob);
+
+        List<int> listOfAllTeams = new List<int>();
+        foreach (var team in allTeamComponents)
+        {
+            if (listOfAllTeams.Contains(team.Number))
+            {
+                continue;
+            }
+            else 
+            {
+                listOfAllTeams.Add(team.Number);
+            }
+        }
+        allTeamComponents.Dispose();
+        PlayerTeams = listOfAllTeams;
+    }
     private void StartSimulation()
     {
         World.Active.EntityManager.CreateEntity(typeof(Simulate));

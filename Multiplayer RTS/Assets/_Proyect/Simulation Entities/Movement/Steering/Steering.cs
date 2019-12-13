@@ -18,7 +18,9 @@ public struct Steering : IComponentData
     public int cohesionWeight;
     public int alineationWeight;
     public int separationWeight;
+    public int groupalSeparationWeight;
 
+    public Fix64 singleSeparationDistance;
     public Fix64 separationDistance;
     public Fix64 satisfactionDistance;
 }

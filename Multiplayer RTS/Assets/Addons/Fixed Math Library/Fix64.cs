@@ -14,7 +14,7 @@ namespace FixMath.NET
     {
 
 
-        //añadidos extras mios.
+        #region Añadidos extras mios.
         /// <summary>
         /// Linear interpolation
         /// </summary>
@@ -26,7 +26,53 @@ namespace FixMath.NET
         {
             return a + (b - a) * t;
         }
+        public static Fix64 Radians(Fix64 degrees)
+        {
+            return ((degrees / (Fix64)180) * Fix64.Pi);
+        }
+        public static Fix64 Degrees(Fix64 radians)
+        {
+            return (radians * (Fix64)180) / Fix64.Pi ;
+        }
 
+        public Fix64 Clamp(Fix64 max, Fix64 min)
+        {
+            if (this > max)
+            {
+                return max;
+            }
+            else if (this < min)
+            {
+                return min;
+            }
+            else
+            {
+                return this;
+            }
+        }
+        public static Fix64 Max(Fix64 a, Fix64 b)
+        {
+            if (a >= b)
+            {
+                return a;
+            }
+            else
+            {
+                return b;
+            }
+        }
+        public static Fix64 Min(Fix64 a, Fix64 b)
+        {
+            if (a <= b)
+            {
+                return a;
+            }
+            else
+            {
+                return b;
+            }
+        }
+        #endregion
 
         public readonly long m_rawValue;
 

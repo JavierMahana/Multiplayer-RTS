@@ -9,6 +9,7 @@ using Unity.Rendering;
 using FixMath.NET;
 using Sirenix.OdinInspector;
 using UnityEditor;
+using UnityEngine.Rendering;
 
 
 //el mapa va a ser creado con hex positions. así las pocisiones son coherentes.
@@ -31,10 +32,13 @@ public class MapManager : SerializedMonoBehaviour
     }
     private void Start()
     {
+#if UNITY_EDITOR
         HideTempObjectsInPlayMode();
+#endif
     }
 
     #region Editor maps
+#if UNITY_EDITOR
     //falta poner como dirty el so, para poder borrar las weas visuales dsps.
 
     //la idea es implementar esto para hacer mas facil la pega de ver el mapa y poder poner unidades creadas con GO
@@ -68,7 +72,7 @@ public class MapManager : SerializedMonoBehaviour
 
             var current = GameObject.Instantiate(templateObject);
             var pos2D = hexLayout.HexToWorld(hex);
-            current.transform.position = new Vector3((float)pos2D.x, (float)pos2D.y, HexTranslationSystem.MAP_Z_VALUE);
+            current.transform.position = new Vector3((float)pos2D.x, (float)pos2D.y, HexTranslationSystem.TILE_Z_VALUE);
             current.transform.SetParent(originPoint, true);
             current.GetComponent<MeshRenderer>().sharedMaterial = material;
 
@@ -118,7 +122,8 @@ public class MapManager : SerializedMonoBehaviour
     private bool areLoadedTempMapObjects { get => loadedTempMapObjects.Objects != null && loadedTempMapObjects.Objects.Count > 0 && loadedTempMapObjects != null; }
     public GameObjectCollection loadedTempMapObjects;
     //private List<GameObject> loadedTempMapObjects = new List<GameObject>();
-    #endregion
+#endif
+#endregion
 
     #region PlayMode Maps
     /// <summary>
@@ -188,7 +193,7 @@ public class MapManager : SerializedMonoBehaviour
     private void CreateHexVisualEntity(EntityManager entityManager, EntityArchetype tileArchetype, Hex hex, Material hexMaterial, Layout layout, Vector2 mapScale)
     {
         Entity tileEntity = entityManager.CreateEntity(tileArchetype);
-        entityManager.SetSharedComponentData(tileEntity, new RenderMesh() { mesh = MeshUtils.QuadMesh, material = hexMaterial });
+        entityManager.SetSharedComponentData(tileEntity, new RenderMesh() { mesh = MeshUtils.QuadMesh, material = hexMaterial, layer = 0, castShadows = ShadowCastingMode.On, receiveShadows = true});
         entityManager.SetComponentData(tileEntity, new NonUniformScale()
         {
             Value = new float3(mapScale.x, mapScale.y, 1)

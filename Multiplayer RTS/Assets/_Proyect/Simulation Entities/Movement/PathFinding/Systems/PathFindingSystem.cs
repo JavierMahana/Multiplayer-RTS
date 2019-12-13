@@ -33,8 +33,24 @@ public class PathFindingSystem : ComponentSystem
 
             Hex startHex = hexPosition.HexCoordinates.Round();
             Hex destinationHex = pathSolicitude.Destination;
-            Debug.Assert(activeMap.map.StaticMapValues.TryGetValue(startHex, out bool b), $"entity index: {entity.Index} the star hex {startHex} is a invalid start place. the position is {hexPosition.HexCoordinates}");
-            Debug.Assert(activeMap.map.StaticMapValues.TryGetValue(destinationHex, out bool c), $"the destination hex {destinationHex} is a invalid start place");
+            if (!activeMap.map.DinamicMapValues.TryGetValue(destinationHex, out bool c))
+            {
+                //Debug.Assert(activeMap.map.DinamicMapValues.TryGetValue(destinationHex, out bool c), $"the destination hex {destinationHex} is a invalid start place");
+                destinationHex = RuntimeMap.FindClosestOpenHex((FractionalHex)destinationHex, activeMap);
+            }
+            else if (!c)
+            {
+                destinationHex = RuntimeMap.FindClosestOpenHex((FractionalHex)destinationHex, activeMap);
+            }
+            if (! activeMap.map.DinamicMapValues.TryGetValue(startHex, out bool b))
+            {
+                //Debug.Assert(activeMap.map.DinamicMapValues.TryGetValue(startHex, out bool b), $"entity index: {entity.Index} the star hex {startHex} is a invalid start place. the position is {hexPosition.HexCoordinates}");
+                //it adds the start hex as the first waypoint in the path
+                startHex = RuntimeMap.FindClosestOpenHex(hexPosition.HexCoordinates, activeMap);
+                path.Add(startHex);
+            }
+            
+            
             if (startHex == destinationHex)
             {
                 path.Add(startHex);
@@ -65,12 +81,15 @@ public class PathFindingSystem : ComponentSystem
                 //enters here when the path have been found
                 if (currentNode.Equals(destinationHex))
                 {
+                    var reversePath = new List<Hex>();
                     while (currentNode != startNode)
                     {
-                        path.Add(currentNode.hex);
+                        reversePath.Add(currentNode.hex);
                         currentNode = closedList[closedList.IndexOf(currentNode.parent)];
                     }
-                    path.Reverse();
+                    reversePath.Reverse();
+
+                    path.AddRange(reversePath);
                     Paths.Add(entity, path);
 
                     openList.Dispose();
@@ -81,9 +100,9 @@ public class PathFindingSystem : ComponentSystem
                 for (int i = 0; i < 6; i++)
                 {
                     var neightbor = currentNode.hex.Neightbor(i);
-                    if (activeMap.map.StaticMapValues.ContainsKey(neightbor))
+                    if (activeMap.map.DinamicMapValues.ContainsKey(neightbor))
                     {
-                        if (!activeMap.map.StaticMapValues[neightbor] || closedList.Contains(neightbor))
+                        if (!activeMap.map.DinamicMapValues[neightbor] || closedList.Contains(neightbor))
                         {
                             continue;
                         }
@@ -111,7 +130,7 @@ public class PathFindingSystem : ComponentSystem
 
             //we may end up here if the destinaation isn't recheable from the start
             //a posible solution is to return the path to the closest reachable hex to the destination
-            Debug.LogError($"The pathfinding was a failure for of index:{entity.Index}. The start node is: {startHex} and is open:{activeMap.map.StaticMapValues[startHex]}. the end node is: {destinationHex} and is open:{activeMap.map.StaticMapValues[destinationHex]}");
+            Debug.LogError($"The pathfinding was a failure for of index:{entity.Index}. The start node is: {startHex} and is open:{activeMap.map.DinamicMapValues[startHex]}. the end node is: {destinationHex} and is open:{activeMap.map.DinamicMapValues[destinationHex]}");
             openList.Dispose();
             closedList.Dispose();
         });

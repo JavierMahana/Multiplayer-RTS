@@ -16,7 +16,19 @@ public struct Layout
     public readonly Orientation orientation;
     public readonly FixVector2 size;
     public readonly FixVector2 origin;
-
+    /// <summary>
+    /// WARNING: non deterministic, don't use in the simulation!
+    /// </summary>
+    public FractionalHex PixelToFractionaHex(Vector2 mousePos, Camera camera)
+    {
+        var worldPos = camera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, camera.nearClipPlane));
+        var fixWorldPos = new FixVector2((Fix64)worldPos.x, (Fix64)worldPos.y);
+        return WorldToFractionalHex(fixWorldPos);
+    }
+    public Hex PixelToHex(Vector2 mousePos, Camera camera)
+    {
+        return PixelToFractionaHex(mousePos, camera).Round();
+    }
 
     public Hex WorldToHex(FixVector2 p)
     {

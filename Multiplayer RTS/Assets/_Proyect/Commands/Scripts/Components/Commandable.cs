@@ -6,4 +6,7 @@ using UnityEngine;
 
 
 [Serializable]
-public struct Commandable : IComponentData { }
+public struct Commandable : IComponentData 
+{
+    public CommandType DeafaultCommand;
+}

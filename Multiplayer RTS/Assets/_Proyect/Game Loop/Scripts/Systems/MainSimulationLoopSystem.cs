@@ -24,6 +24,10 @@ public class MainSimulationLoopSystem : ComponentSystem
     private bool lockstepIsOpen = false;
     private int lastGameTurnWhereLockstepWasOpen = 0;
 
+    //always updating systems
+    private InputSystem inputSystem;
+    private SelectionSystem selectionSystem;
+
 
     private LockstepSystemGroup lockstepSystemGroup;
     //private SimulationSystemGroup simulationSystemGroup;
@@ -33,26 +37,41 @@ public class MainSimulationLoopSystem : ComponentSystem
     private PathRefreshSystem pathRefreshSystem;
     private PathFindingSystem pathFindingSystem;
     private PathChangeIndexSystem pathChangeIndexSystem;
+
+    
+    private GruopAISystem gruopAISystem;
+    private FindActionTargetSystem findActionTargetSystem;
+
     private FindMovementTargetSystem findMovementTargetSystem;
     private SteeringSystem steeringSystem;
     private TranslationSystem translationSystem;
+    private CollisionSystem collisionSystem;
     private DirectionSystem directionSystem;
+    
 
     protected override void OnCreate()
     {
+        inputSystem = World.GetOrCreateSystem<InputSystem>();
+        selectionSystem = World.GetOrCreateSystem<SelectionSystem>();
+
         lockstepSystemGroup = World.GetOrCreateSystem<LockstepSystemGroup>();
         lockstepSystemGroup.AddSystemToUpdateList(World.GetOrCreateSystem<CommandExecutionSystem>());
         lockstepSystemGroup.AddSystemToUpdateList(World.GetOrCreateSystem<VolatileCommandSystem>());
         lockstepSystemGroup.AddSystemToUpdateList(World.GetOrCreateSystem<CommandableSafetySystem>());
 
-        onGroupCheckSystem = World.GetOrCreateSystem<OnGroupCheckSystem>();
-        pathRefreshSystem = World.GetOrCreateSystem<PathRefreshSystem>();
-        pathFindingSystem= World.GetOrCreateSystem<PathFindingSystem>();
-        pathChangeIndexSystem = World.GetOrCreateSystem<PathChangeIndexSystem>();
+        onGroupCheckSystem       = World.GetOrCreateSystem<OnGroupCheckSystem>();
+        pathRefreshSystem        = World.GetOrCreateSystem<PathRefreshSystem>();
+        pathFindingSystem        = World.GetOrCreateSystem<PathFindingSystem>();
+        pathChangeIndexSystem    = World.GetOrCreateSystem<PathChangeIndexSystem>();
+
+        gruopAISystem            = World.GetOrCreateSystem<GruopAISystem>();
+        findActionTargetSystem   = World.GetOrCreateSystem<FindActionTargetSystem>();
+
         findMovementTargetSystem = World.GetOrCreateSystem<FindMovementTargetSystem>();
-        steeringSystem = World.GetOrCreateSystem<SteeringSystem>();
-        translationSystem = World.GetOrCreateSystem<TranslationSystem>();
-        directionSystem = World.GetOrCreateSystem<DirectionSystem>();
+        steeringSystem           = World.GetOrCreateSystem<SteeringSystem>();
+        translationSystem        = World.GetOrCreateSystem<TranslationSystem>();
+        collisionSystem          = World.GetOrCreateSystem<CollisionSystem>();
+        directionSystem          = World.GetOrCreateSystem<DirectionSystem>();
         //simulationSystemGroup = World.GetOrCreateSystem<SimulationSystemGroup>();
         //simulationSystemGroup.AddSystemToUpdateList(World.GetOrCreateSystem<PathFindingSystem>());
         //simulationSystemGroup.AddSystemToUpdateList(World.GetOrCreateSystem<PathFollowSystem>());
@@ -66,6 +85,10 @@ public class MainSimulationLoopSystem : ComponentSystem
 
         Entities.WithAll<Simulate, MainSimulationStateComponent>().ForEach((Entity entity) => 
         {
+            inputSystem.Update();
+            selectionSystem.Update();
+
+
             if (CurrentGameTurn % GAME_TURNS_REQUIRED_FOR_LOCKSTEP_TURN == 0 && CurrentGameTurn != lastGameTurnWhereLockstepWasOpen || !lockstepIsOpen)
             {
                 
@@ -104,10 +127,20 @@ public class MainSimulationLoopSystem : ComponentSystem
                 pathRefreshSystem.Update();
                 pathFindingSystem.Update();
                 pathChangeIndexSystem.Update();
+
+                gruopAISystem.Update();
+                findActionTargetSystem.Update();
+
                 findMovementTargetSystem.Update();
                 steeringSystem.Update();
                 translationSystem.Update();
+
                 directionSystem.Update();
+
+                //collisions systems
+                collisionSystem.Update();
+
+                
                 //simulationSystemGroup.Update();
                 //lateSimulationSystemGroup.Update();
                 //applicationSystemGroup.Update();

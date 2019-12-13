@@ -13,8 +13,10 @@ public class SteeringValuesAuthoring : ScriptableObject
     public int alienationWeight;
     public int cohesionWeight;
     public int separationWeight;
+    public int groupalSeparationWeigth;
 
     public float satisfactionArea;
     public float separationDistance;
+    public float singleSeparationDistance;
 
 }

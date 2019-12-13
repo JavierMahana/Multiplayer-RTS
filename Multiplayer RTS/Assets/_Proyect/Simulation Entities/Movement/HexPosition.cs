@@ -7,4 +7,5 @@ using Unity.Mathematics;
 public struct HexPosition : IComponentData
 {
     public FractionalHex HexCoordinates;
+    public FractionalHex PrevPosition;
 }

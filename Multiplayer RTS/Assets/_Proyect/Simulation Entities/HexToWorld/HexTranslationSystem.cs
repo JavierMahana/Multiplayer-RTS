@@ -10,7 +10,8 @@ using FixMath.NET;
 [UpdateInGroup(typeof(PresentationSystemGroup))]
 public class HexTranslationSystem : ComponentSystem
 {
-    public const int MAP_Z_VALUE = 9; 
+    public const int AGENTS_Z_VALUE = 9;
+    public const int TILE_Z_VALUE = 10;
 
     protected override void OnUpdate()
     {
@@ -21,12 +22,12 @@ public class HexTranslationSystem : ComponentSystem
             Entities.WithNone<HexTile>().ForEach((ref Translation translation, ref HexPosition hexPosition) =>
             {
                 var worldPos = MapManager.ActiveMap.layout.HexToWorld(hexPosition.HexCoordinates);
-                translation.Value = new float3((float)worldPos.x, (float)worldPos.y, MAP_Z_VALUE);
+                translation.Value = new float3((float)worldPos.x, (float)worldPos.y, AGENTS_Z_VALUE);
             });
             Entities.WithAll<HexTile>().ForEach((ref Translation translation, ref HexPosition hexPosition) =>
             {
                 var worldPos = MapManager.ActiveMap.layout.HexToWorld(hexPosition.HexCoordinates);
-                translation.Value = new float3((float)worldPos.x, (float)worldPos.y, 10);
+                translation.Value = new float3((float)worldPos.x, (float)worldPos.y, TILE_Z_VALUE);
             });
         }
     }

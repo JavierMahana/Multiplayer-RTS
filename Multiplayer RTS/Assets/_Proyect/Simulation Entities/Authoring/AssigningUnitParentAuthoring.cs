@@ -25,11 +25,14 @@ public class AssigningUnitParentAuthoring : MonoBehaviour
 
     void Start()
     {
+        var entityManager = World.Active.EntityManager;
+        int team = entityManager.GetComponentData<Team>(parentEntity).Number;
         if (unitCallBackRecieved && parentCallBackRecieved)
         {
             foreach (var unit in unitEntities)
             {
-                World.Active.EntityManager.SetSharedComponentData<Parent>(unit, new Parent() { ParentEntity = parentEntity });
+                entityManager.SetComponentData<Team>(unit, new Team() { Number = team});
+                entityManager.SetSharedComponentData<Parent>(unit, new Parent() { ParentEntity = parentEntity });
             }
         }
         else 

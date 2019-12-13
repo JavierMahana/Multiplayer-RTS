@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 using Unity.Transforms;
 using Unity.Rendering;
 using System.Collections.Generic;
+using Photon.Pun;
 
 [DisallowMultipleComponent]
 [RequiresEntityConversion]
@@ -17,6 +18,10 @@ public class UnitAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
     public float speed;
     public int turnsTorefreshPath;
 
+    public float radious;
+    public float collisionIntensity;
+    [Range(0, 1)]
+    public float collisionResolutionFactor = 1; 
 
     public bool log;
 
@@ -29,11 +34,11 @@ public class UnitAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
             Debug.Assert(mapManager != null, "You must have an Map Manager object in the scene in order to be able to author units from the editor!", this);
             mapManager.LoadMap(mapManager.mapToLoad);
         }
-
         Layout layout = MapManager.ActiveMap.layout;
-        
         var fractionalHex = layout.WorldToFractionalHex(new FixVector2((Fix64)transform.position.x, (Fix64)transform.position.y));
-        //var pos = layout.HexToWorld(fractionalHex);
+
+
+
 
         dstManager.AddComponentData<HexPosition>(entity, new HexPosition() { HexCoordinates = fractionalHex });
         dstManager.AddSharedComponentData<Parent>(entity, new Parent() );//not assigned
@@ -47,7 +52,7 @@ public class UnitAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
         var buffer = dstManager.AddBuffer<PathWaypoint>(entity);
 
         //Steering
-        dstManager.AddComponentData<Steering>(entity, new Steering() 
+        dstManager.AddComponentData<Steering>(entity, new Steering()
         {
             targetWeight = steeringValues.targetWeight,
             flockWeight = steeringValues.flockWeight,
@@ -55,14 +60,29 @@ public class UnitAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
 
             cohesionWeight = steeringValues.cohesionWeight,
             separationWeight = steeringValues.separationWeight,
+            groupalSeparationWeight = steeringValues.groupalSeparationWeigth,
             alineationWeight = steeringValues.alienationWeight,
 
             satisfactionDistance = (Fix64)steeringValues.satisfactionArea,
-            separationDistance = (Fix64)steeringValues.separationDistance
+            separationDistance = (Fix64)steeringValues.separationDistance,
+            singleSeparationDistance = (Fix64)steeringValues.singleSeparationDistance
+        }); ;
+
+        //Collision
+        dstManager.AddComponentData<Collider>(entity, new Collider()
+        {
+            Radious = (Fix64)radious,
+            CollisionPushIntensity = (Fix64)collisionIntensity,
+            CollisionResolutionFactor = (Fix64)collisionResolutionFactor,
+            Layer = ColliderLayer.UNIT
         });
 
+        //team (assigned the value in "AssigningUnitParentAuthoring")
+        dstManager.AddComponentData<Team>(entity, new Team());
+
+
         //General Movement Components 
-        dstManager.AddComponentData(entity, new Speed() { Value = (Fix64)speed });        
+        dstManager.AddComponentData<Speed>(entity, new Speed() { Value = (Fix64)speed });        
         dstManager.AddComponentData<DirectionAverage>(entity, new DirectionAverage() { Value = FractionalHex.Zero, PreviousDirection1 = FractionalHex.Zero, PreviousDirection2 = FractionalHex.Zero });
         dstManager.AddComponentData<SteeringTarget>(entity, new SteeringTarget());
         dstManager.AddComponentData<DesiredMovement>(entity, new DesiredMovement());

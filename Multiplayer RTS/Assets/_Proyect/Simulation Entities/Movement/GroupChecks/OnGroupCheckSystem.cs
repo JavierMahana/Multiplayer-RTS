@@ -22,7 +22,7 @@ using static Unity.Mathematics.math;
 public class OnGroupCheckSystem : ComponentSystem
 {
     private static readonly Fix64 OnGroupThresholdDistance = (Fix64)2;
-    private bool EntityIsOnGroup(HexPosition position, HexPosition parentPosition, RuntimeMap map) 
+    private bool EntityIsOnGroup(int entityIndex, HexPosition position, HexPosition parentPosition, RuntimeMap map) 
     {
         var parentCoords = parentPosition.HexCoordinates;
         var entityCoords = position.HexCoordinates;
@@ -33,11 +33,19 @@ public class OnGroupCheckSystem : ComponentSystem
             return false;
         }
 
-        var hexesInBewtween = Hex.HexesInBetween(parentCoords, entityCoords);
+        var hexesInBewtween = Hex.HexesInBetween(entityCoords, parentCoords);
+
         foreach (Hex hex in hexesInBewtween)
         {
-            bool walkable = map.StaticMapValues[hex];
-            if (!walkable) 
+            bool walkable = true;
+            if (map.DinamicMapValues.TryGetValue(hex, out walkable))
+            {
+                if (!walkable)
+                {
+                    return false;
+                }
+            }
+            else 
             {
                 return false;
             }
@@ -63,7 +71,7 @@ public class OnGroupCheckSystem : ComponentSystem
             }
             var parentPosition = EntityManager.GetComponentData<HexPosition>(parent.ParentEntity);
 
-            if (! EntityIsOnGroup(position, parentPosition, activeMap.map))
+            if (! EntityIsOnGroup(entity.Index, position, parentPosition, activeMap.map))
             {
                 PostUpdateCommands.AddComponent<OnReinforcement>(entity);
                 PostUpdateCommands.AddComponent<RefreshPathNow>(entity);                
@@ -78,8 +86,8 @@ public class OnGroupCheckSystem : ComponentSystem
                 return;
             }
             var parentPosition = EntityManager.GetComponentData<HexPosition>(parent.ParentEntity);
-            if (EntityIsOnGroup(position, parentPosition, activeMap.map))
-            {                
+            if (EntityIsOnGroup(entity.Index, position, parentPosition, activeMap.map))
+            {
                 PostUpdateCommands.RemoveComponent<OnReinforcement>(entity);
                 PostUpdateCommands.AddComponent<OnGroup>(entity);                
             }

@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Proyect/Scenes/Launcher.unity
     guid: 039c27102f219fd458b8ed6da01165d3
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Proyect/Scenes/Room 1.unity
     guid: ad4dcbf94f0d7614bb3d3da7bd7ed574
   - enabled: 0
@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Proyect/Scenes/Testing Scene (change of scenes).unity
     guid: 4456ce115c0bb644494db5d0f466e83d
+  - enabled: 1
+    path: Assets/_Proyect/Scenes/MovementTest.unity
+    guid: 67d5fb2e30bc5274facadc0d158daf58
   m_configObjects: {}

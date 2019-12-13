@@ -8,6 +8,7 @@ using Sirenix.Utilities.Editor;
 using Sirenix.Utilities;
 using FixMath.NET;
 
+#if UNITY_EDITOR
 public class MapEditor : OdinEditorWindow
 {
     public string pathOfHexTileDatas = "Hex Tile Data";
@@ -198,3 +199,4 @@ public class MapEditor : OdinEditorWindow
         window.position = GUIHelper.GetEditorWindowRect().AlignCenter(300, 400);
     }
 }
+#endif

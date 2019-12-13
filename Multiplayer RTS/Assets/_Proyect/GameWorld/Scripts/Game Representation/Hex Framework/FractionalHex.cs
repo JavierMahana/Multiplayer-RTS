@@ -80,7 +80,26 @@ public struct FractionalHex
         var normalized = lenght != Fix64.Zero ? new FractionalHex(q / lenght, r / lenght) : FractionalHex.Zero;
         return normalized;
     }
+    public static Fix64 Angle(FractionalHex origin, FractionalHex direction, FractionalHex x, bool inRadians = true)
+    {
+        var diference = x - origin;
+        direction = direction.Normalized();
 
+        var adjacent = DotProduct(direction, diference);
+        var hipotenuse = diference.Magnitude();
+        var cos = hipotenuse != Fix64.Zero? adjacent / hipotenuse: Fix64.One;
+
+        cos = cos.Clamp(Fix64.One, -Fix64.One);
+
+        if (inRadians)
+        {
+            return Fix64.Acos(cos);
+        }
+        else 
+        {
+            return Fix64.Acos(Fix64.Degrees(cos));
+        }        
+    }
     public static FractionalHex Lerp(FractionalHex a, FractionalHex b, Fix64 t)
     {
         return new FractionalHex(

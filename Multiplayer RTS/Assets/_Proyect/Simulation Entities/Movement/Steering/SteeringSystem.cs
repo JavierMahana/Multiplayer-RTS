@@ -12,7 +12,9 @@ using static Unity.Mathematics.math;
 //I need to test the cohesion and alineation part
 //I need to implemetn all the other parts like separation and avoidance
 public class SteeringSystem : ComponentSystem
-{
+{    
+    private const int SEPARATION_FOV = 20;
+
     private EntityQuery m_OnGroupUnitQuerry;
     private EntityQuery m_OnReinforcementUnitQuerry;
     private EntityQuery m_GroupEntityQuerry;
@@ -63,11 +65,11 @@ public class SteeringSystem : ComponentSystem
             {
                 if (distance <= maxSpeedMovementDistance)
                 {
-                    desiredMovement.Value = postionDelta.Normalized() * distance;
+                    desiredMovement.Value = postionDelta.NormalizedManhathan() * distance;
                     return;
                 }
             }
-            desiredMovement.Value = postionDelta.Normalized() * maxSpeedMovementDistance;
+            desiredMovement.Value = postionDelta.NormalizedManhathan() * maxSpeedMovementDistance;
         });
 
         #endregion
@@ -75,19 +77,26 @@ public class SteeringSystem : ComponentSystem
         #region Unit On Group Steering
         int OnGroupUnitCount = m_OnGroupUnitQuerry.CalculateEntityCount();
 
-
+        //voy a crear más basura de lo necesario por mas readibilidad.
+        //Agrugar collección -> unitpos y unitDirection
 
         var entityToIndex = new Dictionary<int, int>(OnGroupUnitCount);
         var groupCohesions = new FractionalHex[OnGroupUnitCount];
         var groupAlignements = new FractionalHex[OnGroupUnitCount];
-        var groupsHashMap = new Dictionary<int, List<int>>(OnGroupUnitCount);
+        var groupsUnitsHashMap = new Dictionary<int, List<int>>(OnGroupUnitCount);
 
         var groupCount = new int[OnGroupUnitCount];
         var groupIndices = new int[OnGroupUnitCount];
 
-        var unitSeparations = new FractionalHex[OnGroupUnitCount];
-        var unitSeparationCounts = new int[OnGroupUnitCount];
-        var unitSeparationDistances = new Fix64[OnGroupUnitCount];
+        var unitGroupalSeparations = new FractionalHex[OnGroupUnitCount];
+        var unitSeparationValues   = new FractionalHex[OnGroupUnitCount];
+        var unitPositions          = new FractionalHex[OnGroupUnitCount];
+        var unitDirections         = new FractionalHex[OnGroupUnitCount];
+
+        var unitSeparations               = new FractionalHex[OnGroupUnitCount];
+        var unitSeparationCounts          = new int[OnGroupUnitCount];
+        var unitSeparationDistances       = new Fix64[OnGroupUnitCount];
+        var unitSingleSeparationDistances = new Fix64[OnGroupUnitCount];
 
         //made only because the foreach delegate don't have enough slots for all the components needed
         var unitSpeeds = new Fix64[OnGroupUnitCount];
@@ -97,26 +106,29 @@ public class SteeringSystem : ComponentSystem
         int entityCollectionIndex = 0;
         Entities.WithAll<OnGroup>().ForEach((Entity entity, Parent parent, ref Steering steering, ref Speed speed, ref HexPosition position, ref DirectionAverage directionAverage) =>
         {            
-            groupCohesions[entityCollectionIndex] = position.HexCoordinates;
+            groupCohesions[entityCollectionIndex]   = position.HexCoordinates;
             groupAlignements[entityCollectionIndex] = directionAverage.Value;
-            //groupCount[entityCollectionIndex] = 1;
-            unitSeparationCounts[entityCollectionIndex] = 0;
-            unitSeparationDistances[entityCollectionIndex] = steering.separationDistance;
-            unitSpeeds[entityCollectionIndex] = speed.Value;
+              
+            unitSeparationCounts[entityCollectionIndex]          = 0;
+            unitSeparationDistances[entityCollectionIndex]       = steering.separationDistance;
+            unitSingleSeparationDistances[entityCollectionIndex] = steering.singleSeparationDistance;
+            unitSpeeds[entityCollectionIndex]                    = speed.Value;
+            unitPositions[entityCollectionIndex]                 = position.HexCoordinates;
+            unitDirections[entityCollectionIndex]                = directionAverage.Value;
 
             //hash map
             int parentIndex = parent.ParentEntity.Index;
             List<int> sameGroupIndices;
-            if (groupsHashMap.TryGetValue(parentIndex, out sameGroupIndices))
+            if (groupsUnitsHashMap.TryGetValue(parentIndex, out sameGroupIndices))
             {
                 sameGroupIndices.Add(entityCollectionIndex);
-                groupsHashMap[parentIndex] = sameGroupIndices;
+                groupsUnitsHashMap[parentIndex] = sameGroupIndices;
             }
             else
             {
                 sameGroupIndices = new List<int>();
                 sameGroupIndices.Add(entityCollectionIndex);
-                groupsHashMap.Add(parentIndex, sameGroupIndices);
+                groupsUnitsHashMap.Add(parentIndex, sameGroupIndices);
             }
 
 
@@ -127,7 +139,7 @@ public class SteeringSystem : ComponentSystem
         });
 
 
-        CompleteOnGroupSteeringCollections(groupCohesions, groupAlignements, groupsHashMap, groupCount, groupIndices, unitSeparations, unitSeparationCounts, unitSeparationDistances);
+        CompleteOnGroupSteeringCollections(unitGroupalSeparations, unitSingleSeparationDistances, unitPositions, unitDirections, groupCohesions, groupAlignements, groupsUnitsHashMap, groupCount, groupIndices, unitSeparations, unitSeparationCounts, unitSeparationDistances);
 
         
         Entities.WithAll<OnGroup>().ForEach((Entity entity, Parent parent,
@@ -147,30 +159,35 @@ public class SteeringSystem : ComponentSystem
 
             var speed = unitSpeeds[entityIndex];
             var separationValue = unitSeparations[entityIndex];
+            var groupalSeparationValues = unitGroupalSeparations[entityIndex];
+
             var separationCount = unitSeparationCounts[entityIndex];
             var groupIndex = groupIndices[entityIndex];
             var siblinCount = groupCount[groupIndex];
             var cohesionValue = groupCohesions[groupIndex];
             var alignementValue = groupAlignements[groupIndex];
 
+
             var cohesionWeight = steering.cohesionWeight;
             var alignementWeight = steering.alineationWeight;
             var separationWeight = steering.separationWeight;
+            var groupalSeparationWeight = steering.groupalSeparationWeight;
             var flockWeight = steering.flockWeight;
             var targetWeight = steering.targetWeight;
             var previousDirectionWeight = steering.previousDirectionWeight;
 
-            var separationDirection = separationCount != 0
-                                      ? (currentPosition - (separationValue / separationCount)).Normalized()
+            var groupalSeparationDirection = separationCount != 0
+                                      ? (currentPosition - (groupalSeparationValues / separationCount)).NormalizedManhathan()
                                       : FractionalHex.Zero;
-            var cohesionDirection = ((cohesionValue / siblinCount) - currentPosition).Normalized();
-            var alignementDirection = (alignementValue / siblinCount).Normalized();
+            var cohesionDirection = ((cohesionValue / siblinCount) - currentPosition).NormalizedManhathan();
+            var alignementDirection = (alignementValue / siblinCount).NormalizedManhathan();
 
-            var flockDirection = ((separationDirection * separationWeight)
+            var flockDirection = ((separationValue * separationWeight)
                                  + (cohesionDirection * cohesionWeight)
-                                 + (alignementDirection * alignementWeight))
+                                 + (alignementDirection * alignementWeight)
+                                 + groupalSeparationDirection * groupalSeparationWeight)
                                  .Normalized();
-            var targetDirection = (target.TargetPosition - currentPosition).Normalized();
+            var targetDirection = (target.TargetPosition - currentPosition).NormalizedManhathan();
             var previousDirection = directionAverage.Value;
             var finalDirection = ((flockDirection * flockWeight)
                                  + (targetDirection * targetWeight)
@@ -195,44 +212,8 @@ public class SteeringSystem : ComponentSystem
     }
 
     #region On Group collection filling methods
-    private void InitialFillOnGroupSteeringCollections(
-        Dictionary<int, int> entityToIndex, FractionalHex[] groupCohesions, FractionalHex[] groupAlingnements, Fix64[] unitSpeeds,
-        Dictionary<int, List<int>> groupHashMap,
-        int[] unitSeparationCount, Fix64[] unitSeparationDistance)
-    {
-        int entityIndex = 0;
-        Entities.WithAll<OnGroup>().ForEach((Entity entity, Parent parent, ref Steering steering, ref Speed speed, ref HexPosition position, ref DirectionAverage directionAverage) =>
-        {
 
-            groupCohesions[entityIndex] = position.HexCoordinates;
-            groupAlingnements[entityIndex] = directionAverage.Value;
-            unitSeparationCount[entityIndex] = 0;
-            unitSeparationDistance[entityIndex] = steering.separationDistance;
-            unitSpeeds[entityIndex] = speed.Value;
-
-            
-            int parentIndex = parent.ParentEntity.Index;
-            List<int> sameGroupIndices;
-            if (groupHashMap.TryGetValue(parentIndex, out sameGroupIndices))
-            {
-                sameGroupIndices.Add(entityIndex);
-                groupHashMap[parentIndex] = sameGroupIndices;
-            }
-            else
-            {
-                sameGroupIndices = new List<int>();
-                sameGroupIndices.Add(entityIndex);
-                groupHashMap.Add(parentIndex, sameGroupIndices);
-            }
-            
-
-            entityToIndex.Add(entity.Index, entityIndex);
-
-
-            entityIndex++;
-        });
-    }
-    private void CompleteOnGroupSteeringCollections(FractionalHex[] groupCohesion, FractionalHex[] groupAlinement, Dictionary<int, List<int>> groupsHashMap, int[] groupCount, int[] groupIndices, FractionalHex[] unitSeparations, int[] unitSeparationCounts, Fix64[] unitSeparationDistances)
+    private void CompleteOnGroupSteeringCollections(FractionalHex[]unitGroupalSeparations, Fix64[] unitSingleSeparationDistances, FractionalHex[] unitPositions, FractionalHex[] unitDirections, FractionalHex[] groupCohesion, FractionalHex[] groupAlinement, Dictionary<int, List<int>> groupsHashMap, int[] groupCount, int[] groupIndices, FractionalHex[] unitSeparations, int[] unitSeparationCounts, Fix64[] unitSeparationDistances)
     {
         foreach (var bucket in groupsHashMap)
         {
@@ -240,10 +221,11 @@ public class SteeringSystem : ComponentSystem
             if (sameGroupIndices == null || sameGroupIndices.Count == 0) continue;
 
             //we use the cohesion before its changed
-            SetTheSeparationForEveryUnitInTheList(sameGroupIndices, unitSeparationDistances, unitSeparationCounts, unitSeparations, groupCohesion);
+            //SetTheSeparationForEveryUnitInTheList(sameGroupIndices, unitSeparationDistances, unitSeparationCounts, unitSeparations, unitPositions);
+            SetGroupalSeparationValue(sameGroupIndices, unitSeparationDistances, unitSeparationCounts, unitGroupalSeparations, unitPositions);
+            SetTheSeparationValue(sameGroupIndices, unitPositions, unitDirections, unitSingleSeparationDistances, unitSeparations,true);
 
             SetTheCohesionAndAlienationGroupValues(groupCohesion, groupAlinement, groupCount, groupIndices, sameGroupIndices);
-
         }
     }
     private static void SetTheCohesionAndAlienationGroupValues
@@ -272,7 +254,7 @@ public class SteeringSystem : ComponentSystem
     /// <summary>
     /// it populates the "unitSeparationSum" array with the sum of the postions of the siblins that are close enoght, and it saves the count too.
     /// </summary>
-    private void SetTheSeparationForEveryUnitInTheList
+    private void SetGroupalSeparationValue
     (List<int> indicesOfUnits, Fix64[] separationDistances, int[] unitSeparationCount, FractionalHex[] unitSeparationSum, FractionalHex[] unitPositions)
     {
         foreach (var unitIndex in indicesOfUnits)
@@ -292,6 +274,85 @@ public class SteeringSystem : ComponentSystem
             }
         }
 
+    }
+
+    private void SetTheSeparationValue(List<int> indicesOfUnits, FractionalHex[] unitPositions, FractionalHex[] unitDirections, Fix64[]separationDistances, FractionalHex[] results, bool perpendicular = false)
+    {
+        foreach (var unitIndex in indicesOfUnits)
+        {
+            FractionalHex unitPosition = unitPositions[unitIndex];
+            FractionalHex unitDirection = unitDirections[unitIndex].Normalized();
+            Fix64 separationDistance = separationDistances[unitIndex];
+
+            var siblinsInSD = new List<int>();
+            foreach (var siblin in indicesOfUnits)
+            {
+                if (unitIndex == siblin) continue;
+                var siblinPosition = unitPositions[siblin];
+                var distance = siblinPosition.Distance(unitPosition);
+                if (distance <= separationDistance) 
+                {
+                    siblinsInSD.Add(siblin);
+                }
+            }
+
+            var siblinsInFOV = new List<int>();
+            foreach (var siblinInSD in siblinsInSD)
+            {
+                var siblinPostion = unitPositions[siblinInSD];
+                var angle = FractionalHex.Angle(unitPosition, unitDirection, siblinPostion);
+                //siblinsInFOV.Add(siblinInSD);
+                if (angle <= (Fix64)SEPARATION_FOV)
+                {
+                    siblinsInFOV.Add(siblinInSD);
+                }
+            }
+
+            if (siblinsInFOV.Count == 0 || siblinsInFOV == null)
+            {
+                results[unitIndex] = FractionalHex.Zero;
+                continue;
+            }
+            else
+            {
+                int closestSiblin = siblinsInFOV[0];
+                var closestSiblinPos = unitPositions[closestSiblin];
+                Fix64 closestSiblinDistance = unitPosition.Distance(unitPositions[closestSiblin]);
+                for (int i = 1; i < siblinsInFOV.Count; i++)
+                {
+                    int siblin = siblinsInFOV[i];
+                    var siblinPos = unitPositions[siblin];
+                    Fix64 distance = unitPosition.Distance(siblinPos);
+                    if (distance < closestSiblinDistance)
+                    {
+                        closestSiblin = siblin;
+                        closestSiblinPos = siblinPos;
+                        closestSiblinDistance = distance;
+                    }
+                }
+
+                //here we set the direction of the separation
+                if (perpendicular)
+                {
+                    var dirNormalized = unitDirection.Normalized();
+                    var diference = closestSiblinPos - unitPosition;
+                    var dot = FractionalHex.DotProduct(dirNormalized, diference);
+                    var perpendicularPointInLine = dirNormalized * dot;
+
+
+                    results[unitIndex] = (diference - perpendicularPointInLine).NormalizedManhathan(); 
+                }
+                else
+                {
+                    //contrary to the siblin
+                    results[unitIndex] = (unitPosition - closestSiblinPos).NormalizedManhathan();
+                }
+                
+                
+
+            }
+
+        }
     }
     #endregion
 
@@ -325,3 +386,42 @@ public class SteeringSystem : ComponentSystem
         }
     }
 }
+
+
+//private void InitialFillOnGroupSteeringCollections(
+//    Dictionary<int, int> entityToIndex, FractionalHex[] groupCohesions, FractionalHex[] groupAlingnements, Fix64[] unitSpeeds,
+//    Dictionary<int, List<int>> groupHashMap,
+//    int[] unitSeparationCount, Fix64[] unitSeparationDistance)
+//{
+//    int entityIndex = 0;
+//    Entities.WithAll<OnGroup>().ForEach((Entity entity, Parent parent, ref Steering steering, ref Speed speed, ref HexPosition position, ref DirectionAverage directionAverage) =>
+//    {
+
+//        groupCohesions[entityIndex] = position.HexCoordinates;
+//        groupAlingnements[entityIndex] = directionAverage.Value;
+//        unitSeparationCount[entityIndex] = 0;
+//        unitSeparationDistance[entityIndex] = steering.separationDistance;
+//        unitSpeeds[entityIndex] = speed.Value;
+
+
+//        int parentIndex = parent.ParentEntity.Index;
+//        List<int> sameGroupIndices;
+//        if (groupHashMap.TryGetValue(parentIndex, out sameGroupIndices))
+//        {
+//            sameGroupIndices.Add(entityIndex);
+//            groupHashMap[parentIndex] = sameGroupIndices;
+//        }
+//        else
+//        {
+//            sameGroupIndices = new List<int>();
+//            sameGroupIndices.Add(entityIndex);
+//            groupHashMap.Add(parentIndex, sameGroupIndices);
+//        }
+
+
+//        entityToIndex.Add(entity.Index, entityIndex);
+
+
+//        entityIndex++;
+//    });
+//}

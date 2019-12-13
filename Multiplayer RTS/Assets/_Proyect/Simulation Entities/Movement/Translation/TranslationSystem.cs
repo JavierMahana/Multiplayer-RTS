@@ -15,8 +15,8 @@ public class TranslationSystem : ComponentSystem
     {
         Entities.ForEach((ref DesiredMovement turnMovement, ref HexPosition position) => 
         {
-            var prevPosition = position.HexCoordinates;
-            position = new HexPosition() { HexCoordinates = (prevPosition + turnMovement.Value)};
+            var prevPosition = position.HexCoordinates;            
+            position = new HexPosition() { HexCoordinates = (prevPosition + turnMovement.Value), PrevPosition = prevPosition};
         });
     }
 }
