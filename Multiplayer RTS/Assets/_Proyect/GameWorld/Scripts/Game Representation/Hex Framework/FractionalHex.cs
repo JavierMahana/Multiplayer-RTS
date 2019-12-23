@@ -32,6 +32,10 @@ public struct FractionalHex
     {
         return new FractionalHex(a.q - b.q, a.r - b.r);
     }
+    public static FractionalHex operator -(FractionalHex a)
+    {
+        return new FractionalHex(-a.q , -a.r);
+    }
     public static FractionalHex operator *(FractionalHex a, int b)
     {
         return new FractionalHex(a.q * (Fix64)b, a.r * (Fix64)b);

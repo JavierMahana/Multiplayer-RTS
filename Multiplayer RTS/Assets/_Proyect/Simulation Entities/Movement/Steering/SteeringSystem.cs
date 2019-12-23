@@ -12,7 +12,8 @@ using static Unity.Mathematics.math;
 //I need to test the cohesion and alineation part
 //I need to implemetn all the other parts like separation and avoidance
 public class SteeringSystem : ComponentSystem
-{    
+{
+    private static readonly Fix64 WAIT_CHILD_WEIGHT = (Fix64)0.3;
     private const int SEPARATION_FOV = 20;
 
     private EntityQuery m_OnGroupUnitQuerry;
@@ -48,9 +49,10 @@ public class SteeringSystem : ComponentSystem
     //collecting the data
     protected override void OnUpdate()
     {
-        #region On Reinforcement Unit Steering and group steering
 
-        Entities.WithAny<OnReinforcement, Group>().ForEach((ref DesiredMovement desiredMovement, ref HexPosition position, ref Speed speed, ref SteeringTarget target) =>
+        #region On Reinforcement Unit Steering
+
+        Entities.WithAll<OnReinforcement>().ForEach((ref DesiredMovement desiredMovement, ref HexPosition position, ref Speed speed, ref SteeringTarget target) =>
         {
             var postionDelta = target.TargetPosition - position.HexCoordinates;
             var distance = postionDelta.Lenght();
@@ -209,6 +211,70 @@ public class SteeringSystem : ComponentSystem
             }
         });
         #endregion
+
+        #region group steering
+        var countOfChilds = new Dictionary<Entity, int>();
+        var childPositionSum = new Dictionary<Entity, FractionalHex>();
+        Entities.WithAll<OnGroup>().ForEach((Parent parent, ref HexPosition hexPosition) => 
+        {
+            var parentEntity = parent.ParentEntity;
+            var pos = hexPosition.HexCoordinates;
+            if (countOfChilds.ContainsKey(parentEntity))
+            {
+                countOfChilds[parentEntity] += 1;
+                childPositionSum[parentEntity] += pos;
+            }
+            else 
+            {
+                countOfChilds.Add(parentEntity, 1);
+                childPositionSum.Add(parentEntity, pos);
+            }
+        });
+
+
+        Entities.WithAll<Group>().ForEach((Entity entity, ref DesiredMovement desiredMovement, ref HexPosition position, ref Speed speed, ref SteeringTarget target) =>
+        {
+            
+
+            var postionDelta = target.TargetPosition - position.HexCoordinates;
+            var distance = postionDelta.Lenght();
+
+            Debug.Assert(countOfChilds.ContainsKey(entity), "there can't exista a group without any child. _steering system_");
+
+
+
+            var childAveragePos = childPositionSum[entity] / math.max(1, countOfChilds[entity]);
+
+            var desiredMovementDistance = GetMovementMagnitudeTowardsDesiredConsideringChildPos(
+                position.HexCoordinates,
+                childAveragePos,
+                target.TargetPosition,
+                speed.Value,
+                WAIT_CHILD_WEIGHT,
+                target.StopAtTarget);
+
+            desiredMovementDistance *= MainSimulationLoopSystem.SimulationDeltaTime;
+            var maxSpeedMovementDistance = speed.Value * MainSimulationLoopSystem.SimulationDeltaTime;
+
+
+            if (distance <= Fix64.Zero)
+            {
+                desiredMovement.Value = FractionalHex.Zero;
+                return;
+            }
+
+            if (target.StopAtTarget)
+            {
+                if (distance <= desiredMovementDistance)
+                {
+                    desiredMovement.Value = postionDelta.NormalizedManhathan() * distance;
+                    return;
+                }
+            }
+            desiredMovement.Value = postionDelta.NormalizedManhathan() * desiredMovementDistance;
+        });
+
+        #endregion
     }
 
     #region On Group collection filling methods
@@ -355,7 +421,42 @@ public class SteeringSystem : ComponentSystem
         }
     }
     #endregion
+    /// <summary>
+    /// se mueve siempre en la misma linea. lo que se hace es que se mueve a una velocidad la cual respeta la pocision de sus hijos
+    /// </summary>  
+    /// <param name="weight">is the ammount of weight the child positions have. 0 is none. 1 is max </param>
+    private static Fix64 GetMovementMagnitudeTowardsDesiredConsideringChildPos(FractionalHex groupPos, FractionalHex childAveragePos, FractionalHex desiredPosition, Fix64 maxSpeed, Fix64 weight, bool stopAtDesired)
+    {
+        if (weight < Fix64.Zero || weight > Fix64.One) throw new System.ArgumentException("the weight parameter must be in the 0-1 range");
 
+        var direction = (desiredPosition - groupPos).NormalizedManhathan();
+        //usa valores euler para conseguir el punto con el que se saca el weight medio.
+        var movementDirectionEuler = (desiredPosition - groupPos).Normalized();
+        var childAverageRelativePos = (childAveragePos - groupPos);
+        var distanceToChildEuler = FractionalHex.DotProduct(movementDirectionEuler, childAverageRelativePos);
+
+        FractionalHex counterPos;
+        Fix64 childPosAverageInfluence;
+        if (distanceToChildEuler < Fix64.Zero)
+        {
+            counterPos = -movementDirectionEuler * distanceToChildEuler;
+            childPosAverageInfluence = -(counterPos.Lenght());
+
+
+            var lerpedInfluence = Fix64.Lerp(maxSpeed, Fix64.Min(childPosAverageInfluence, maxSpeed), weight);
+            if (lerpedInfluence < Fix64.Zero)
+            {
+                lerpedInfluence = Fix64.Zero;
+            }
+            return lerpedInfluence;
+        }
+        else 
+        {
+            return maxSpeed;
+        }
+
+
+    }
 
     /// <summary>
     /// 
@@ -387,41 +488,3 @@ public class SteeringSystem : ComponentSystem
     }
 }
 
-
-//private void InitialFillOnGroupSteeringCollections(
-//    Dictionary<int, int> entityToIndex, FractionalHex[] groupCohesions, FractionalHex[] groupAlingnements, Fix64[] unitSpeeds,
-//    Dictionary<int, List<int>> groupHashMap,
-//    int[] unitSeparationCount, Fix64[] unitSeparationDistance)
-//{
-//    int entityIndex = 0;
-//    Entities.WithAll<OnGroup>().ForEach((Entity entity, Parent parent, ref Steering steering, ref Speed speed, ref HexPosition position, ref DirectionAverage directionAverage) =>
-//    {
-
-//        groupCohesions[entityIndex] = position.HexCoordinates;
-//        groupAlingnements[entityIndex] = directionAverage.Value;
-//        unitSeparationCount[entityIndex] = 0;
-//        unitSeparationDistance[entityIndex] = steering.separationDistance;
-//        unitSpeeds[entityIndex] = speed.Value;
-
-
-//        int parentIndex = parent.ParentEntity.Index;
-//        List<int> sameGroupIndices;
-//        if (groupHashMap.TryGetValue(parentIndex, out sameGroupIndices))
-//        {
-//            sameGroupIndices.Add(entityIndex);
-//            groupHashMap[parentIndex] = sameGroupIndices;
-//        }
-//        else
-//        {
-//            sameGroupIndices = new List<int>();
-//            sameGroupIndices.Add(entityIndex);
-//            groupHashMap.Add(parentIndex, sameGroupIndices);
-//        }
-
-
-//        entityToIndex.Add(entity.Index, entityIndex);
-
-
-//        entityIndex++;
-//    });
-//}

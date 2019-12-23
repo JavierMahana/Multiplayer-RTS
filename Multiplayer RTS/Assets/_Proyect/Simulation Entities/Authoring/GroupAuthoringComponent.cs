@@ -21,6 +21,10 @@ public class GroupAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
     public bool actOnTeamates;
     public float sightRange;
 
+    public float destinationReachedDistance = 0.05f;
+
+    public Behaviour behaviour;
+
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
         
@@ -54,36 +58,47 @@ public class GroupAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
             Layer = ColliderLayer.GROUP
         });
 
-        //Target AI
-        dstManager.AddBuffer<BEPosibleTarget>(entity);
-        dstManager.AddComponentData<GroupAI>(entity, new GroupAI() { ArePossibleTargets = false });
-        dstManager.AddComponentData<GroupBehaviour>(entity, new GroupBehaviour() 
+        //target find
+        dstManager.AddComponentData<ActTargetFilters>(entity, new ActTargetFilters()
         {
             ActOnEnemies = actOnEnemyTeam,
-            ActOnTeamates = actOnTeamates,
+            ActOnTeamates = actOnTeamates
+        });
 
-            SightDistance = (Fix64)sightRange
+        dstManager.AddBuffer<BEPosibleTarget>(entity);
+        //Target AI
+        dstManager.AddComponentData<GroupBehaviour>(entity, new GroupBehaviour() 
+        {
+            Value = behaviour
         });
         
 
         //team
         dstManager.AddComponentData<Team>(entity, new Team() { Number = team});
-    
 
-        //steering
+        //movement
+        dstManager.AddComponentData<MovementState>(entity, new MovementState()
+        {
+            DestinationReached = false,
+            DestinationIsReachedDistance = (Fix64)destinationReachedDistance
+        });
+        //  steering
         dstManager.AddComponentData<SteeringTarget>(entity, new SteeringTarget() { TargetPosition = hexPos, StopAtTarget = false });
         dstManager.AddComponentData<DesiredMovement>(entity, new DesiredMovement());
 
         //commands
-        dstManager.AddComponentData<Commandable>(entity, new Commandable() { DeafaultCommand = CommandType.MOVE_COMMAND});
+        dstManager.AddComponentData<Commandable>(entity, new Commandable() { DeafaultCommand = CommandType.MOVE_COMMAND });
         dstManager.AddComponentData<CommandableDeathFlag>(entity, new CommandableDeathFlag());
 
-        dstManager.AddComponentData<RefreshPathTimer>(entity, new RefreshPathTimer() { TurnsRequired = turnsToRefreshParentPath, TurnsWithoutRefresh = 0 });        
-        dstManager.AddComponentData<Speed>(entity, new Speed() { Value = (Fix64)parentSpeed });        
-        dstManager.AddComponentData<DestinationHex>(entity, new DestinationHex() { Value = hexPos.Round() });
+        dstManager.AddComponentData<RefreshPathTimer>(entity, new RefreshPathTimer() { TurnsRequired = turnsToRefreshParentPath, TurnsWithoutRefresh = 0 });
+        dstManager.AddComponentData<Speed>(entity, new Speed() { Value = (Fix64)parentSpeed });
+        dstManager.AddComponentData<DestinationHex>(entity, new DestinationHex() { FinalDestination = hexPos.Round() });
+
+
+
+        dstManager.AddComponentData<TriggerPathfinding>(entity, new TriggerPathfinding() { Destination = hexPos.Round() });
 
         //dstManager.AddComponentData<TPAtMouseClick>(entity, new TPAtMouseClick());
-        dstManager.AddComponent<debugTarget>(entity);
         Debug.Log("converting the parent entity");
 
 

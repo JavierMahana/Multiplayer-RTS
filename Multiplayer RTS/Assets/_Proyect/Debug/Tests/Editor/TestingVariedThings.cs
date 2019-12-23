@@ -75,6 +75,13 @@ namespace Javier.Testing
 
             Assert.AreEqual(expected + 1, results.Count);
         }
+
+        [Test]
+        public void ListWithoutAddedItemsHaveLenghtOf0()
+        {
+            var list = new List<int>();
+            Assert.That(list.Count == 0);
+        }
         [Test]
         public void TheHexesInRangeReturnsTheCorrectAmmountOfValues()
         {

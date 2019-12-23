@@ -5,34 +5,50 @@ using UnityEngine;
 
 public class RuntimeMap 
 {
+    
+
     public RuntimeMap(Map map)
     {
-        StaticMapValues = new Dictionary<Hex, bool>(map.HexWalkableFlags);
-        DinamicMapValues = new Dictionary<Hex, bool>(StaticMapValues);
+        GeographicMapValues = new Dictionary<Hex, bool>(map.HexWalkableFlags);
+        MovementMapValues = new Dictionary<Hex, bool>(GeographicMapValues);
+        OcupationMapValues = new Dictionary<Hex, bool>(GeographicMapValues);
+    }
+    public RuntimeMap(Dictionary<Hex,bool> geographicMap)
+    {
+        GeographicMapValues = new Dictionary<Hex, bool>(geographicMap);
+        MovementMapValues = new Dictionary<Hex, bool>(GeographicMapValues);
+        OcupationMapValues = new Dictionary<Hex, bool>(GeographicMapValues);
     }
 
-    public readonly Dictionary<Hex, bool> StaticMapValues;
-    public Dictionary<Hex, bool> DinamicMapValues;
 
+    public readonly Dictionary<Hex, bool> GeographicMapValues;
+    /// <summary>
+    /// true is walkable.
+    /// </summary>
+    public Dictionary<Hex, bool> MovementMapValues { get; private set; }
+    /// <summary>
+    /// true is free.
+    /// </summary>
+    public Dictionary<Hex, bool> OcupationMapValues { get; private set; }
 
-    public static Hex FindClosestOpenHex(FractionalHex position, ActiveMap activeMap)
+    public void SetMovementMapValue(Hex key, bool newValue)
     {
-        var closestOpenHex = Hex.Zero;
-        Fix64 closestOpenHexDistance = Fix64.MaxValue;
-        foreach (var hexValuePair in activeMap.map.DinamicMapValues)
+        if (! MovementMapValues.ContainsKey(key))
         {
-            if (!hexValuePair.Value) { continue; }
-
-            var hex = hexValuePair.Key;
-            var distance = position.Distance((FractionalHex)hex);
-
-            if (distance <= closestOpenHexDistance)
-            {
-                closestOpenHex = hex;
-                closestOpenHexDistance = distance;
-            }
+            throw new System.ArgumentException("You are trying to set a key that doesn't exist");            
         }
 
-        return closestOpenHex;
+        MovementMapValues[key] = newValue;
+        OcupationMapValues[key] = newValue;
     }
+    public void SetOcupationMapValue(Hex key, bool newValue)
+    {
+        if (!OcupationMapValues.ContainsKey(key))
+        {
+            throw new System.ArgumentException("You are trying to set a key that doesn't exist");
+        }
+
+        OcupationMapValues[key] = newValue;
+    }
+
 }

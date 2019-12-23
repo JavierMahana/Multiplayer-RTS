@@ -12,8 +12,8 @@ public static class CommandUtils
         int entityIndex = command.Target.Index;
         int entityVersion = command.Target.Version;
 
-        int targetQ = command.Destination.Value.q;
-        int targetR = command.Destination.Value.r;
+        int targetQ = command.Destination.FinalDestination.q;
+        int targetR = command.Destination.FinalDestination.r;
 
         object[] data = new object[] {entityIndex, entityVersion, targetQ, targetR };
         return data;
@@ -30,7 +30,7 @@ public static class CommandUtils
             },
             Destination = new DestinationHex() 
             {
-                Value = new Hex((int)data[2], (int)data[3])
+                FinalDestination = new Hex((int)data[2], (int)data[3])
             }
             
         };

@@ -229,6 +229,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &8831176
@@ -342,6 +343,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &13031672
@@ -455,6 +457,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &87942949
@@ -627,6 +630,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &217158616
@@ -740,6 +744,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &259772005
@@ -906,6 +911,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.5
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &372012078
@@ -1019,6 +1025,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.2
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &613994420
@@ -1132,6 +1139,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.2
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &617962588
@@ -1380,6 +1388,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.2
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &721916088
@@ -1546,6 +1555,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.2
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &920628130
@@ -1831,6 +1841,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.5
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &1089303167
@@ -2030,11 +2041,13 @@ MonoBehaviour:
   team: 1
   parentUnitLink: {fileID: 277597358}
   turnsToRefreshParentPath: 20
-  parentSpeed: 2
+  parentSpeed: 2.2
   parentWaypointReachedDistance: 0.05
-  actOnEnemyTeam: 0
+  actOnEnemyTeam: 1
   actOnTeamates: 0
   sightRange: 1.7
+  destinationReachedDistance: 0.05
+  behaviour: 0
 --- !u!23 &1179825135
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2146,6 +2159,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.2
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &1204748759
@@ -2259,6 +2273,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.5
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &1223961810
@@ -2372,6 +2387,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.5
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &1258200075
@@ -2531,6 +2547,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.5
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &1327329109
@@ -2644,6 +2661,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &1376092546
@@ -2757,6 +2775,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.5
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &1576841639
@@ -2870,6 +2889,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &1615660491
@@ -2983,6 +3003,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.5
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &1657093624
@@ -3096,6 +3117,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.2
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &1729700074
@@ -3209,6 +3231,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.2
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &1769295072
@@ -3322,6 +3345,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &1783993311
@@ -3435,6 +3459,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.2
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &1816717246
@@ -3548,6 +3573,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.5
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &1928980587
@@ -3647,6 +3673,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.5
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &1951274317
@@ -3770,11 +3797,13 @@ MonoBehaviour:
   team: 1
   parentUnitLink: {fileID: 842439062}
   turnsToRefreshParentPath: 20
-  parentSpeed: 2
+  parentSpeed: 2.2
   parentWaypointReachedDistance: 0.05
-  actOnEnemyTeam: 0
+  actOnEnemyTeam: 1
   actOnTeamates: 0
   sightRange: 2
+  destinationReachedDistance: 0.05
+  behaviour: 0
 --- !u!23 &2009129748
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3960,6 +3989,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0.2
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &2110203055
@@ -4156,6 +4186,7 @@ MonoBehaviour:
   radious: 0.1
   collisionIntensity: 0.8
   collisionResolutionFactor: 0.49
+  actionRange: 0
   log: 0
   steeringValues: {fileID: 11400000, guid: 3aa391c8ef579be4aa3546ff065de3a5, type: 2}
 --- !u!23 &2142194137
@@ -4218,11 +4249,13 @@ MonoBehaviour:
   team: 0
   parentUnitLink: {fileID: 1042268664}
   turnsToRefreshParentPath: 20
-  parentSpeed: 2
+  parentSpeed: 2.2
   parentWaypointReachedDistance: 0.05
   actOnEnemyTeam: 1
   actOnTeamates: 0
   sightRange: 2
+  destinationReachedDistance: 0.05
+  behaviour: 1
 --- !u!23 &4391777616299610629
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -88,24 +88,29 @@ public class FindMovementTargetSystem : ComponentSystem
 
     protected override void OnCreate()
     {
-        m_GroupQuery = GetEntityQuery(typeof(Group), typeof(HexPosition), typeof(DirectionAverage), typeof(GroupAI));
-        m_UnitOnGroupQuery = GetEntityQuery(typeof(OnGroup), typeof(HexPosition), typeof(SteeringTarget));
+        m_GroupQuery = GetEntityQuery(typeof(Group), typeof(HexPosition), typeof(DirectionAverage));
+        m_UnitOnGroupQuery = GetEntityQuery(typeof(OnGroup), typeof(HexPosition), typeof(SteeringTarget), typeof(ActionAttributes));
     }
     protected override void OnUpdate()
     {
-        //The system Find Action Target System has much better names.
+
+        #region On group movement target find.
+
+        
         int groupCount = m_GroupQuery.CalculateEntityCount();
         var groupPosition = new FractionalHex[groupCount];
-        var groupDirection = new FractionalHex[groupCount];
+        var groupDirections = new FractionalHex[groupCount];
+        var groupReachedDestination = new bool[groupCount];         
         var groupIndices = new Dictionary<int, int>(groupCount);
         var groupTriggers = new bool[groupCount];
 
-        int onGroupCount = m_UnitOnGroupQuery.CalculateEntityCount();
+        int onGroupCount         = m_UnitOnGroupQuery.CalculateEntityCount();
         var onGroupEntityToIndex = new Dictionary<int, int>(onGroupCount);
-        var onGroupPositions = new FractionalHex[onGroupCount];
-        var onGroupRadius = new Fix64[onGroupCount];
-        var groupMemberHashMap = new Dictionary<int, List<int>>(onGroupCount);
-        var unitsParents = new Entity[onGroupCount];
+        var onGroupPositions     = new FractionalHex[onGroupCount];
+        var onGroupActRange      = new Fix64[onGroupCount];
+        var onGroupRadius        = new Fix64[onGroupCount];
+        var groupMemberHashMap   = new Dictionary<int, List<int>>(onGroupCount);
+        var unitsParents         = new Entity[onGroupCount];
 
         var unitsTempTargets = new FractionalHex[onGroupCount];
 
@@ -113,10 +118,11 @@ public class FindMovementTargetSystem : ComponentSystem
 
         //initializing group collections
         int groupIterator = 0;
-        Entities.WithAll<Group>().ForEach((Entity entity, ref HexPosition position, ref DirectionAverage direction, ref GroupAI groupAIState) =>
+        Entities.WithAll<Group>().ForEach((Entity entity, ref HexPosition position, ref DirectionAverage direction, ref MovementState movementState) =>
         {
             groupPosition[groupIterator] = position.HexCoordinates;
-            groupDirection[groupIterator] = direction.Value;
+            groupReachedDestination[groupIterator] = movementState.DestinationReached;
+            groupDirections[groupIterator] = direction.Value;
             groupIndices.Add(entity.Index, groupIterator);
             groupIterator++;
         });
@@ -128,11 +134,12 @@ public class FindMovementTargetSystem : ComponentSystem
             onGroupEntityToIndex.Add(entity.Index, startupCollectionIndex);
             startupCollectionIndex++;
         });
-        Entities.WithAll<OnGroup>().ForEach((Entity entity, ref HexPosition position, ref Collider collider) =>
+        Entities.WithAll<OnGroup>().ForEach((Entity entity, ref HexPosition position, ref Collider collider, ref ActionAttributes actAttributes) =>
         {
             int collectionIndex = onGroupEntityToIndex[entity.Index];
             onGroupPositions[collectionIndex] = position.HexCoordinates;
             onGroupRadius[collectionIndex] = collider.Radious;
+            onGroupActRange[collectionIndex] = actAttributes.ActRange;
         });
         Entities.WithAll<OnGroup>().ForEach((Entity entity, Parent parent) =>
         {
@@ -163,16 +170,18 @@ public class FindMovementTargetSystem : ComponentSystem
             if (!FormationSlots.Slots.TryGetValue(new int2(siblinCount, 9), out var formationSlots))
             { Debug.LogError($"There isn't a formation for the ammount of siblins that this group have: {siblinCount}|9"); continue; }
 
-            var parentEntity = unitsParents[siblinList[0]];
-            int parentEntityIndex = parentEntity.Index;
-            int parentIndex = groupIndices[parentEntityIndex];
-            var parentPosition = groupPosition[parentIndex];
-            var parentDirection = groupDirection[parentIndex];
-            bool parentStoped = parentDirection == FractionalHex.Zero;
+            var parentEntity             = unitsParents[siblinList[0]];
+            int parentEntityIndex        = parentEntity.Index;
+            int parentIndex              = groupIndices[parentEntityIndex];
+            var parentPosition           = groupPosition[parentIndex];
+            var parentReachedDestination = groupReachedDestination[parentIndex];
+            var parentDirection          = groupDirections[parentIndex];
 
-            if (parentStoped)
+            bool parentHaveStoped = parentDirection == FractionalHex.Zero; 
+
+            if (parentReachedDestination || parentHaveStoped)
             {
-                int[] sortedSiblins = Sort(siblinList, onGroupPositions, formationSlots);//Sort(siblinList, unitOnGroupPositions);
+                int[] sortedSiblins = Sort(siblinList, onGroupPositions, formationSlots);
                 for (int i = 0; i < sortedSiblins.Length; i++)
                 {
                     int currUnitIndex = sortedSiblins[i];
@@ -195,23 +204,33 @@ public class FindMovementTargetSystem : ComponentSystem
                     {
                         unitsTempTargets[currUnitIndex] = (parentPosition + (parentDirection * TARGET_OFFSET_FROM_GROUP_CENTER)) + posDiference;
                     }
-
-
                 }
             }
         }
         //writes on the steering target component
+
+        //with action target
         Entities.WithAll<OnGroup>().ForEach((Entity entity, Parent parent, ref ActionTarget actionTarget, ref SteeringTarget steeringTarget) =>
         {
-            //Debug.Log($"This entity {entity.Index} is accesing the action target target selection");
             int onGroupIndex = onGroupEntityToIndex[entity.Index];
-            var pos = onGroupPositions[onGroupIndex];
-            var radius = onGroupRadius[onGroupIndex];
-            var distance = pos.Distance(actionTarget.TargetPosition);
-            var directionToTarget = (actionTarget.TargetPosition - pos).NormalizedManhathan();
+            var pos          = onGroupPositions[onGroupIndex];
+            var radius       = onGroupRadius[onGroupIndex];
+            var actRange     = onGroupActRange[onGroupIndex];
+            var distance     = pos.Distance(actionTarget.TargetPosition);
 
-            steeringTarget.TargetPosition = pos + (directionToTarget * (distance - (actionTarget.TargetRadius + radius)));
-            steeringTarget.StopAtTarget = true;
+            //fuera de rango de acción.
+            if (distance > actRange + radius + actionTarget.TargetRadius + TARGET_OFFSET)
+            {
+                var directionToTarget = (actionTarget.TargetPosition - pos).NormalizedManhathan();
+
+                steeringTarget.TargetPosition = pos + (directionToTarget * (distance - (actionTarget.TargetRadius + radius + actRange)));
+                steeringTarget.StopAtTarget = true;
+            }
+            else //dentro de rango de acción
+            {
+                steeringTarget.TargetPosition = pos;
+                steeringTarget.StopAtTarget = true;
+            }
         });
 
 
@@ -225,24 +244,19 @@ public class FindMovementTargetSystem : ComponentSystem
                 Debug.LogError($"This entity: {parent.ParentEntity} is a parent and it needs to have a Group, hexPosition, and a directionAverage component");
                 return;
             }
-
-            bool triggerIdleFormation = groupDirection[parentGroupIndex] == FractionalHex.Zero;
-
-
-            var parentPos = groupPosition[parentGroupIndex];
-            var parentDirection = groupDirection[parentGroupIndex];
-            var parentIsTriggered = groupTriggers[parentGroupIndex];
+            bool parentReachedDestination = groupReachedDestination[parentGroupIndex];
 
             target.TargetPosition = unitsTempTargets[collectionIndex];
-
-
-            if (parentDirection == FractionalHex.Zero)
+            
+            if (parentReachedDestination)
                 target.StopAtTarget = true;
             else
                 target.StopAtTarget = false;
         });
+        #endregion
 
 
+        #region On Reinforcement and on group target Set
         Entities.WithAll<PathWaypoint>().WithAny<OnReinforcement, Group>().ForEach(
         (Entity entity, ref HexPosition position, ref SteeringTarget target, ref PathWaypointIndex waypointIndex) =>
         {
@@ -264,6 +278,7 @@ public class FindMovementTargetSystem : ComponentSystem
         });
 
     }
+    #endregion
 }
 
 //private static bool StopAtTarget

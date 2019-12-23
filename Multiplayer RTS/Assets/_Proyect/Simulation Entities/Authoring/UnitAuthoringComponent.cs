@@ -21,7 +21,9 @@ public class UnitAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
     public float radious;
     public float collisionIntensity;
     [Range(0, 1)]
-    public float collisionResolutionFactor = 1; 
+    public float collisionResolutionFactor = 1;
+
+    public float actionRange;
 
     public bool log;
 
@@ -45,6 +47,10 @@ public class UnitAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
 
 
         dstManager.AddComponentData<OnReinforcement>(entity, new OnReinforcement());
+
+
+        //Act
+        dstManager.AddComponentData<ActionAttributes>(entity, new ActionAttributes() { ActRange = (Fix64)actionRange});
 
         //Pathfinding
         dstManager.AddComponentData<RefreshPathTimer>(entity, new RefreshPathTimer() { TurnsRequired = turnsTorefreshPath, TurnsWithoutRefresh = 0 });

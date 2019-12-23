@@ -72,7 +72,7 @@ public class CollisionSystem : ComponentSystem
 
                 if (fullCollision)
                 {
-                    FractionalHex closestOpenHex = (FractionalHex)RuntimeMap.FindClosestOpenHex(position, activeMap);
+                    FractionalHex closestOpenHex = (FractionalHex)MapUtilities.FindClosestOpenHex(position, activeMap.map);
                     collisionResolutionDir = (closestOpenHex - position).NormalizedManhathan();                    
                 }
                 else
@@ -261,7 +261,7 @@ public class CollisionSystem : ComponentSystem
         {
             var direction = Hex.directions[i];
             var corner = position + ((FractionalHex)direction * colliderArea);
-            if (activeMap.map.DinamicMapValues.TryGetValue(corner.Round(), out bool walkable))
+            if (activeMap.map.MovementMapValues.TryGetValue(corner.Round(), out bool walkable))
             {
                 if (!walkable)
                 {

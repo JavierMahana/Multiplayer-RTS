@@ -38,7 +38,7 @@ public class OnGroupCheckSystem : ComponentSystem
         foreach (Hex hex in hexesInBewtween)
         {
             bool walkable = true;
-            if (map.DinamicMapValues.TryGetValue(hex, out walkable))
+            if (map.MovementMapValues.TryGetValue(hex, out walkable))
             {
                 if (!walkable)
                 {

@@ -51,7 +51,7 @@ public class InputSystem : ComponentSystem
                         var moveCommand = new MoveCommand()
                         {
                             Target = currentSelectedEntity,
-                            Destination = new DestinationHex() { Value = MapManager.ActiveMap.layout.PixelToHex(Input.mousePosition, Camera.main) }
+                            Destination = new DestinationHex() { FinalDestination = MapManager.ActiveMap.layout.PixelToHex(Input.mousePosition, Camera.main) }
                         };
                         CommandStorageSystem.TryAddLocalCommand(moveCommand, World.Active);
                         break;

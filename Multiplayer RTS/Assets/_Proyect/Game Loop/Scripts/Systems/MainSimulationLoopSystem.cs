@@ -39,12 +39,14 @@ public class MainSimulationLoopSystem : ComponentSystem
     private PathChangeIndexSystem pathChangeIndexSystem;
 
     
-    private GruopAISystem gruopAISystem;
+    private FindPosibleTargetsSystem findPosibleTargetsSystem;
     private FindActionTargetSystem findActionTargetSystem;
 
     private FindMovementTargetSystem findMovementTargetSystem;
     private SteeringSystem steeringSystem;
     private TranslationSystem translationSystem;
+    private MovementFinisherSystem movementFinisherSystem;
+
     private CollisionSystem collisionSystem;
     private DirectionSystem directionSystem;
     
@@ -64,12 +66,14 @@ public class MainSimulationLoopSystem : ComponentSystem
         pathFindingSystem        = World.GetOrCreateSystem<PathFindingSystem>();
         pathChangeIndexSystem    = World.GetOrCreateSystem<PathChangeIndexSystem>();
 
-        gruopAISystem            = World.GetOrCreateSystem<GruopAISystem>();
+        findPosibleTargetsSystem            = World.GetOrCreateSystem<FindPosibleTargetsSystem>();
         findActionTargetSystem   = World.GetOrCreateSystem<FindActionTargetSystem>();
 
         findMovementTargetSystem = World.GetOrCreateSystem<FindMovementTargetSystem>();
         steeringSystem           = World.GetOrCreateSystem<SteeringSystem>();
         translationSystem        = World.GetOrCreateSystem<TranslationSystem>();
+        movementFinisherSystem   = World.GetOrCreateSystem<MovementFinisherSystem>();
+
         collisionSystem          = World.GetOrCreateSystem<CollisionSystem>();
         directionSystem          = World.GetOrCreateSystem<DirectionSystem>();
         //simulationSystemGroup = World.GetOrCreateSystem<SimulationSystemGroup>();
@@ -128,12 +132,13 @@ public class MainSimulationLoopSystem : ComponentSystem
                 pathFindingSystem.Update();
                 pathChangeIndexSystem.Update();
 
-                gruopAISystem.Update();
+                findPosibleTargetsSystem.Update();
                 findActionTargetSystem.Update();
 
                 findMovementTargetSystem.Update();
                 steeringSystem.Update();
                 translationSystem.Update();
+                movementFinisherSystem.Update();
 
                 directionSystem.Update();
 

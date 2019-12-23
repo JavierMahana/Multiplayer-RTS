@@ -33,20 +33,18 @@ public class PathFindingSystem : ComponentSystem
 
             Hex startHex = hexPosition.HexCoordinates.Round();
             Hex destinationHex = pathSolicitude.Destination;
-            if (!activeMap.map.DinamicMapValues.TryGetValue(destinationHex, out bool c))
-            {
-                //Debug.Assert(activeMap.map.DinamicMapValues.TryGetValue(destinationHex, out bool c), $"the destination hex {destinationHex} is a invalid start place");
-                destinationHex = RuntimeMap.FindClosestOpenHex((FractionalHex)destinationHex, activeMap);
+            if (!activeMap.map.MovementMapValues.TryGetValue(destinationHex, out bool c))
+            {                
+                destinationHex = MapUtilities.FindClosestOpenHex((FractionalHex)destinationHex, activeMap.map);
             }
             else if (!c)
             {
-                destinationHex = RuntimeMap.FindClosestOpenHex((FractionalHex)destinationHex, activeMap);
+                destinationHex = MapUtilities.FindClosestOpenHex((FractionalHex)destinationHex, activeMap.map);
             }
-            if (! activeMap.map.DinamicMapValues.TryGetValue(startHex, out bool b))
-            {
-                //Debug.Assert(activeMap.map.DinamicMapValues.TryGetValue(startHex, out bool b), $"entity index: {entity.Index} the star hex {startHex} is a invalid start place. the position is {hexPosition.HexCoordinates}");
+            if (! activeMap.map.MovementMapValues.TryGetValue(startHex, out bool b))
+            {                
                 //it adds the start hex as the first waypoint in the path
-                startHex = RuntimeMap.FindClosestOpenHex(hexPosition.HexCoordinates, activeMap);
+                startHex = MapUtilities.FindClosestOpenHex(hexPosition.HexCoordinates, activeMap.map);
                 path.Add(startHex);
             }
             
@@ -100,9 +98,9 @@ public class PathFindingSystem : ComponentSystem
                 for (int i = 0; i < 6; i++)
                 {
                     var neightbor = currentNode.hex.Neightbor(i);
-                    if (activeMap.map.DinamicMapValues.ContainsKey(neightbor))
+                    if (activeMap.map.MovementMapValues.ContainsKey(neightbor))
                     {
-                        if (!activeMap.map.DinamicMapValues[neightbor] || closedList.Contains(neightbor))
+                        if (!activeMap.map.MovementMapValues[neightbor] || closedList.Contains(neightbor))
                         {
                             continue;
                         }
@@ -130,7 +128,7 @@ public class PathFindingSystem : ComponentSystem
 
             //we may end up here if the destinaation isn't recheable from the start
             //a posible solution is to return the path to the closest reachable hex to the destination
-            Debug.LogError($"The pathfinding was a failure for of index:{entity.Index}. The start node is: {startHex} and is open:{activeMap.map.DinamicMapValues[startHex]}. the end node is: {destinationHex} and is open:{activeMap.map.DinamicMapValues[destinationHex]}");
+            Debug.LogError($"The pathfinding was a failure for of index:{entity.Index}. The start node is: {startHex} and is open:{activeMap.map.MovementMapValues[startHex]}. the end node is: {destinationHex} and is open:{activeMap.map.MovementMapValues[destinationHex]}");
             openList.Dispose();
             closedList.Dispose();
         });
@@ -144,7 +142,7 @@ public class PathFindingSystem : ComponentSystem
             List<Hex> path;
             Debug.Assert(Paths.TryGetValue(entity, out path), "the entity doesn't have a path. this is because the pathfinding failed before");
 
-            //Debug.Log($"path added of lenght: {path.Count}");
+            
             foreach (Hex waypoint in path)
             {
                 buffer.Add(new PathWaypoint() { Value = waypoint });

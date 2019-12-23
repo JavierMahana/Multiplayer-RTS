@@ -6,5 +6,5 @@ using Unity.Mathematics;
 [Serializable]
 public struct DestinationHex : IComponentData
 {
-    public Hex Value;
+    public Hex FinalDestination;    
 }
