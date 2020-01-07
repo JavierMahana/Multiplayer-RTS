@@ -79,7 +79,7 @@ public class NetworkEventProcessorSystem : ComponentSystem, IOnEventCallback
         object[] eventData = (object[])photonEvent.CustomData;
         int turnToExecute = (int)eventData[0];
 
-
+        //moveCommand
         object[] serializedMoveCommands = (object[])eventData[1];
         MoveCommand[] moveCommands = new MoveCommand[serializedMoveCommands.Length];
         for (int i = 0; i < serializedMoveCommands.Length; i++)
@@ -87,9 +87,16 @@ public class NetworkEventProcessorSystem : ComponentSystem, IOnEventCallback
             moveCommands[i] = CommandUtils.DeserializeMoveCommand((object[])serializedMoveCommands[i]);
         }
 
+        //changeBehaviourCommand
+        object[] serializedChangeBehaviourCommand = (object[])eventData[2];
+        ChangeBehaviourCommand[] changeBehaviourCommands = new ChangeBehaviourCommand[serializedChangeBehaviourCommand.Length];
+        for (int i = 0; i < changeBehaviourCommands.Length; i++)
+        {
+            changeBehaviourCommands[i] = CommandUtils.DeserializeChangeBehaviourCommand((object[])serializedChangeBehaviourCommand);
+        }
         //otros commandos
 
-        CommandStorageSystem.QueueNetworkedCommands(turnToExecute, moveCommands);
+        CommandStorageSystem.QueueNetworkedCommands(turnToExecute, moveCommands, changeBehaviourCommands);
 
         CreateCommandLockstepCheck(turnToExecute);
         SendCommandConfirmationEvent(turnToExecute);

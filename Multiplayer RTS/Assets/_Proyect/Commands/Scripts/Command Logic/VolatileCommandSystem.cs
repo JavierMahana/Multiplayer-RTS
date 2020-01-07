@@ -14,6 +14,7 @@ using static Unity.Mathematics.math;
 public class VolatileCommandSystem : ComponentSystem
 {
     //this system manages the volatile commands of each lockstep turn. 
+        //sends them to the network and queues them into the definitive dictionary.
     protected override void OnUpdate()
     {
         SendCommandsToNetwork();
@@ -37,7 +38,8 @@ public class VolatileCommandSystem : ComponentSystem
             content = new object[]
             {
                     turnToExecuteTheCommands,
-                    commands[0]
+                    commands[0],
+                    commands[1]
             };
         }
         else

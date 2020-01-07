@@ -11,13 +11,13 @@ public class RuntimeMap
     {
         GeographicMapValues = new Dictionary<Hex, bool>(map.HexWalkableFlags);
         MovementMapValues = new Dictionary<Hex, bool>(GeographicMapValues);
-        OcupationMapValues = new Dictionary<Hex, bool>(GeographicMapValues);
+        UnitsMapValues = new Dictionary<Hex, bool>(GeographicMapValues);
     }
     public RuntimeMap(Dictionary<Hex,bool> geographicMap)
     {
         GeographicMapValues = new Dictionary<Hex, bool>(geographicMap);
         MovementMapValues = new Dictionary<Hex, bool>(GeographicMapValues);
-        OcupationMapValues = new Dictionary<Hex, bool>(GeographicMapValues);
+        UnitsMapValues = new Dictionary<Hex, bool>(GeographicMapValues);
     }
 
 
@@ -29,7 +29,7 @@ public class RuntimeMap
     /// <summary>
     /// true is free.
     /// </summary>
-    public Dictionary<Hex, bool> OcupationMapValues { get; private set; }
+    public Dictionary<Hex, bool> UnitsMapValues { get; private set; }
 
     public void SetMovementMapValue(Hex key, bool newValue)
     {
@@ -39,16 +39,16 @@ public class RuntimeMap
         }
 
         MovementMapValues[key] = newValue;
-        OcupationMapValues[key] = newValue;
+        UnitsMapValues[key] = newValue;
     }
     public void SetOcupationMapValue(Hex key, bool newValue)
     {
-        if (!OcupationMapValues.ContainsKey(key))
+        if (!UnitsMapValues.ContainsKey(key))
         {
             throw new System.ArgumentException("You are trying to set a key that doesn't exist");
         }
 
-        OcupationMapValues[key] = newValue;
+        UnitsMapValues[key] = newValue;
     }
 
 }

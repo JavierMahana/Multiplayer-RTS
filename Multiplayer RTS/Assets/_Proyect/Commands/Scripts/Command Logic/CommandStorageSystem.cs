@@ -11,6 +11,9 @@ using System;
 using System.Linq;
 using UnityEngine;
 
+
+//probable error de syncronización: cuando se loopea por todo los numeros posibles de int.
+//luego se volvera al inicio y eso puede generar errores(esto si cada turno de lockstep se demora 0.2s llegaria luego de 120 hrs aprox).
 [Serializable]
 public struct CommandStorageSystemState : ISystemStateComponentData { }
 
@@ -19,84 +22,51 @@ public struct CommandStorageSystemState : ISystemStateComponentData { }
 public class CommandStorageSystem : ComponentSystem
 {
     private static bool logg = false;
+
+
+
+
     //los commandos volatiles son aquellos que aun no son encolados para x turno.
     //puede existir un solo commando de cada tipo por entidad
-    private static Dictionary<Entity, MoveCommand> volatileMoveCommands = new Dictionary<Entity, MoveCommand>();
+    private static Dictionary<Entity, MoveCommand> volatileMoveCommands                       = new Dictionary<Entity, MoveCommand>();
+    private static Dictionary<Entity, ChangeBehaviourCommand> volatileChangeBehaviourCommands = new Dictionary<Entity, ChangeBehaviourCommand>();
+
+
+
+
+
+
 
     //there will be multiples dictionaries one for each command type with the queued commands for each lockstep turn
-    public static Dictionary<int, List<MoveCommand>> QueuedMoveCommands { get; private set; } = new Dictionary<int, List<MoveCommand>>();
+    public static Dictionary<int, List<MoveCommand>> QueuedMoveCommands { get; private set; }                       = new Dictionary<int, List<MoveCommand>>();
+    public static Dictionary<int, List<ChangeBehaviourCommand>> QueuedChangeBehaviourCommands { get; private set; } = new Dictionary<int, List<ChangeBehaviourCommand>>();
+
+
+
+    //----------------Esta es la funcion por la cual se ingresan commandos (de este cliente) al systema....................
 
     /// <summary>
-    /// La serializacion de todos los commandos volatiles sirve para mandarlos a la network
-    /// </summary>
-    /// <returns>object[] -> object[](de commandos)</returns>
-    public static object[] GetAllVolatileCommandsSerialized()
-    {
-
-
-        MoveCommand[] moveCommands = CommandDictionaryToArray(volatileMoveCommands);
-        object[] moveCommandsSerialized = new object[moveCommands.Length];
-        for (int i = 0; i < moveCommands.Length; i++)
-        {
-            moveCommandsSerialized[i] = CommandUtils.Serialize(moveCommands[i]);
-        }
-
-
-        
-        return new object[]
-        {
-            moveCommandsSerialized
-
-        };
-            
-    }
-    
-
-    public static bool AreVolatileCommands()
-    {
-        if (volatileMoveCommands.Count > 0)
-            return true;
-        else
-            return false;
-    }
-    public static void QueueNetworkedCommands(int turnToQueue, MoveCommand[] moveCommands) 
-    {
-        InsertObjectsToDictionaryAtKey(turnToQueue, QueuedMoveCommands, moveCommands);
-    }
-    
-
-    public static void QueueVolatileCommands(int turnToQueue)
-    {
-        int count = CommandDictionaryToList(volatileMoveCommands) == null ? 0 : CommandDictionaryToList(volatileMoveCommands).Count;
-        if(count != 0 && logg) Debug.Log($"Queueing {count} command(s) at turn: {MainSimulationLoopSystem.CurrentLockstepTurn}.");
-
-
-        InsertObjectsToDictionaryAtKey(turnToQueue, QueuedMoveCommands, CommandDictionaryToList(volatileMoveCommands));
-        volatileMoveCommands.Clear();
-
-    }
-    /// <summary>
-    /// Esta es la funcion que se usa ingresar commandos al sistema commandos a la lista volatil
+    /// Esta es la funcion que se usa para ingresar commandos al sistema de commandos por medio de la lista volatil
     /// </summary>
     /// <returns> falso si el commando es invalido o esta repetido</returns>
-    public static bool TryAddLocalCommand(MoveCommand command, World world)     
+    public static bool TryAddLocalCommand(MoveCommand command, World world)
     {
         if (CommandUtils.CommandIsValid(command, world))
         {
             if (volatileMoveCommands.ContainsKey(command.Target))
-            {             
+            {
                 //el commando es igual al que ya esta almacenado
                 if (volatileMoveCommands[command.Target].Equals(command))
                 {
                     return false;
                 }
-                else 
+                else
                 {
                     volatileMoveCommands[command.Target] = command;
                     return true;
                 }
             }
-            else 
+            else
             {
                 volatileMoveCommands.Add(command.Target, command);
                 return true;
@@ -107,6 +77,99 @@ public class CommandStorageSystem : ComponentSystem
             return false;
         }
     }
+    public static bool TryAddLocalCommand(ChangeBehaviourCommand command, World world)
+    {
+        if (CommandUtils.CommandIsValid(command, world))
+        {
+            if (volatileChangeBehaviourCommands.ContainsKey(command.Target))
+            {
+                //el commando es igual al que ya esta almacenado
+                if (volatileChangeBehaviourCommands[command.Target].Equals(command))
+                {
+                    return false;
+                }
+                else
+                {
+                    volatileChangeBehaviourCommands[command.Target] = command;
+                    return true;
+                }
+            }
+            else
+            {
+                volatileChangeBehaviourCommands.Add(command.Target, command);
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+
+    /// <summary>
+    /// Esta es la funcion por la que se ingresan commandos externos al systema
+    /// </summary>    
+    public static void QueueNetworkedCommands(int turnToQueue, MoveCommand[] moveCommands, ChangeBehaviourCommand[] changeBehaviourCommands)
+    {
+        InsertObjectsToDictionaryAtKey(turnToQueue, QueuedMoveCommands, moveCommands);
+        InsertObjectsToDictionaryAtKey(turnToQueue, QueuedChangeBehaviourCommands, changeBehaviourCommands);
+    }
+    /// <summary>
+    /// La serializacion de todos los commandos volatiles sirve para mandarlos a la network
+    /// </summary>
+    /// <returns>object[] -> object[](de commandos)</returns>
+    public static object[] GetAllVolatileCommandsSerialized()
+    {
+        MoveCommand[] moveCommands = CommandDictionaryToArray(volatileMoveCommands);
+        object[] moveCommandsSerialized = new object[moveCommands.Length];
+        for (int i = 0; i < moveCommands.Length; i++)
+        {
+            moveCommandsSerialized[i] = CommandUtils.Serialize(moveCommands[i]);
+        }
+
+        ChangeBehaviourCommand[] changeBehaviourCommands = CommandDictionaryToArray(volatileChangeBehaviourCommands);
+        object[] changeBehaviourCommandsSerialized = new object[moveCommands.Length];
+        for (int i = 0; i < changeBehaviourCommands.Length; i++)
+        {
+            changeBehaviourCommandsSerialized[i] = CommandUtils.Serialize(changeBehaviourCommands[i]);
+        }
+        
+        return new object[]
+        {
+            moveCommandsSerialized,
+            changeBehaviourCommandsSerialized
+        };
+            
+    }
+    public static bool AreVolatileCommands()
+    {
+        if (volatileMoveCommands.Count > 0)
+            return true;
+        else
+            return false;
+    }
+    public static void QueueVolatileCommands(int turnToQueue)
+    {
+        int count = CommandDictionaryToList(volatileMoveCommands) == null ? 0 : CommandDictionaryToList(volatileMoveCommands).Count;
+        if(count != 0 && logg) Debug.Log($"Queueing {count} command(s) at turn: {MainSimulationLoopSystem.CurrentLockstepTurn}.");
+
+
+        //inject volatile commands to the list.
+        //and clear the list afterwards.
+        InsertObjectsToDictionaryAtKey(turnToQueue, QueuedMoveCommands, CommandDictionaryToList(volatileMoveCommands));
+        volatileMoveCommands.Clear();
+
+        InsertObjectsToDictionaryAtKey(turnToQueue, QueuedChangeBehaviourCommands, CommandDictionaryToList(volatileChangeBehaviourCommands));
+        volatileChangeBehaviourCommands.Clear();
+        //other commands.
+    }
+
+
+
+
+
     /// <summary>
     /// Esta función lo que hace es que en un diccionario que se entrega(de cualquiera de los queued)
     /// agrega commandos a la key entregada o crea una entrada en el diccionario para esa key
@@ -180,6 +243,9 @@ public class CommandStorageSystem : ComponentSystem
     {
         volatileMoveCommands.Clear();
         QueuedMoveCommands.Clear();
+
+        volatileChangeBehaviourCommands.Clear();
+        QueuedChangeBehaviourCommands.Clear();
     }
 
 }

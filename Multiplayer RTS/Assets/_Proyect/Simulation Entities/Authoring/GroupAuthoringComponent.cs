@@ -45,8 +45,9 @@ public class GroupAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
 
         //pathfinding
         dstManager.AddBuffer<PathWaypoint>(entity);
-        dstManager.AddComponentData<PathWaypointIndex>(entity, new PathWaypointIndex() { Value = 0 });
+        dstManager.AddComponentData<PathWaypointIndex>(entity, new PathWaypointIndex() { Value = 0 });        
         dstManager.AddComponentData<WaypointReachedDistance>(entity, new WaypointReachedDistance() { Value = (Fix64)parentWaypointReachedDistance });
+        dstManager.AddComponentData<RefreshPathTimer>(entity, new RefreshPathTimer() { TurnsRequired = turnsToRefreshParentPath, TurnsWithoutRefresh = 0 });
 
         //selection
         dstManager.AddComponentData<Selectable>(entity, new Selectable());
@@ -59,6 +60,7 @@ public class GroupAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
         });
 
         //target find
+        dstManager.AddComponentData<SightRange>(entity, new SightRange() { Value = (Fix64)sightRange });
         dstManager.AddComponentData<ActTargetFilters>(entity, new ActTargetFilters()
         {
             ActOnEnemies = actOnEnemyTeam,
@@ -79,6 +81,9 @@ public class GroupAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
         //movement
         dstManager.AddComponentData<MovementState>(entity, new MovementState()
         {
+            HexOcuppied = hexPos.Round(),
+            PreviousStepDestiantionReached = false,
+
             DestinationReached = false,
             DestinationIsReachedDistance = (Fix64)destinationReachedDistance
         });
@@ -90,7 +95,7 @@ public class GroupAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
         dstManager.AddComponentData<Commandable>(entity, new Commandable() { DeafaultCommand = CommandType.MOVE_COMMAND });
         dstManager.AddComponentData<CommandableDeathFlag>(entity, new CommandableDeathFlag());
 
-        dstManager.AddComponentData<RefreshPathTimer>(entity, new RefreshPathTimer() { TurnsRequired = turnsToRefreshParentPath, TurnsWithoutRefresh = 0 });
+        
         dstManager.AddComponentData<Speed>(entity, new Speed() { Value = (Fix64)parentSpeed });
         dstManager.AddComponentData<DestinationHex>(entity, new DestinationHex() { FinalDestination = hexPos.Round() });
 

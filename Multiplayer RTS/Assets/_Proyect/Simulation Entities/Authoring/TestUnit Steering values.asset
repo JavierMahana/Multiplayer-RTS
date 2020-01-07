@@ -16,9 +16,9 @@ MonoBehaviour:
   directionWight: 1
   flockWeight: 7
   alienationWeight: 12
-  cohesionWeight: 3
+  cohesionWeight: 2
   separationWeight: 2
-  groupalSeparationWeigth: 10
+  groupalSeparationWeigth: 7
   satisfactionArea: 0.1
-  separationDistance: 0.23
+  separationDistance: 0.2
   singleSeparationDistance: 0.13

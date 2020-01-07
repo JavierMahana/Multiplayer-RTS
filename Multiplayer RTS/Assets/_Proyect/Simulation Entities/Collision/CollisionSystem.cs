@@ -72,7 +72,7 @@ public class CollisionSystem : ComponentSystem
 
                 if (fullCollision)
                 {
-                    FractionalHex closestOpenHex = (FractionalHex)MapUtilities.FindClosestOpenHex(position, activeMap.map);
+                    FractionalHex closestOpenHex = (FractionalHex)MapUtilities.FindClosestOpenHex(position, activeMap.map, true);
                     collisionResolutionDir = (closestOpenHex - position).NormalizedManhathan();                    
                 }
                 else

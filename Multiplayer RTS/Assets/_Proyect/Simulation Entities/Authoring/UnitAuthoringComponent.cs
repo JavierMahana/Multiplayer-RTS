@@ -23,6 +23,7 @@ public class UnitAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
     [Range(0, 1)]
     public float collisionResolutionFactor = 1;
 
+    public float sightRange = 1.4f;
     public float actionRange;
 
     public bool log;
@@ -86,8 +87,11 @@ public class UnitAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntity
         //team (assigned the value in "AssigningUnitParentAuthoring")
         dstManager.AddComponentData<Team>(entity, new Team());
 
+        //target find components
+        dstManager.AddComponentData<SightRange>(entity, new SightRange() { Value = (Fix64)sightRange });
 
-        //General Movement Components 
+
+        //General Movement Components         
         dstManager.AddComponentData<Speed>(entity, new Speed() { Value = (Fix64)speed });        
         dstManager.AddComponentData<DirectionAverage>(entity, new DirectionAverage() { Value = FractionalHex.Zero, PreviousDirection1 = FractionalHex.Zero, PreviousDirection2 = FractionalHex.Zero });
         dstManager.AddComponentData<SteeringTarget>(entity, new SteeringTarget());

@@ -35,16 +35,16 @@ public class PathFindingSystem : ComponentSystem
             Hex destinationHex = pathSolicitude.Destination;
             if (!activeMap.map.MovementMapValues.TryGetValue(destinationHex, out bool c))
             {                
-                destinationHex = MapUtilities.FindClosestOpenHex((FractionalHex)destinationHex, activeMap.map);
+                destinationHex = MapUtilities.FindClosestOpenHex((FractionalHex)destinationHex, activeMap.map, true);
             }
             else if (!c)
             {
-                destinationHex = MapUtilities.FindClosestOpenHex((FractionalHex)destinationHex, activeMap.map);
+                destinationHex = MapUtilities.FindClosestOpenHex((FractionalHex)destinationHex, activeMap.map, true);
             }
             if (! activeMap.map.MovementMapValues.TryGetValue(startHex, out bool b))
             {                
                 //it adds the start hex as the first waypoint in the path
-                startHex = MapUtilities.FindClosestOpenHex(hexPosition.HexCoordinates, activeMap.map);
+                startHex = MapUtilities.FindClosestOpenHex(hexPosition.HexCoordinates, activeMap.map, true);
                 path.Add(startHex);
             }
             

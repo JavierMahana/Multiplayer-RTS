@@ -239,39 +239,47 @@ public class SteeringSystem : ComponentSystem
             var postionDelta = target.TargetPosition - position.HexCoordinates;
             var distance = postionDelta.Lenght();
 
-            Debug.Assert(countOfChilds.ContainsKey(entity), "there can't exista a group without any child. _steering system_");
-
-
-
-            var childAveragePos = childPositionSum[entity] / math.max(1, countOfChilds[entity]);
-
-            var desiredMovementDistance = GetMovementMagnitudeTowardsDesiredConsideringChildPos(
-                position.HexCoordinates,
-                childAveragePos,
-                target.TargetPosition,
-                speed.Value,
-                WAIT_CHILD_WEIGHT,
-                target.StopAtTarget);
-
-            desiredMovementDistance *= MainSimulationLoopSystem.SimulationDeltaTime;
-            var maxSpeedMovementDistance = speed.Value * MainSimulationLoopSystem.SimulationDeltaTime;
-
-
-            if (distance <= Fix64.Zero)
+            
+            if (!countOfChilds.ContainsKey(entity)) 
             {
+                Debug.Log("there are a group without any child in the 'OnGroup' state. _steering system_");
                 desiredMovement.Value = FractionalHex.Zero;
-                return;
             }
-
-            if (target.StopAtTarget)
+            else
             {
-                if (distance <= desiredMovementDistance)
+                var childAveragePos = childPositionSum[entity] / math.max(1, countOfChilds[entity]);
+
+                var desiredMovementDistance = GetMovementMagnitudeTowardsDesiredConsideringChildPos(
+                    position.HexCoordinates,
+                    childAveragePos,
+                    target.TargetPosition,
+                    speed.Value,
+                    WAIT_CHILD_WEIGHT,
+                    target.StopAtTarget);
+
+                desiredMovementDistance *= MainSimulationLoopSystem.SimulationDeltaTime;
+                var maxSpeedMovementDistance = speed.Value * MainSimulationLoopSystem.SimulationDeltaTime;
+
+
+                if (distance <= Fix64.Zero)
                 {
-                    desiredMovement.Value = postionDelta.NormalizedManhathan() * distance;
+                    desiredMovement.Value = FractionalHex.Zero;
                     return;
                 }
+
+                if (target.StopAtTarget)
+                {
+                    if (distance <= desiredMovementDistance)
+                    {
+                        desiredMovement.Value = postionDelta.NormalizedManhathan() * distance;
+                        return;
+                    }
+                }
+                desiredMovement.Value = postionDelta.NormalizedManhathan() * desiredMovementDistance;
             }
-            desiredMovement.Value = postionDelta.NormalizedManhathan() * desiredMovementDistance;
+
+
+            
         });
 
         #endregion

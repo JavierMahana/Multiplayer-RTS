@@ -5,6 +5,7 @@ using Unity.Mathematics;
 using UnityEngine;
 
 
+
 public static class CommandUtils 
 {    
     public static object[] Serialize(MoveCommand command)
@@ -16,6 +17,16 @@ public static class CommandUtils
         int targetR = command.Destination.FinalDestination.r;
 
         object[] data = new object[] {entityIndex, entityVersion, targetQ, targetR };
+        return data;
+    }
+    public static object[] Serialize(ChangeBehaviourCommand command)
+    {
+        int entityIndex = command.Target.Index;
+        int entityVersion = command.Target.Version;
+
+        int behaviour = (int)command.NewBehaviour.Value;
+
+        object[] data = new object[] { entityIndex, entityVersion, behaviour };
         return data;
     }
 
@@ -36,10 +47,29 @@ public static class CommandUtils
         };
         return command;
     }
-
+    public static ChangeBehaviourCommand DeserializeChangeBehaviourCommand(object[] data)
+    {
+        ChangeBehaviourCommand command = new ChangeBehaviourCommand()
+        {
+            Target = new Entity()
+            {
+                Index = (int)data[0],
+                Version = (int)data[1]
+            },
+            NewBehaviour = new GroupBehaviour()
+            {
+                Value = (Behaviour)data[2]
+            }
+        };
+        return command;
+    }
 
 
     public static bool CommandIsValid(MoveCommand command, World world = null)
+    {
+        return TargetIsValid(command.Target, world);
+    }
+    public static bool CommandIsValid(ChangeBehaviourCommand command, World world = null)
     {
         return TargetIsValid(command.Target, world);
     }

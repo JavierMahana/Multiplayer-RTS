@@ -17,7 +17,7 @@ public class CommandExecutionSystem : ComponentSystem
         //Move Commands
         if (CommandStorageSystem.QueuedMoveCommands.TryGetValue(MainSimulationLoopSystem.CurrentLockstepTurn, out var MoveCommands))
         {
-            if(loggExecutionTurn)Debug.Log($"Executing a comand in the turn: {MainSimulationLoopSystem.CurrentLockstepTurn}");
+            if(loggExecutionTurn)Debug.Log($"Executing a move comand in the turn: {MainSimulationLoopSystem.CurrentLockstepTurn}");
             foreach (MoveCommand command in MoveCommands)
             {
                 if (CommandUtils.CommandIsValid(command, World))
@@ -26,6 +26,19 @@ public class CommandExecutionSystem : ComponentSystem
                 }
             }
         }
+
+        if (CommandStorageSystem.QueuedChangeBehaviourCommands.TryGetValue(MainSimulationLoopSystem.CurrentLockstepTurn, out var changeBehaviourCommands))
+        {
+            if (loggExecutionTurn) Debug.Log($"Executing a change behaviour comand in the turn: {MainSimulationLoopSystem.CurrentLockstepTurn}");
+            foreach (ChangeBehaviourCommand command in changeBehaviourCommands)
+            {
+                if (CommandUtils.CommandIsValid(command, World))
+                {
+                    ExecuteCommand(command);
+                }
+            }
+        }
+
         //Other Commands
 
     }
@@ -34,7 +47,14 @@ public class CommandExecutionSystem : ComponentSystem
 
     private void ExecuteCommand(MoveCommand command)    
     {
+        Debug.Log("setting the destination by command");
         PostUpdateCommands.SetComponent(command.Target, command.Destination);
         PostUpdateCommands.AddComponent(command.Target, new RefreshPathNow());
+    }
+    private void ExecuteCommand(ChangeBehaviourCommand command)
+    {
+        //Debug.Log("setting the destination by command");
+        PostUpdateCommands.SetComponent(command.Target, command.NewBehaviour);
+        //PostUpdateCommands.AddComponent(command.Target, new RefreshPathNow());
     }
 }

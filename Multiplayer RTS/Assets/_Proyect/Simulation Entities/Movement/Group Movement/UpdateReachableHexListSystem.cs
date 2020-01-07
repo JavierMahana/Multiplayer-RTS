@@ -11,7 +11,6 @@ using static Unity.Mathematics.math;
 //este sistema es independiente de componentes.
 //lo que hace es mantener y actualizar un diccionario para ver si dos hexagonos estan conectados.
 [DisableAutoCreation]
-//aun no esta creada
 public class UpdateReachableHexListSystem : ComponentSystem
 {
     
@@ -112,9 +111,9 @@ public class UpdateReachableHexListSystem : ComponentSystem
     
 
 
-    private static Dictionary<Hex, int> IslandNumberDictionary;
+    private static Dictionary<Hex, int> IslandNumberDictionary = new Dictionary<Hex, int>();
     //por ahora no se usa.
-    private static Dictionary<int, List<Hex>> IslandHexesDictionary;
+    private static Dictionary<int, List<Hex>> IslandHexesDictionary = new Dictionary<int, List<Hex>>();
 
     protected override void OnUpdate()
     {

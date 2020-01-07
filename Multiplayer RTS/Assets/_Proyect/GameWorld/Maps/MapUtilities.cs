@@ -5,6 +5,9 @@ using FixMath.NET;
 
 public static class MapUtilities 
 {    
+    /// <summary>
+    /// gets if there is clear direct path bewtween the two points.
+    /// </summary>
     public static bool PathToPointIsClear(FractionalHex position, FractionalHex point)
     {
         bool clearPath = true;
@@ -42,26 +45,53 @@ public static class MapUtilities
         return hexLayout;
     }
 
-
-    public static Hex FindClosestOpenHex(FractionalHex position, RuntimeMap map)
+    /// <summary>
+    /// mode = true, uses the movementMap. mode = false, uses the unitOcupationMap
+    /// </summary>    
+    public static Hex FindClosestOpenHex(FractionalHex position, RuntimeMap map, bool mode)
     {
-        var closestOpenHex = Hex.Zero;
-        Fix64 closestOpenHexDistance = Fix64.MaxValue;
-        foreach (var hexValuePair in map.MovementMapValues)
+        if (mode)
         {
-            if (!hexValuePair.Value) { continue; }
-
-            var hex = hexValuePair.Key;
-            var distance = position.Distance((FractionalHex)hex);
-
-            if (distance <= closestOpenHexDistance)
+            var closestOpenHex = Hex.Zero;
+            Fix64 closestOpenHexDistance = Fix64.MaxValue;
+            foreach (var hexValuePair in map.MovementMapValues)
             {
-                closestOpenHex = hex;
-                closestOpenHexDistance = distance;
+                if (!hexValuePair.Value) { continue; }
+
+                var hex = hexValuePair.Key;
+                var distance = position.Distance((FractionalHex)hex);
+
+                if (distance <= closestOpenHexDistance)
+                {
+                    closestOpenHex = hex;
+                    closestOpenHexDistance = distance;
+                }
             }
+
+            return closestOpenHex;
+        }
+        else 
+        {
+            var closestOpenHex = Hex.Zero;
+            Fix64 closestOpenHexDistance = Fix64.MaxValue;
+            foreach (var hexValuePair in map.UnitsMapValues)
+            {
+                if (!hexValuePair.Value) { continue; }
+
+                var hex = hexValuePair.Key;
+                var distance = position.Distance((FractionalHex)hex);
+
+                if (distance <= closestOpenHexDistance)
+                {
+                    closestOpenHex = hex;
+                    closestOpenHexDistance = distance;
+                }
+            }
+
+            return closestOpenHex;
         }
 
-        return closestOpenHex;
+        
     }
 
 

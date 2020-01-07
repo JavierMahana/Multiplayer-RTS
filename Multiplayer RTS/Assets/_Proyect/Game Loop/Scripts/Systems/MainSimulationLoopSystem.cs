@@ -34,6 +34,12 @@ public class MainSimulationLoopSystem : ComponentSystem
     //private LateSimulationSystemGroup lateSimulationSystemGroup;
     //private ApplicationSystemGroup applicationSystemGroup;
     private OnGroupCheckSystem onGroupCheckSystem;
+
+    private UpdateReachableHexListSystem updateReachableHexListSystem;
+
+    private UpdateOcupationMapSystem updateOcupationMapSystem;
+    private UpdateDestinationSystem updateDestinationSystem;
+
     private PathRefreshSystem pathRefreshSystem;
     private PathFindingSystem pathFindingSystem;
     private PathChangeIndexSystem pathChangeIndexSystem;
@@ -62,11 +68,16 @@ public class MainSimulationLoopSystem : ComponentSystem
         lockstepSystemGroup.AddSystemToUpdateList(World.GetOrCreateSystem<CommandableSafetySystem>());
 
         onGroupCheckSystem       = World.GetOrCreateSystem<OnGroupCheckSystem>();
+
+        updateReachableHexListSystem = World.GetOrCreateSystem<UpdateReachableHexListSystem>();
+        updateOcupationMapSystem     = World.GetOrCreateSystem<UpdateOcupationMapSystem>();
+        updateDestinationSystem      = World.GetOrCreateSystem<UpdateDestinationSystem>();
+
         pathRefreshSystem        = World.GetOrCreateSystem<PathRefreshSystem>();
         pathFindingSystem        = World.GetOrCreateSystem<PathFindingSystem>();
         pathChangeIndexSystem    = World.GetOrCreateSystem<PathChangeIndexSystem>();
 
-        findPosibleTargetsSystem            = World.GetOrCreateSystem<FindPosibleTargetsSystem>();
+        findPosibleTargetsSystem = World.GetOrCreateSystem<FindPosibleTargetsSystem>();
         findActionTargetSystem   = World.GetOrCreateSystem<FindActionTargetSystem>();
 
         findMovementTargetSystem = World.GetOrCreateSystem<FindMovementTargetSystem>();
@@ -128,7 +139,15 @@ public class MainSimulationLoopSystem : ComponentSystem
                 //entitis.Dispose();
 
                 onGroupCheckSystem.Update();
-                pathRefreshSystem.Update();
+
+                updateReachableHexListSystem.Update();
+
+                
+                updateOcupationMapSystem.Update();
+                updateDestinationSystem.Update();
+
+
+                pathRefreshSystem.Update();                
                 pathFindingSystem.Update();
                 pathChangeIndexSystem.Update();
 

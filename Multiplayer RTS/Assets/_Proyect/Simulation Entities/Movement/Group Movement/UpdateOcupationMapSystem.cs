@@ -21,6 +21,7 @@ public class UpdateOcupationMapSystem : ComponentSystem
             bool newSpotOccupied = movementState.DestinationReached && !movementState.PreviousStepDestiantionReached;
             if (newSpotOccupied)
             {
+                Debug.Log("mapa se ha marcado como ocupado");
                 map.map.SetOcupationMapValue(movementState.HexOcuppied, false);
             }
 

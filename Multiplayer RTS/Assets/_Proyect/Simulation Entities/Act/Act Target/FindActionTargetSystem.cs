@@ -25,7 +25,7 @@ public class FindActionTargetSystem : ComponentSystem
     protected override void OnCreate()
     {
         m_GroupQuery = GetEntityQuery(typeof(Group), typeof(ActTargetFilters), typeof(BEPosibleTarget), typeof(GroupBehaviour));
-        m_OnGroupQuery = GetEntityQuery(typeof(OnGroup), typeof(Parent), typeof(HexPosition), typeof(ActionAttributes));        
+        m_OnGroupQuery = GetEntityQuery(typeof(OnGroup), typeof(Parent), typeof(SightRange), typeof(Collider), typeof(HexPosition), typeof(ActionAttributes));        
     }
 
 
@@ -45,6 +45,7 @@ public class FindActionTargetSystem : ComponentSystem
         var onGroupEntityToIndex = new Dictionary<int, int>(onGroupCount);
         var onGroupPositions     = new FractionalHex[onGroupCount];
         var onGroupActRanges     = new Fix64[onGroupCount];
+        var onGroupSightRanges = new Fix64[onGroupCount];
         var onGroupRadiuses      = new Fix64[onGroupCount];
         var tempTargets          = new Dictionary<int, ActionTarget>();
 
@@ -63,11 +64,12 @@ public class FindActionTargetSystem : ComponentSystem
         });
 
         int onGroupIterator = 0;
-        Entities.WithAll<OnGroup>().ForEach((Entity entity, Parent parent, ref HexPosition hexPosition, ref Collider collider, ref ActionAttributes actAttributes) =>
+        Entities.WithAll<OnGroup>().ForEach((Entity entity, Parent parent, ref HexPosition hexPosition, ref SightRange sightRange, ref Collider collider, ref ActionAttributes actAttributes) =>
         {
-            onGroupPositions[onGroupIterator] = hexPosition.HexCoordinates;
-            onGroupActRanges[onGroupIterator] = actAttributes.ActRange;
-            onGroupRadiuses[onGroupIterator]  = collider.Radious;
+            onGroupPositions[onGroupIterator]   = hexPosition.HexCoordinates;
+            onGroupActRanges[onGroupIterator]   = actAttributes.ActRange;
+            onGroupSightRanges[onGroupIterator] = sightRange.Value;
+            onGroupRadiuses[onGroupIterator]    = collider.Radious;
 
             onGroupEntityToIndex.Add(entity.Index, onGroupIterator);            
             onGroupParents[onGroupIterator]   = parent.ParentEntity;            
@@ -116,48 +118,8 @@ public class FindActionTargetSystem : ComponentSystem
 
                 switch (parentBehaviour)
                 {
-                    case Behaviour.DEFAULT:
-                        foreach (int member in groupMemberList)
-                        {
-                            //lo primero es filtrar los objetivos dependiendo del range y su el mapa.
-                            var pos = onGroupPositions[member];
-                            var actRange = onGroupActRanges[member];
-
-                            var reachableTargets = new List<ActionTarget>();
-                            foreach (var posibleTarget in parentTargetsBuffer)
-                            {
-                                var reversedDirection = (pos - posibleTarget.Position).NormalizedManhathan();
-                                var realTargetPoint = posibleTarget.Position + reversedDirection * (actRange + posibleTarget.Radius); //it use the act range
-                                if (MapUtilities.PathToPointIsClear(pos, realTargetPoint))
-                                {
-                                    reachableTargets.Add(posibleTarget);
-                                }
-                            }
-
-
-                            //earlyout
-                            if (reachableTargets.Count == 0) continue;
-
-
-                            //esto usa el average grupal para lograr lo que desea.
-                            //Se hace esto para repartir de cierta manera los targets más variadamente y no todos a uno
-                            var distanceRelativeToAverage = groupAveragePosition - pos;
-
-                            var closestTarget = reachableTargets[0];
-                            var closesetTargetDistance = closestTarget.TargetPosition.Distance(pos + distanceRelativeToAverage);
-                            for (int i = 1; i < reachableTargets.Count; i++)
-                            {
-                                var currentTarget = reachableTargets[i];
-                                var currDistance = currentTarget.TargetPosition.Distance(pos + distanceRelativeToAverage);
-                                if (currDistance < closesetTargetDistance)
-                                {
-                                    closesetTargetDistance = currDistance;
-                                    closestTarget = currentTarget;
-                                }
-                            }
-
-                            tempTargets.Add(member, closestTarget);
-                        }
+                    case Behaviour.DEFAULT: //va al más cercano
+                        SetTemporalActTargetsDefaultMethod(onGroupPositions, onGroupActRanges, onGroupSightRanges, tempTargets, groupMemberList, groupAveragePosition, parentTargetsBuffer);
                         break;
 
 
@@ -181,7 +143,9 @@ public class FindActionTargetSystem : ComponentSystem
                         }
                         break;
                     case Behaviour.AGRESIVE:
-                        throw new System.NotImplementedException();
+                        SetTemporalActTargetsDefaultMethod(onGroupPositions, onGroupActRanges, onGroupSightRanges, tempTargets, groupMemberList, groupAveragePosition, parentTargetsBuffer);
+                        break;
+                        //throw new System.NotImplementedException();
                     default:
                         throw new System.NotImplementedException();
                 }
@@ -224,5 +188,62 @@ public class FindActionTargetSystem : ComponentSystem
                 Debug.LogError($"This entity: {entity.Index} is on a group and its index is not on the dictionary! maybe the parent or the hexPosition component are missing");
             }
         });
+    }
+
+    private static void SetTemporalActTargetsDefaultMethod(FractionalHex[] onGroupPositions, Fix64[] onGroupActRanges, Fix64[] onGroupSightRanges, Dictionary<int, ActionTarget> tempTargets, List<int> groupMemberList, FractionalHex groupAveragePosition, DynamicBuffer<BEPosibleTarget> parentTargetsBuffer)
+    {
+        foreach (int member in groupMemberList)
+        {
+            //lo primero es filtrar los objetivos dependiendo del range y su el mapa.
+            var pos = onGroupPositions[member];
+            var sightRange = onGroupSightRanges[member];
+            var actRange = onGroupActRanges[member];
+
+            var reachableTargets = new List<ActionTarget>();
+            foreach (var posibleTarget in parentTargetsBuffer)
+            {
+                var reversedDirection = (pos - posibleTarget.Position).NormalizedManhathan();
+                var realTargetPoint = posibleTarget.Position + reversedDirection * (actRange + posibleTarget.Radius); //it use the act range
+                if (MapUtilities.PathToPointIsClear(pos, realTargetPoint))
+                {
+                    reachableTargets.Add(posibleTarget);
+                }
+            }
+
+
+            //earlyout
+            if (reachableTargets.Count == 0) continue;
+
+
+            //esto usa el average grupal para lograr lo que desea.
+            //Se hace esto para repartir de cierta manera los targets más variadamente y no todos a uno
+            var distanceRelativeToAverage = groupAveragePosition - pos;
+
+            var closestTarget = reachableTargets[0];
+            var closesetTargetDistance = closestTarget.TargetPosition.Distance(pos + distanceRelativeToAverage);
+            for (int i = 1; i < reachableTargets.Count; i++)
+            {
+                var currentTarget = reachableTargets[i];
+                var currDistance = currentTarget.TargetPosition.Distance(pos + distanceRelativeToAverage);
+                if (currDistance < closesetTargetDistance)
+                {
+                    closesetTargetDistance = currDistance;
+                    closestTarget = currentTarget;
+                }
+            }
+
+            //if the closest target is further than the sight distance it is not a valid target. 
+            //In the future it will use the global team sight instead.
+            if (closesetTargetDistance > sightRange)
+            {
+                continue;
+            }
+            else
+            {
+                tempTargets.Add(member, closestTarget);
+            }
+
+
+        }
     }
 }

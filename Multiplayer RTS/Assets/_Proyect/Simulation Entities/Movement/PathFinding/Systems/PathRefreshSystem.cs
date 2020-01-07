@@ -34,7 +34,7 @@ public class PathRefreshSystem : ComponentSystem
         refreshPathTimer.TurnsWithoutRefresh = 0;
     }
     private void TriggerPathFindingOnCommandedGroup(Entity entity, Hex destinationHex, ref RefreshPathTimer refreshPathTimer)
-    {       
+    {        
         PostUpdateCommands.AddComponent(entity, new TriggerPathfinding() { Destination = destinationHex });
         refreshPathTimer.TurnsWithoutRefresh = 0;
     }
@@ -44,13 +44,25 @@ public class PathRefreshSystem : ComponentSystem
     {
 
         #region refresh pathnow
-        Entities.WithAll<RefreshPathNow, Group>().ForEach(
+        #region group variants
+        Entities.WithAll<RefreshPathNow, Group>().WithNone<PriorityGroupTarget>().ForEach(
         (Entity entity, ref DestinationHex destination, ref RefreshPathTimer timer) =>
-        {   
+        {
+            Debug.Log("instant refresh called!");
             TriggerPathFindingOnCommandedGroup(entity, destination.FinalDestination, ref timer);
             PostUpdateCommands.RemoveComponent<RefreshPathNow>(entity);
         });
 
+        Entities.WithAll<RefreshPathNow, Group>().ForEach(
+        (Entity entity, ref PriorityGroupTarget target, ref RefreshPathTimer timer) =>
+        {
+            Debug.Log("instant refresh called!");
+            TriggerPathFindingOnCommandedGroup(entity, target.TargetHex, ref timer);
+            PostUpdateCommands.RemoveComponent<RefreshPathNow>(entity);
+        });
+
+
+        #endregion
         Entities.WithAll<RefreshPathNow, OnReinforcement>().ForEach(
         (Entity entity, Parent parent, ref RefreshPathTimer timer) => 
         {            
@@ -75,9 +87,10 @@ public class PathRefreshSystem : ComponentSystem
             }
         });
 
-        Entities.WithAll<Group, PathRefreshSystemState>().ForEach(
+        #region group variants
+        Entities.WithAll<Group, PathRefreshSystemState>().WithNone<PriorityGroupTarget>().ForEach(
         (Entity entity, ref DestinationHex destination, ref RefreshPathTimer refreshPathTimer) =>
-        {
+        {            
             if (refreshPathTimer.TurnsRequired <= refreshPathTimer.TurnsWithoutRefresh)
             {
                 TriggerPathFindingOnCommandedGroup(entity, destination.FinalDestination, ref refreshPathTimer);
@@ -87,12 +100,30 @@ public class PathRefreshSystem : ComponentSystem
                 refreshPathTimer.TurnsWithoutRefresh += 1;
             }
         });
+
+        Entities.WithAll<Group, PathRefreshSystemState>().ForEach(
+        (Entity entity, ref PriorityGroupTarget target, ref RefreshPathTimer refreshPathTimer) =>
+        {
+            if (refreshPathTimer.TurnsRequired <= refreshPathTimer.TurnsWithoutRefresh)
+            {
+                TriggerPathFindingOnCommandedGroup(entity, target.TargetHex, ref refreshPathTimer);
+            }
+            else
+            {
+                refreshPathTimer.TurnsWithoutRefresh += 1;
+            }
+        });
+        #endregion
         #endregion
 
 
 
         #region refresh counter managment
         Entities.WithAll<OnReinforcement, RefreshPathTimer>().WithNone<PathRefreshSystemState>().ForEach((Entity entity) =>
+        {
+            PostUpdateCommands.AddComponent<PathRefreshSystemState>(entity);
+        });
+        Entities.WithAll<Group, RefreshPathTimer>().WithNone<PathRefreshSystemState>().ForEach((Entity entity) =>
         {
             PostUpdateCommands.AddComponent<PathRefreshSystemState>(entity);
         });

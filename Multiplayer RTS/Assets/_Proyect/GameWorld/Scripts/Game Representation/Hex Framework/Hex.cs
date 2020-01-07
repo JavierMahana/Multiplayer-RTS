@@ -122,6 +122,9 @@ public struct Hex : IEquatable<Hex>
         return hexesList;
     }
 
+    /// <summary>
+    /// el orden es del A al B
+    /// </summary>
     public static List<Hex> HexesInBetween(Hex a, Hex b)
     {
         int hexDistance = a.Distance(b);
