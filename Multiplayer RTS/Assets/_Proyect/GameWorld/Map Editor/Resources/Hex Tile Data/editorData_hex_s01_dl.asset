@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09deae6a6bd080c4da1e8102ba49c46b, type: 3}
+  m_Name: editorData_hex_s01_dl
+  m_EditorClassIdentifier: 
+  walkable: 1
+  hexMaterial: {fileID: 2100000, guid: 66d08b184c1ff1c4fb46a40b8fdd317a, type: 2}
+  heightLevel: 1
+  isSlope: 1
+  heightSide_TopRight: 1
+  heightSide_Right: 1
+  heightSide_DownRight: 1
+  heightSide_DownLeft: 3
+  heightSide_Left: 1
+  heightSide_TopLeft: 1

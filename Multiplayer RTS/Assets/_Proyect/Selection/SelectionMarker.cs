@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
 
+
+/// <summary>
+/// this class is temporary out of use because we are testing the renderer
+/// </summary>
 [RequireComponent(typeof(Renderer))]
 public class SelectionMarker : MonoBehaviour
 {
@@ -10,6 +14,7 @@ public class SelectionMarker : MonoBehaviour
     private void Awake()
     {
         renderer = GetComponent<Renderer>();
+        //this must be a sprite renderer.
     }
     void Update()
     {        
@@ -26,7 +31,7 @@ public class SelectionMarker : MonoBehaviour
                 if (activeMap != null)
                 {
                     var worldPos = activeMap.layout.HexToWorld(position);
-                    transform.position = new Vector3((float)worldPos.x, (float)worldPos.y, (float)HexTranslationSystem.AGENTS_Z_VALUE + 0.5f);
+                    transform.position = new Vector3((float)worldPos.x, (float)worldPos.y);
                 }
             }
         }

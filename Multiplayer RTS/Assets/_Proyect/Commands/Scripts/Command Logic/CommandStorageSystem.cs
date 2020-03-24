@@ -113,29 +113,53 @@ public class CommandStorageSystem : ComponentSystem
     /// </summary>    
     public static void QueueNetworkedCommands(int turnToQueue, MoveCommand[] moveCommands, ChangeBehaviourCommand[] changeBehaviourCommands)
     {
-        InsertObjectsToDictionaryAtKey(turnToQueue, QueuedMoveCommands, moveCommands);
-        InsertObjectsToDictionaryAtKey(turnToQueue, QueuedChangeBehaviourCommands, changeBehaviourCommands);
+        if (moveCommands != null)
+        {
+            InsertObjectsToDictionaryAtKey(turnToQueue, QueuedMoveCommands, moveCommands);
+        }
+        if (changeBehaviourCommands != null)
+        {
+            InsertObjectsToDictionaryAtKey(turnToQueue, QueuedChangeBehaviourCommands, changeBehaviourCommands);
+        }
+        
     }
     /// <summary>
     /// La serializacion de todos los commandos volatiles sirve para mandarlos a la network
     /// </summary>
     /// <returns>object[] -> object[](de commandos)</returns>
     public static object[] GetAllVolatileCommandsSerialized()
-    {
+    {    
+        //null check is important
+
         MoveCommand[] moveCommands = CommandDictionaryToArray(volatileMoveCommands);
-        object[] moveCommandsSerialized = new object[moveCommands.Length];
-        for (int i = 0; i < moveCommands.Length; i++)
+        object[] moveCommandsSerialized;
+        if (moveCommands != null)
         {
-            moveCommandsSerialized[i] = CommandUtils.Serialize(moveCommands[i]);
+            moveCommandsSerialized = new object[moveCommands.Length];
+            for (int i = 0; i < moveCommands.Length; i++)
+            {
+                moveCommandsSerialized[i] = CommandUtils.Serialize(moveCommands[i]);
+            }
         }
+        else
+            moveCommandsSerialized = null; 
+        
+        
 
         ChangeBehaviourCommand[] changeBehaviourCommands = CommandDictionaryToArray(volatileChangeBehaviourCommands);
-        object[] changeBehaviourCommandsSerialized = new object[moveCommands.Length];
-        for (int i = 0; i < changeBehaviourCommands.Length; i++)
+        object[] changeBehaviourCommandsSerialized;
+        if (changeBehaviourCommands != null)
         {
-            changeBehaviourCommandsSerialized[i] = CommandUtils.Serialize(changeBehaviourCommands[i]);
+            changeBehaviourCommandsSerialized = new object[changeBehaviourCommands.Length];
+            for (int i = 0; i < changeBehaviourCommands.Length; i++)
+            {
+                changeBehaviourCommandsSerialized[i] = CommandUtils.Serialize(changeBehaviourCommands[i]);
+            }
         }
+        else
+            changeBehaviourCommandsSerialized = null;
         
+
         return new object[]
         {
             moveCommandsSerialized,
@@ -144,8 +168,10 @@ public class CommandStorageSystem : ComponentSystem
             
     }
     public static bool AreVolatileCommands()
-    {
+    {        
         if (volatileMoveCommands.Count > 0)
+            return true;
+        else if (volatileChangeBehaviourCommands.Count > 0)
             return true;
         else
             return false;

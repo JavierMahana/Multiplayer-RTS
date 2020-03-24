@@ -11,7 +11,7 @@ using System;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
-    public static List<int> PlayerTeams { get; private set; } = new List<int>();
+    public static List<int> PlayerTeams { get; private set; } = new List<int>();     
     public bool togleOfflineMode;
 
     #region Unity CallBacks

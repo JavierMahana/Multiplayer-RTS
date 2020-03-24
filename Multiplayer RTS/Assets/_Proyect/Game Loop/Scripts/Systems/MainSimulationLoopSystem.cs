@@ -55,7 +55,10 @@ public class MainSimulationLoopSystem : ComponentSystem
 
     private CollisionSystem collisionSystem;
     private DirectionSystem directionSystem;
-    
+
+    private DamageSystem damageSystem;
+    private DeathSystem deathSystem;
+
 
     protected override void OnCreate()
     {
@@ -87,6 +90,10 @@ public class MainSimulationLoopSystem : ComponentSystem
 
         collisionSystem          = World.GetOrCreateSystem<CollisionSystem>();
         directionSystem          = World.GetOrCreateSystem<DirectionSystem>();
+
+
+        damageSystem             = World.GetOrCreateSystem<DamageSystem>();
+        deathSystem              = World.GetOrCreateSystem<DeathSystem>();
         //simulationSystemGroup = World.GetOrCreateSystem<SimulationSystemGroup>();
         //simulationSystemGroup.AddSystemToUpdateList(World.GetOrCreateSystem<PathFindingSystem>());
         //simulationSystemGroup.AddSystemToUpdateList(World.GetOrCreateSystem<PathFollowSystem>());
@@ -164,7 +171,10 @@ public class MainSimulationLoopSystem : ComponentSystem
                 //collisions systems
                 collisionSystem.Update();
 
-                
+
+                damageSystem.Update();
+                deathSystem.Update();
+
                 //simulationSystemGroup.Update();
                 //lateSimulationSystemGroup.Update();
                 //applicationSystemGroup.Update();

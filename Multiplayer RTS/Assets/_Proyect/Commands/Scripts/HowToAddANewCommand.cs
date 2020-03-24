@@ -16,7 +16,7 @@ creating new command types:
                           Must add a new override of the "TryAddLocalCommand" function
                           Must update the "QueueVolatileCommands" function.
                           Must update "QueueNetworkedCommands" <- add an argument for a array of the new command type
-
+                          update the "AreVolatileCommands" function.
 
 6- CommandExecutionSystem - Update: add the execution part the new command on the Update
                             Add a ExecuteCommand Variation with the new command as an argument.

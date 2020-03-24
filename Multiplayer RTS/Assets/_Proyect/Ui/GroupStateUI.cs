@@ -41,22 +41,37 @@ public class GroupStateUI : MonoBehaviour
     void Update()
     {
         var currentSelected = SelectionSystem.CurrentSelection;
-
+        
         if (currentSelected != null)
         {
-            Debug.Assert(entityManager.HasComponent<GroupBehaviour>(currentSelected.entity), "the current selected entity doesn't have a group behaviour component");
-            var selectedBehaviour = entityManager.GetComponentData<GroupBehaviour>(currentSelected.entity).Value;
-            if (Active)
-            {
-                SetButtonsInteraction(selectedBehaviour);
-            }
-            else
-            {
-                parentCanvas.gameObject.SetActive(true);
-                SetButtonsInteraction(selectedBehaviour);
+            Debug.Assert(entityManager.HasComponent<Team>(currentSelected.entity), "The selected entity must have a team.");
+            var selectedTeam = entityManager.GetComponentData<Team>(currentSelected.entity);
 
-                Debug.Assert(Active, "the group state UI canvas parent is not activated, so we can't activate this UI");
+            if (GameManager.PlayerTeams.Contains(selectedTeam.Number))
+            {
+                Debug.Assert(entityManager.HasComponent<GroupBehaviour>(currentSelected.entity), "the current selected entity doesn't have a group behaviour component");
+                var selectedBehaviour = entityManager.GetComponentData<GroupBehaviour>(currentSelected.entity).Value;
+                if (Active)
+                {
+                    SetButtonsInteraction(selectedBehaviour);
+                }
+                else
+                {
+                    parentCanvas.gameObject.SetActive(true);
+                    SetButtonsInteraction(selectedBehaviour);
+
+                    Debug.Assert(Active, "the group state UI canvas parent is not activated, so we can't activate this UI");
+                }
             }
+            else 
+            {
+                if (Active)
+                {
+                    parentCanvas.gameObject.SetActive(false);
+                }
+            }
+
+            
         }
         else
         {

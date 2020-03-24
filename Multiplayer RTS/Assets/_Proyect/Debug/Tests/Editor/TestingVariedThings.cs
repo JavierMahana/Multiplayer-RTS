@@ -44,6 +44,65 @@ namespace Javier.Testing
     public class TestingVariedThings
     {
         [Test]
+        public void ElevationFactorLevelTestNoSlopes()
+        {
+            MapHeight l0 = MapHeight.l0;
+            MapHeight l1 = MapHeight.l1;
+            MapHeight l01 = l0 & l1;
+
+            GeographicTile tile0 = new GeographicTile() { heightLevel = l0, slopeData = new SlopeData() { isSlope = false } };
+            GeographicTile tile1 = new GeographicTile() { heightLevel = l1, slopeData = new SlopeData() { isSlope = false } };
+            GeographicTile tile01 = new GeographicTile() { heightLevel = l01, slopeData = new SlopeData() { isSlope = false } };
+
+            Assert.AreEqual(0, PositionListener.GetElevationFactorLevel(tile0, FractionalHex.Zero));
+            Assert.AreEqual(1, PositionListener.GetElevationFactorLevel(tile1, FractionalHex.Zero));
+            Assert.AreEqual(0, PositionListener.GetElevationFactorLevel(tile01, FractionalHex.Zero));
+
+        }
+
+        [Test]
+        public void NormilizeDepthWorksAsIntended()
+        {
+            float x = 9999;
+            float y = -9999;
+
+            x = PositionListener.NormalizeDepth(x);
+            y = PositionListener.NormalizeDepth(y);
+
+            Assert.That(y < 1, "value y is more than 1");
+            Assert.That(y > 0, "value y is less than 0");
+            Assert.That(x < 1, "value x is more than 1");
+            Assert.That(x > 0, "value x is less than 0");
+            Assert.That(x > y, "the equallity don't work");
+
+        }
+
+        [Test]
+        public void CompatibleHeightLevelWorkAsIntended()
+        {
+            MapHeight l0_1 = MapHeight.l0 | MapHeight.l1;
+            MapHeight l0 = MapHeight.l0;
+            MapHeight l1 = MapHeight.l1;
+
+            Assert.IsTrue(MapUtilities.CompatibleHeightLevel(l0_1, l0));
+            Assert.IsTrue(MapUtilities.CompatibleHeightLevel(l0_1, l1));
+
+            Assert.IsFalse(MapUtilities.CompatibleHeightLevel(l1, l0));
+        }
+        [Test]
+        public void MapHeightsAreComparable()
+        {
+            MapHeight l0_1 = MapHeight.l0 | MapHeight.l1;
+            MapHeight l0 = MapHeight.l0;
+            MapHeight l1 = MapHeight.l1;
+            MapHeight l2 = MapHeight.l2;
+
+            Assert.IsTrue(l0_1 < l2);
+            Assert.IsTrue(l1 < l2);
+            Assert.IsTrue(l0 < l2);
+        }
+
+        [Test]
         public void TheHexesInRangeReturnsTheCorrectAmmountOfValuesWithHex()
         {
             Hex hex = new Hex(7,7);

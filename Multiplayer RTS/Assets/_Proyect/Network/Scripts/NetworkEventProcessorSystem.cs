@@ -75,27 +75,43 @@ public class NetworkEventProcessorSystem : ComponentSystem, IOnEventCallback
     //and always the first element is the turn of execution.
     private void CommandCallback(EventData photonEvent)
     {
-        Debug.Log("El error es en la callback de commandos?");
+        //null check is important
+       
         object[] eventData = (object[])photonEvent.CustomData;
         int turnToExecute = (int)eventData[0];
 
-        //moveCommand
+        
         object[] serializedMoveCommands = (object[])eventData[1];
-        MoveCommand[] moveCommands = new MoveCommand[serializedMoveCommands.Length];
-        for (int i = 0; i < serializedMoveCommands.Length; i++)
+        MoveCommand[] moveCommands;
+        if (serializedMoveCommands != null)
         {
-            moveCommands[i] = CommandUtils.DeserializeMoveCommand((object[])serializedMoveCommands[i]);
+            moveCommands = new MoveCommand[serializedMoveCommands.Length];
+            for (int i = 0; i < serializedMoveCommands.Length; i++)
+            {
+                moveCommands[i] = CommandUtils.DeserializeMoveCommand((object[])serializedMoveCommands[i]);
+            }
         }
+        else
+            moveCommands = null;
+        
+        
 
-        //changeBehaviourCommand
         object[] serializedChangeBehaviourCommand = (object[])eventData[2];
-        ChangeBehaviourCommand[] changeBehaviourCommands = new ChangeBehaviourCommand[serializedChangeBehaviourCommand.Length];
-        for (int i = 0; i < changeBehaviourCommands.Length; i++)
+        ChangeBehaviourCommand[] changeBehaviourCommands;
+        if (serializedChangeBehaviourCommand != null)
         {
-            changeBehaviourCommands[i] = CommandUtils.DeserializeChangeBehaviourCommand((object[])serializedChangeBehaviourCommand);
+            changeBehaviourCommands = new ChangeBehaviourCommand[serializedChangeBehaviourCommand.Length];
+            for (int i = 0; i < changeBehaviourCommands.Length; i++)
+            {
+                changeBehaviourCommands[i] = CommandUtils.DeserializeChangeBehaviourCommand((object[])serializedChangeBehaviourCommand[i]);
+            }
         }
-        //otros commandos
+        else
+            changeBehaviourCommands = null;
+        
 
+
+        //otros commandos
         CommandStorageSystem.QueueNetworkedCommands(turnToExecute, moveCommands, changeBehaviourCommands);
 
         CreateCommandLockstepCheck(turnToExecute);

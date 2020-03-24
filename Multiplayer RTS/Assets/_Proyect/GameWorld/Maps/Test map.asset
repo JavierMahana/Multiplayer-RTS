@@ -417,7 +417,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -585,7 +585,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -609,7 +609,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -633,7 +633,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -657,7 +657,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -681,7 +681,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -921,7 +921,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -945,7 +945,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -1089,7 +1089,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -1113,7 +1113,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -1305,7 +1305,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1377,7 +1377,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1425,7 +1425,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1809,7 +1809,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1833,7 +1833,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1857,7 +1857,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1881,7 +1881,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -1905,7 +1905,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 0
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2193,7 +2193,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -2409,7 +2409,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -2833,7 +2833,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: false
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -3001,7 +3001,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: true
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -3025,7 +3025,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: true
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -3049,7 +3049,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: true
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -3073,7 +3073,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: true
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -3097,7 +3097,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: false
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -3337,7 +3337,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: false
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -3361,7 +3361,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: true
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -3505,7 +3505,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: true
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -3529,7 +3529,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: true
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -3721,7 +3721,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: false
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -3793,7 +3793,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: false
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -3841,7 +3841,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: false
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -4225,7 +4225,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: false
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -4249,7 +4249,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: false
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -4273,7 +4273,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: false
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -4297,7 +4297,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: true
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -4321,7 +4321,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: true
+      Data: false
     - Name: 
       Entry: 8
       Data: 
@@ -4609,7 +4609,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: false
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -4825,7 +4825,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 5
-      Data: false
+      Data: true
     - Name: 
       Entry: 8
       Data: 
@@ -4859,4 +4859,7238 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: HexHeights
+      Entry: 7
+      Data: 3|System.Collections.Generic.Dictionary`2[[Hex, Assembly-CSharp],[MapHeight,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 1
+    - Name: 
+      Entry: 12
+      Data: 100
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 8
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 9
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 8
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 9
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 8
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 8
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -3
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -3
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -4
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -3
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -4
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -3
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -14
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: HexSlopeDatas
+      Entry: 7
+      Data: 4|System.Collections.Generic.Dictionary`2[[Hex, Assembly-CSharp],[SlopeData,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 1
+    - Name: 
+      Entry: 12
+      Data: 100
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 8
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 9
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 8
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 9
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 8
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 8
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -3
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -3
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -4
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -3
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -4
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -3
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -14
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: SlopeData, Assembly-CSharp
+    - Name: isSlope
+      Entry: 5
+      Data: false
+    - Name: heightSide_0tr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_1r
+      Entry: 3
+      Data: 0
+    - Name: heightSide_2dr
+      Entry: 3
+      Data: 0
+    - Name: heightSide_3dl
+      Entry: 3
+      Data: 0
+    - Name: heightSide_4l
+      Entry: 3
+      Data: 0
+    - Name: heightSide_5tl
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  elevationPerHeightLevel: 0
   mapScale: {x: 1, y: 1}
+  hexSizeOffSet: {x: 0, y: 0}
