@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09deae6a6bd080c4da1e8102ba49c46b, type: 3}
+  m_Name: EHD_notWalkable
+  m_EditorClassIdentifier: 
+  walkable: 0
+  hexMaterial: {fileID: 2100000, guid: a9b1d9eaeb8653748b84ccedf0de1640, type: 2}
+  sprite: {fileID: 2015883684486665419, guid: 64f4b4552183b15429bd64e52b65b497, type: 3}
+  heightLevel: 1
+  isSlope: 0
+  heightSide_TopRight: 1
+  heightSide_Right: 1
+  heightSide_DownRight: 1
+  heightSide_DownLeft: 1
+  heightSide_Left: 1
+  heightSide_TopLeft: 1
