@@ -1,5 +1,6 @@
 ﻿
 public enum CommandType 
 {
-    MOVE_COMMAND
+    MOVE_COMMAND,
+    GATHER_COMMAND
 }

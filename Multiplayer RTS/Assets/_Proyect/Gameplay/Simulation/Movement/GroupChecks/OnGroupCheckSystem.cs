@@ -11,6 +11,9 @@ using static Unity.Mathematics.math;
 //it uses the post update commands.
 //because it is supposed to run after all of the other simulation systems.
 
+
+    //HACK: SI LA ENTIDAD ESTA EN MODO GATHER. EL HIJO SIEMPRE SE CONSIDERARA DENTRO DEL GRUPO.
+
 [DisableAutoCreation]
 //this systems checks if a entity is consider inside a his parent group
 //situations where the entity is outside the group
@@ -51,6 +54,14 @@ public class OnGroupCheckSystem : ComponentSystem
                 Debug.LogError("the parent must have a position component in order to allow this system to work properly");
                 return;
             }
+
+            //HACK
+            if (EntityManager.HasComponent<GroupOnGather>(parent.ParentEntity))
+            {
+                return;
+            }
+
+
             var parentPosition = EntityManager.GetComponentData<HexPosition>(parent.ParentEntity);
 
             if (! EntityIsOnGroup(entity.Index, position, parentPosition, activeMap.map))
@@ -68,8 +79,13 @@ public class OnGroupCheckSystem : ComponentSystem
                 return;
             }
             var parentPosition = EntityManager.GetComponentData<HexPosition>(parent.ParentEntity);
-            if (EntityIsOnGroup(entity.Index, position, parentPosition, activeMap.map))
+            //LA SEGUNDA CONDICION ES EL HACK.
+            if (EntityIsOnGroup(entity.Index, position, parentPosition, activeMap.map)  || EntityManager.HasComponent<GroupOnGather>(parent.ParentEntity))
             {
+
+                //esto quizas introduce un comportamiento de zig zag.
+                //PostUpdateCommands.AddComponent<RefreshPathNow>(entity);
+
                 PostUpdateCommands.RemoveComponent<OnReinforcement>(entity);
                 PostUpdateCommands.AddComponent<OnGroup>(entity);                
             }

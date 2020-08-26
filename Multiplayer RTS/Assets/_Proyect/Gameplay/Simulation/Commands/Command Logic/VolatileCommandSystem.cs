@@ -39,7 +39,8 @@ public class VolatileCommandSystem : ComponentSystem
             {
                     turnToExecuteTheCommands,
                     commands[0],
-                    commands[1]
+                    commands[1],
+                    commands[2]
             };
         }
         else

@@ -109,11 +109,23 @@ public class NetworkEventProcessorSystem : ComponentSystem, IOnEventCallback
         }
         else
             changeBehaviourCommands = null;
-        
 
+
+        object[] serializedGatherCommand = (object[])eventData[3];
+        GatherCommand[] gatherCommands;
+        if (serializedGatherCommand != null)
+        {
+            gatherCommands = new GatherCommand[serializedGatherCommand.Length];
+            for (int i = 0; i < gatherCommands.Length; i++)
+            {
+                gatherCommands[i] = CommandUtils.DeserializeGatherCommand((object[])serializedGatherCommand[i]);
+            }
+        }
+        else
+            gatherCommands = null;
 
         //otros commandos
-        CommandStorageSystem.QueueNetworkedCommands(turnToExecute, moveCommands, changeBehaviourCommands);
+        CommandStorageSystem.QueueNetworkedCommands(turnToExecute, moveCommands, changeBehaviourCommands, gatherCommands);
 
         CreateCommandLockstepCheck(turnToExecute);
         SendCommandConfirmationEvent(turnToExecute);

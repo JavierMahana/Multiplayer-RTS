@@ -157,15 +157,38 @@ public struct Hex : IEquatable<Hex>
 
 
 
+        //int hexDistance = a.Distance(b);
+
+        //List<Hex> results = new List<Hex> { };
+
+        //Fix64 step = (Fix64)1 / (Fix64)Math.Max(hexDistance, 1);
+
+        //for (int i = 0; i <= hexDistance; i++)
+        //{
+        //    results.Add(FractionalHex.Lerp(af, bf, step * (Fix64)i).Round());
+        //}
+        //return results;
+
+
+
+        //LO Q SE HACE PARA Q FUNCOINE ES Q SE DUPLICAN LOS SAMPLES.
+        //la logiaca es que la distancia es igual a la cantidad de samples - 1.
+        //entonces si la distnacia es de 3 hexagonos, significa que hay otros 3 hexagonos intermedios q podria ser q esten almedio.
+        //entonces ahora el ese caso sew revisaria en 7 puntos.(esto es ya que incluye el punto inicial y el final)
         int hexDistance = a.Distance(b);
+
 
         List<Hex> results = new List<Hex> { };
 
-        Fix64 step = (Fix64)1 / (Fix64)Math.Max(hexDistance, 1);
+        Fix64 step = (Fix64)1 / (Fix64)Math.Max(hexDistance + hexDistance, 1);
 
-        for (int i = 0; i <= hexDistance; i++)
+        for (int i = 0; i <= (hexDistance + hexDistance); i++)
         {
-            results.Add(FractionalHex.Lerp(af, bf, step * (Fix64)i).Round());
+            Hex scaningHex = FractionalHex.Lerp(af, bf, step * (Fix64)i).Round();
+            if(! results.Contains(scaningHex))
+            {
+                results.Add(scaningHex);
+            }
         }
         return results;
     }
@@ -251,4 +274,5 @@ public struct Hex : IEquatable<Hex>
         return !(a.q == b.q && a.r == b.r && a.s == b.s);
     }
 
+    
 }

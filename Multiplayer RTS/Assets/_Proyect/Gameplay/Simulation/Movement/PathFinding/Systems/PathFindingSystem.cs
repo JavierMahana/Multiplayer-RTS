@@ -234,12 +234,16 @@ public class PathFindingSystem : ComponentSystem
 
             List<Hex> path;
             
-            Debug.Assert(Paths.TryGetValue(entity, out path), "the entity doesn't have a path. this is because the pathfinding failed before");
-            
-
-            foreach (Hex waypoint in path)
+            if(Paths.TryGetValue(entity, out path))
             {
-                buffer.Add(new PathWaypoint() { Value = waypoint });
+                foreach (Hex waypoint in path)
+                {
+                    buffer.Add(new PathWaypoint() { Value = waypoint });
+                }
+            }
+            else 
+            {
+                Debug.LogError("the entity doesn't have a path. this is because the pathfinding failed before");
             }
             
         });

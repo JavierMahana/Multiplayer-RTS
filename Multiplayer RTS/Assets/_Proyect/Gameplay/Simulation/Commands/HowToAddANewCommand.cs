@@ -10,7 +10,7 @@ creating new command types:
                                  and the event data object passed in -> (3)
 3- VolatileCommandSystem - update SendCommandToNetworkFunction <- update the content object
 4- CommandStorageSystem - Add two static dictionaries
-                          Update the clear state function.
+                          Update the clear/reset state function.
                           Update: GetAllVolatileCommandsSerialized <- add and element containing an array of the commands of that type to be executed
                           that turn.
                           Must add a new override of the "TryAddLocalCommand" function

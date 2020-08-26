@@ -17,14 +17,29 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 2100000, guid: 85ec9e57437e07246ba10b20c87bb083, type: 2}
-    - {fileID: 2100000, guid: 8609e9c4959a16b4bbdd99d3082512d4, type: 2}
     - {fileID: -5999950649263986689, guid: b79fbc6c4fb1e6d4c868ac0bacf967a9, type: 3}
-    - {fileID: 4825601645843628289, guid: 2118d267c1e5d5d4d8b54eb8966e3f12, type: 3}
+    - {fileID: 2100000, guid: 09eb97acf3d319648aa92f177f056561, type: 2}
+    - {fileID: 2100000, guid: 910d73c555a617b49a07a200d0f83995, type: 2}
+    - {fileID: 2100000, guid: 02c40b88ab200874f805e6fb4d5a29fe, type: 2}
+    - {fileID: 2611001134890112705, guid: 61abbfe97a13f6546abcfdfe08fa0454, type: 3}
+    - {fileID: 8134590683436933555, guid: 61abbfe97a13f6546abcfdfe08fa0454, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: mapProportions
+      Entry: 7
+      Data: UnityEngine.Vector2Int, UnityEngine.CoreModule
+    - Name: 
+      Entry: 3
+      Data: 10
+    - Name: 
+      Entry: 3
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: HexMaterials
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[Hex, Assembly-CSharp],[UnityEngine.Material,
@@ -851,7 +866,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -875,7 +890,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -899,7 +914,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -923,7 +938,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -947,7 +962,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1091,7 +1106,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1115,7 +1130,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1139,7 +1154,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1163,7 +1178,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1187,7 +1202,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1211,7 +1226,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1307,7 +1322,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1331,7 +1346,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1355,7 +1370,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1379,7 +1394,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1403,7 +1418,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1571,7 +1586,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1595,7 +1610,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1619,7 +1634,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1643,7 +1658,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1811,7 +1826,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1835,7 +1850,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -1859,7 +1874,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -2475,7 +2490,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2499,7 +2514,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2523,7 +2538,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2547,7 +2562,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2571,7 +2586,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2595,7 +2610,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2619,7 +2634,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2643,7 +2658,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2667,7 +2682,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2691,7 +2706,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2715,7 +2730,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2739,7 +2754,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2763,7 +2778,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2787,7 +2802,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2811,7 +2826,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2835,7 +2850,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2859,7 +2874,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2883,7 +2898,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2907,7 +2922,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2931,7 +2946,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2955,7 +2970,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -2979,7 +2994,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3003,7 +3018,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3027,7 +3042,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3051,7 +3066,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3075,7 +3090,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3099,7 +3114,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3123,7 +3138,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3147,7 +3162,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3171,7 +3186,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3195,7 +3210,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3219,7 +3234,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3243,7 +3258,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3267,7 +3282,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3291,7 +3306,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3315,7 +3330,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3339,7 +3354,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3363,7 +3378,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3387,7 +3402,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3411,7 +3426,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3435,7 +3450,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3459,7 +3474,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3483,7 +3498,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3507,7 +3522,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3531,7 +3546,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3555,7 +3570,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3579,7 +3594,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3603,7 +3618,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3627,7 +3642,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3651,7 +3666,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3675,7 +3690,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3699,7 +3714,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3723,7 +3738,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3747,7 +3762,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3771,7 +3786,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3795,7 +3810,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3819,7 +3834,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3843,7 +3858,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3867,7 +3882,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3891,7 +3906,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3915,7 +3930,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3939,7 +3954,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3963,7 +3978,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -3987,7 +4002,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4011,7 +4026,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4035,7 +4050,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4059,7 +4074,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4083,7 +4098,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4107,7 +4122,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4131,7 +4146,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4155,7 +4170,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4179,7 +4194,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4203,7 +4218,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4227,7 +4242,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4251,7 +4266,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4275,7 +4290,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 3
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4299,7 +4314,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4323,7 +4338,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4347,7 +4362,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4371,7 +4386,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4395,7 +4410,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4419,7 +4434,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4443,7 +4458,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4467,7 +4482,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4491,7 +4506,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4515,7 +4530,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4539,7 +4554,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4563,7 +4578,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4587,7 +4602,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4611,7 +4626,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4635,7 +4650,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4659,7 +4674,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4683,7 +4698,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4707,7 +4722,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4731,7 +4746,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4755,7 +4770,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4779,7 +4794,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4803,7 +4818,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4827,7 +4842,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -4851,7 +4866,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8099,7 +8114,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8123,7 +8138,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8147,7 +8162,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8171,7 +8186,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8195,7 +8210,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8339,7 +8354,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8363,7 +8378,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8387,7 +8402,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8411,7 +8426,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8435,7 +8450,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8459,7 +8474,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8555,7 +8570,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8579,7 +8594,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8603,7 +8618,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8627,7 +8642,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8651,7 +8666,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8819,7 +8834,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8843,7 +8858,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8867,7 +8882,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -8891,7 +8906,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -9059,7 +9074,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -9083,7 +9098,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -9107,7 +9122,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 8
       Data: 
@@ -14509,7 +14524,2538 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: MiscMaterials
+      Entry: 7
+      Data: 6|System.Collections.Generic.Dictionary`2[[Hex, Assembly-CSharp],[UnityEngine.Material,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 7|System.Collections.Generic.GenericEqualityComparer`1[[Hex, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 100
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 8
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 9
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 8
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 9
+    - Name: r
+      Entry: 3
+      Data: 1
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 8
+    - Name: r
+      Entry: 3
+      Data: 2
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 8
+    - Name: r
+      Entry: 3
+      Data: 3
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 4
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 7
+    - Name: r
+      Entry: 3
+      Data: 5
+    - Name: s
+      Entry: 3
+      Data: -12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -3
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 6
+    - Name: s
+      Entry: 3
+      Data: -12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -3
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 6
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -4
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -3
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 8
+    - Name: s
+      Entry: 3
+      Data: -13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -4
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -3
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -2
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -1
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -8
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 1
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 2
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 3
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -12
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 4
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -14
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ResourceSpots
+      Entry: 7
+      Data: 8|System.Collections.Generic.Dictionary`2[[Hex, Assembly-CSharp],[ResourceSpotData,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 7
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 0
+    - Name: r
+      Entry: 3
+      Data: 0
+    - Name: s
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: 9|ResourceSpotData, Assembly-CSharp
+    - Name: sprite
+      Entry: 10
+      Data: 5
+    - Name: ammount
+      Entry: 3
+      Data: 1500
+    - Name: resourceType
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: -3
+    - Name: r
+      Entry: 3
+      Data: 7
+    - Name: s
+      Entry: 3
+      Data: -4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 7
+      Data: 10|ResourceSpotData, Assembly-CSharp
+    - Name: sprite
+      Entry: 10
+      Data: 6
+    - Name: ammount
+      Entry: 3
+      Data: 1500
+    - Name: resourceType
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: Hex, Assembly-CSharp
+    - Name: q
+      Entry: 3
+      Data: 5
+    - Name: r
+      Entry: 3
+      Data: 9
+    - Name: s
+      Entry: 3
+      Data: -14
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 9
+      Data: 9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   elevationPerHeightUnit: 0.34
   spriteArtMapScale: {x: 1.154734, y: 0.85}
   materialArtMapScale: {x: 0.45, y: 0.4}
-  mapProportions: {x: 10, y: 10}

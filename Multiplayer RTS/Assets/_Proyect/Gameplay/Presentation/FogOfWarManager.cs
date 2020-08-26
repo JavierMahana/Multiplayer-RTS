@@ -13,6 +13,10 @@ public class FogOfWarManager : MonoBehaviour
     const int TEXTURE_SIZE = 256;
     const float FOG_Z_OFFSET = 1;
 
+    [Required]
+    public Shader gausianBlurShader;
+    [Range(0,10)]
+    public int filterIterations = 1;
 
     public bool showFOW = true;
     public MapManager mapManager;
@@ -67,6 +71,10 @@ public class FogOfWarManager : MonoBehaviour
         //PREVIOUS CAMERA
         var prevFogCameraGO = new GameObject("Previous Fog camera");
         prevFogCameraGO.transform.position = new Vector3(fogRect.center.x, fogRect.center.y, mainCamera.transform.position.z);
+        var prevCameraFilter = prevFogCameraGO.AddComponent<CameraBlurFilter>();
+        prevCameraFilter.blurShader = gausianBlurShader;
+        prevCameraFilter.iterations = filterIterations;
+
         previousFogCamera = prevFogCameraGO.AddComponent<Camera>();
         previousFogCamera.forceIntoRenderTexture = true;
         previousFogCamera.targetTexture = prevFogRenderTexture;
@@ -79,9 +87,14 @@ public class FogOfWarManager : MonoBehaviour
 
 
 
+
         //CAMERA
         var fogCameraGO = new GameObject("Fog camera");
         fogCameraGO.transform.position = new Vector3(fogRect.center.x, fogRect.center.y, mainCamera.transform.position.z);
+        var cameraFilter = fogCameraGO.AddComponent<CameraBlurFilter>();
+        cameraFilter.blurShader = gausianBlurShader;
+        cameraFilter.iterations = filterIterations;
+
         fogCamera = fogCameraGO.AddComponent<Camera>();
         fogCamera.forceIntoRenderTexture = true;
         fogCamera.targetTexture = fogRenderTexture;
@@ -156,7 +169,7 @@ public class FogOfWarManager : MonoBehaviour
             var fixScale = map.layout.size * point.radius;
 
             var position = new Vector3((float)fixPositionNoElevation.x, (float)fixPositionNoElevation.y + elevation);
-            var scale = new Vector3((float)fixScale.x, (float)fixScale.y);
+            var scale = new Vector3((float)fixScale.x, (float)fixScale.y)  * 2;
             var spawnedObject = pool.Spawn(position, Quaternion.identity);
             spawnedObject.transform.localScale = scale;
         }

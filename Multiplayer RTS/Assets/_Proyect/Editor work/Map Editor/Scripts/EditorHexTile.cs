@@ -6,7 +6,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 [PropertyTooltip("This class is created by the map editor and it stores a EditorHexData that is updated by the material that you put on the mesh renderer.")]
-[RequireComponent(typeof(MeshRenderer), typeof(MeshFilter))]
+[RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 [ExecuteInEditMode]
 public class EditorHexTile : MonoBehaviour
 {

@@ -8,7 +8,7 @@ public class EditorHexData : ScriptableObject
 {
     public bool walkable = true;
     public Material hexMaterial;
-    [Tooltip("If this is on, the sprite is going to use the texture thats on the material")]
+    [Tooltip("The sprite that will be used in game.")]
     public Sprite sprite;
     public MapHeight heightLevel = MapHeight.l0;
 

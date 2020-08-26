@@ -1,0 +1,391 @@
+fileFormatVersion: 2
+guid: dd2c22c31c2a1e94bbf32e5eab4bdcc3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8260615554315450704
+    second: spearman_down_idle
+  - first:
+      213: 4542782143548790468
+    second: spearman_down_walk_0
+  - first:
+      213: -4728902564572003956
+    second: spearman_down_walk_1
+  - first:
+      213: -5021590538820297891
+    second: spearman_up_idle
+  - first:
+      213: 7201838548856775593
+    second: spearman_up_walk_0
+  - first:
+      213: 3999427904813887439
+    second: spearman_up_walk_1
+  - first:
+      213: 6849671856437464721
+    second: spearman_left_idle
+  - first:
+      213: 5498201336693789691
+    second: spearman_left_walk_0
+  - first:
+      213: -6607299635778521969
+    second: spearman_left_walk_1
+  - first:
+      213: 5378483272553162809
+    second: spearman_right_idle
+  - first:
+      213: 8043546015032639362
+    second: spearman_rigth_walk_0
+  - first:
+      213: 7955586593805369054
+    second: spearman_right_walk_1
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spearman_down_idle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 264
+        width: 80
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b606f28be56c5d80800000000000000
+      internalID: -8260615554315450704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spearman_down_walk_0
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 264
+        width: 80
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c696367a443b0f30800000000000000
+      internalID: 4542782143548790468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spearman_down_walk_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 264
+        width: 80
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c81804d1c209f5eb0800000000000000
+      internalID: -4728902564572003956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spearman_up_idle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 176
+        width: 80
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5b572ea20abf4ab0800000000000000
+      internalID: -5021590538820297891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spearman_up_walk_0
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 176
+        width: 80
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a3a252d00212f360800000000000000
+      internalID: 7201838548856775593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spearman_up_walk_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 176
+        width: 80
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcf67335d72d08730800000000000000
+      internalID: 3999427904813887439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spearman_left_idle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 88
+        width: 80
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19e02f6234cee0f50800000000000000
+      internalID: 6849671856437464721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spearman_left_walk_0
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 88
+        width: 80
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf316392cf88d4c40800000000000000
+      internalID: 5498201336693789691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spearman_left_walk_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 88
+        width: 80
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f847adcfcf72e44a0800000000000000
+      internalID: -6607299635778521969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spearman_right_idle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 80
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93869ea3a0634aa40800000000000000
+      internalID: 5378483272553162809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spearman_rigth_walk_0
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 80
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28f7780fb7a60af60800000000000000
+      internalID: 8043546015032639362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spearman_right_walk_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 80
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0909}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edef0a74bdbe76e60800000000000000
+      internalID: 7955586593805369054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

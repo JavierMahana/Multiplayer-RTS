@@ -23,7 +23,33 @@ public class MapManager : SerializedMonoBehaviour
     [Tooltip("If you want to scale all the sprites that make the map, change this value")]
     public Vector2 mapScale =Vector2.one;
 
-    public static ActiveMap ActiveMap { get; private set; }
+    private const int DISTANCE_TO_CAMERA = 4;
+
+    //null si no existe ningun objeto map manager.
+    //si aun no existe el active map cuado se llama, este se crea.
+    public static ActiveMap ActiveMap 
+    { 
+        get 
+        { 
+            
+            if(activeMap == null)
+            {
+                var mapManagerComp = GameObject.FindObjectOfType<MapManager>();
+                if (mapManagerComp == null)
+                {
+                    Debug.LogWarning("You are trying to access to the active map and there isn't a map manager in the scene!");
+                    return null;
+                }
+                else 
+                {
+                    activeMap = mapManagerComp.LoadMap(mapManagerComp.mapToLoad);
+                }  
+            }
+            return activeMap;
+        }
+        private set => activeMap = value;
+    }
+    private static ActiveMap activeMap;
 
     private void Awake()
     {
@@ -31,6 +57,10 @@ public class MapManager : SerializedMonoBehaviour
         {
             LoadMap(mapToLoad);
         }
+    }
+    private void OnDisable()
+    {
+        activeMap = null;
     }
     private void Start()
     {
@@ -46,7 +76,53 @@ public class MapManager : SerializedMonoBehaviour
     [HideIf("onPlayMode")]
     private void LoadMapInEditor(int index)
     {
-        LoadMap(index);
+        //LoadMap(index);
+        int minZValue = Mathf.CeilToInt(Camera.main.transform.position.z + Camera.main.nearClipPlane + DISTANCE_TO_CAMERA);
+
+
+        Debug.Assert(index < maps.Length, "Invalid index! the maps array doesn't have any value in that spot", this);
+        Map map = maps[index];
+        Debug.Assert(map != null, $"Trying to acces to a map spot that doesn't contain any map. Check if the index that you used: {index} have any value in the maps array", this);
+
+        ClearMapObjects();
+
+        var origin = new FixVector2((Fix64)originPoint.position.x, (Fix64)originPoint.position.y);
+        var hexSize = new FixVector2((Fix64)(map.spriteArtMapScale.x * mapScale.x), (Fix64)(map.spriteArtMapScale.y * mapScale.y));//scañed by the value int this object!!
+
+
+        var layout = new Layout(Orientation.pointy, hexSize, origin);
+        var runtimeMap = new RuntimeMap(map);
+
+        var actMap = new ActiveMap(runtimeMap, layout);
+        ActiveMap = actMap;
+
+        CreateMapVisuals(map, layout);
+
+        var resourceRoot = new GameObject("Resources root");
+
+        foreach (var keyValue in map.ResourceSpots)
+        {
+            Hex hex = keyValue.Key;
+            var resourceData = keyValue.Value;
+
+
+            var resGO = new GameObject($"res", typeof(SpriteRenderer));
+
+            var fixpos = layout.HexToWorld(hex);
+            var pos = new Vector3((float)fixpos.x, (float)fixpos.y, minZValue + hex.r - 1);
+            resGO.transform.position = pos;
+            var spRenderer = resGO.GetComponent<SpriteRenderer>();
+            var entityFilter = resGO.GetComponent<EntityFilter>();
+            //var posListener = resGO.GetComponent<PositionListener>();
+
+            spRenderer.sprite = resourceData.sprite;
+
+            resGO.transform.SetParent(resourceRoot.transform, true);
+        }
+
+        //CreateResourcesSpots(map);
+
+        //return actMap;
     }
     ////falta poner como dirty el so, para poder borrar las weas visuales dsps.
 
@@ -138,16 +214,15 @@ public class MapManager : SerializedMonoBehaviour
     /// <summary>
     /// sets the Active map and also it creates the entities that render the map. It uses the first map of the array
     /// </summary>
-    public void LoadMap()
+    public ActiveMap LoadMap()
     {
-        LoadMap(0);
+        return LoadMap(0);
     }
     /// <summary>
     /// sets the Active map and also it creates the entities that render the map.
     /// </summary>
-    public void LoadMap(int index)
+    public ActiveMap LoadMap(int index)
     {
-
         //if (!Application.isPlaying && editorMap == false)
         //{
         //    Debug.LogWarning("Loading a play mode map on the editor!!!", this);
@@ -172,27 +247,13 @@ public class MapManager : SerializedMonoBehaviour
         var layout = new Layout(Orientation.pointy, hexSize, origin);
         var runtimeMap = new RuntimeMap(map);
 
-        ActiveMap = new ActiveMap(runtimeMap, layout);
+        var actMap = new ActiveMap(runtimeMap, layout);
+        ActiveMap = actMap;
 
         CreateMapVisuals(map, layout);
+        CreateResourcesSpots(map);
 
-        //throw new System.NotImplementedException(); //ClearMapGO();
-        //ClearMapEntities(entityManager);
-        
-
-        //Debug.Assert(index < maps.Length, "Invalid index! the maps array doesn't have any value in that spot", this);
-        //Map map = maps[index];
-        //Debug.Assert(map != null, $"Trying to acces to a map spot that doesn't contain any map. Check if the index that you used: {index} have any value in the maps array", this);
-
-        //Vector3 quadExtents = MeshUtils.QuadMesh.bounds.extents;
-        //FixVector2 origin = new FixVector2((Fix64)originPoint.position.x, (Fix64)originPoint.position.y);
-        //FixVector2 hexSize = new FixVector2(((Fix64)map.mapScale.x * (Fix64)quadExtents.x) + (Fix64)map.hexSizeOffSet.x, ((Fix64)map.mapScale.y * (Fix64)quadExtents.y) + (Fix64)map.hexSizeOffSet.y);
-
-        //var layout = new Layout(Orientation.pointy, hexSize, origin);
-        //var runtimeMap = new RuntimeMap(map);
-        //ActiveMap = new ActiveMap(runtimeMap, layout);
-
-        //CreateMapVisuals(entityManager, map, layout);        
+        return actMap;
     }
     private void ClearMapObjects()
     {
@@ -218,15 +279,13 @@ public class MapManager : SerializedMonoBehaviour
     private void CreateMapVisuals(Map map, Layout layout)
     {
         var camera = Camera.main;
-        int minZValue = Mathf.CeilToInt(camera.transform.position.z + camera.nearClipPlane + 1);
+        int minZValue = Mathf.CeilToInt(camera.transform.position.z + camera.nearClipPlane + DISTANCE_TO_CAMERA);
 
         var mapRoot = new GameObject("Map Root");
         mapRoot.transform.position = Vector3.zero;
 
         foreach (var HexSpriteValue in map.HexSprites)
         {
-
-
             Hex currHex = HexSpriteValue.Key;
             var currSprite = HexSpriteValue.Value;
 
@@ -246,6 +305,39 @@ public class MapManager : SerializedMonoBehaviour
         }
         if (debug) Debug.Log($"the map visuals for the map: {map.name} have been created with {map.HexMaterials.Count} tiles in total");
     }
+
+    private void CreateResourcesSpots(Map map)
+    {
+        foreach (var keyValue in map.ResourceSpots)
+        {
+            Hex hex = keyValue.Key;
+            var resourceData = keyValue.Value;
+
+            var resourceSpotEntity = CreateResourceSpotEntity(hex, resourceData);
+            CreateResourceMonobehaviour(resourceData.sprite, resourceSpotEntity, resourceData, hex);
+        }
+    }
+    private Entity CreateResourceSpotEntity(Hex hex, ResourceSpotData resourceData)
+    {
+        var entityManager = World.Active.EntityManager;
+        var entity = entityManager.CreateEntity(typeof(ResourceSource), typeof(BlockMovement));
+        entityManager.SetComponentData<ResourceSource>(entity, new ResourceSource() {position = hex, resourcesRemaining = resourceData.ammount, resourceType = resourceData.resourceType });
+        entityManager.SetComponentData<BlockMovement>(entity, new BlockMovement() { position = hex });
+
+        return entity;
+    }
+    private void CreateResourceMonobehaviour(Sprite sprite, Entity entity, ResourceSpotData resourceData, Hex hex)
+    {
+        var resGO = new GameObject($"{resourceData.resourceType} spot | {hex}", typeof(SpriteRenderer), typeof(EntityFilter), typeof(PositionListener));
+        var spRenderer = resGO.GetComponent<SpriteRenderer>();
+        var entityFilter = resGO.GetComponent<EntityFilter>();
+        //var posListener = resGO.GetComponent<PositionListener>();
+
+        spRenderer.sprite = sprite;
+        entityFilter.Initialize(entity, World.Active.EntityManager);
+        
+    }
+
     //private void CreateMapVisuals(EntityManager entityManager, Map map, Layout layout)
     //{
     //    var tileArchetype = entityManager.CreateArchetype(typeof(HexTile), typeof(HexPosition));

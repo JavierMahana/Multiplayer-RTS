@@ -44,6 +44,8 @@ public class InputSystem : ComponentSystem
             {
                 //here we see the default command for the commandable
                 var defaultCommandType = EntityManager.GetComponentData<Commandable>(currentSelectedEntity).DeafaultCommand;
+                Hex clickHex = MapManager.ActiveMap.layout.PixelToHex(Input.mousePosition, Camera.main);
+
 
                 switch (defaultCommandType)
                 {
@@ -51,9 +53,31 @@ public class InputSystem : ComponentSystem
                         var moveCommand = new MoveCommand()
                         {
                             Target = currentSelectedEntity,
-                            Destination = new DestinationHex() { FinalDestination = MapManager.ActiveMap.layout.PixelToHex(Input.mousePosition, Camera.main) }
+                            Destination = new DestinationHex() { FinalDestination = clickHex }
                         };
                         CommandStorageSystem.TryAddLocalCommand(moveCommand, World.Active);
+                        break;
+
+                    case CommandType.GATHER_COMMAND:
+                        //gather si es que se cliquea a un recurso, si no solo moverse.
+                        if (ResourceSourceManagerSystem.TryGetResourceAtHex(clickHex, out ResourceSourceAndEntity source))
+                        {
+                            var gatherCommand = new GatherCommand()
+                            {
+                                Target = currentSelectedEntity,
+                                TargetPos = clickHex
+                            };
+                            CommandStorageSystem.TryAddLocalCommand(gatherCommand, World.Active);
+                        }
+                        else 
+                        {
+                            var moveCommand2 = new MoveCommand()
+                            {
+                                Target = currentSelectedEntity,
+                                Destination = new DestinationHex() { FinalDestination = clickHex }
+                            };
+                            CommandStorageSystem.TryAddLocalCommand(moveCommand2, World.Active);
+                        }
                         break;
 
 

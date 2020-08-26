@@ -41,8 +41,33 @@ namespace Javier.Testing
     {
         public int i;
     }
+    public class ClA
+    {
+        public ClA(int am, int bm)
+        {
+            a = am;
+            b = bm;
+        }
+
+        public int a, b;
+            
+    }
+
     public class TestingVariedThings
     {
+
+        [Test]
+        public void IntOverflowUsingLong()
+        {
+            int max = int.MaxValue;
+            int a = 10;
+
+            Assert.That((long)max + (long)a > int.MaxValue);
+            Assert.That(max + a < int.MaxValue);
+
+
+        }
+
 
         [Test]
         public void ForLoops()
@@ -70,6 +95,21 @@ namespace Javier.Testing
         //    Assert.AreEqual(0, PositionListener.GetElevationFactorLevel(tile01, FractionalHex.Zero));
 
         //}
+        [Test]
+        public void HexToCartesianTest()
+        {
+            FractionalHex hex = new FractionalHex((Fix64)0.5, -(Fix64)0.25);
+            Debug.Log($"{FractionalHex.HexSpaceToCartesianSpace(hex, Orientation.pointy)}");
+        }
+        [Test]
+        public void GetBorderPointOfTheHexTest()
+        {
+            Hex hex = new Hex(0, 0);
+            var direction = new FractionalHex((Fix64)0.5, (Fix64)0);
+
+            var border = FractionalHex.GetBorderPointOfTheHex(hex, direction);
+            Debug.Log($"{border} - {border.Magnitude()}");
+        }
 
         [Test]
         public void NormilizeDepthWorksAsIntended()

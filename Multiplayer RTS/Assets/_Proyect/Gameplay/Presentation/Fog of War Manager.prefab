@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7454008015632838163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7454008015632838165}
+  - component: {fileID: 7454008015632838164}
+  - component: {fileID: 7454008015632838166}
+  m_Layer: 0
+  m_Name: Fog of War Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7454008015632838165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454008015632838163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7454008015632838164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454008015632838163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbab7e38b1a49a8479ce6b83ad172934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gausianBlurShader: {fileID: 4800000, guid: 16322b724693fbc4b930322a5025226d, type: 3}
+  filterIterations: 2
+  showFOW: 1
+  mapManager: {fileID: 0}
+  fogOfWarMat: {fileID: 2100000, guid: 4f633576f8f4c4f4e83456f984cc3c65, type: 2}
+  exploredFogAlpha: 0.295
+  objectPool: {fileID: 7454008015632838166}
+  borderOffset: {x: 1, y: 1}
+  mapAspectRatio: {x: 2, y: 1}
+  fogCamera: {fileID: 0}
+  previousFogCamera: {fileID: 0}
+  fogRenderer: {fileID: 0}
+--- !u!114 &7454008015632838166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454008015632838163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea08375da243a441b88d1e6b0713006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7572521843136580985, guid: 7d2830931c4060643ad7d8174661dab9, type: 3}
+  Notification: 3
+  Preload: 128
+  Capacity: 0
+  Recycle: 0
+  Persist: 0
+  Stamp: 0
+  Warnings: 1
+  spawnedClonesList: []
+  despawnedClones: []
+  delays: []

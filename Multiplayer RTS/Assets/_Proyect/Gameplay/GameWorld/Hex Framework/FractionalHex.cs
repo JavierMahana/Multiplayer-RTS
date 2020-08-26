@@ -118,7 +118,7 @@ public struct FractionalHex
         return (a.q * b.q) + (a.r * b.r) + (a.s * b.s);
     }
     /// <summary>
-    /// it returns the closest point along the direction to the point. the return point is at 90° from the start and the dest point
+    /// it returns the magnitude of the closest point of the line to the targetpoint.  the return point is at 90° from the start and the dest point
     /// </summary>
     /// <param name="lineOrigin"></param>
     /// <param name="lineDirection"></param>
@@ -133,6 +133,34 @@ public struct FractionalHex
         var proyectionLenght = cos * (targetPoint - lineOrigin).Lenght();
         return proyectionLenght;
     }
+    public static FractionalHex GetBorderPointOfTheHex(Hex hex, FractionalHex direction)
+    {
+        var directionManhatan = direction.NormalizedManhathan();
+        var supportVector = (FractionalHex)directionManhatan.Round() / 2;
+        var supportVectorMag = supportVector.Magnitude();
+
+        var normDirection = direction.Normalized();
+
+        var cos = DotProduct(supportVector, normDirection) / supportVectorMag;
+
+
+        var distanceToBorder = supportVectorMag / cos;
+        return (FractionalHex)hex + (normDirection * distanceToBorder);
+    }
+    /// <summary>
+    /// IT RETURNS FLOATS SO DO NOT USE IN SIMULATION
+    /// helpful with normalized hex.
+    /// </summary>
+    public static Vector2 HexSpaceToCartesianSpace(FractionalHex fractionalHex, Orientation orientation)
+    {
+        Orientation M = orientation;
+        float x = (float)(M.f11 * fractionalHex.q + M.f12 * fractionalHex.r);
+        float y = (float)(M.f21 * fractionalHex.q + M.f22 * fractionalHex.r);
+
+        return new Vector2(x, y);
+    }
+
+
     public Hex Round()
     {
         int qi = (int)(Fix64.Round(q));

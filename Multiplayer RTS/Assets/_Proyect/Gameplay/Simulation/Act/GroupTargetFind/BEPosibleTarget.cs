@@ -9,10 +9,26 @@ public struct BEPosibleTarget : IBufferElementData
 {
     public static implicit operator ActionTarget(BEPosibleTarget target)
     {
-        return new ActionTarget() { TargetEntity = target.Entity, TargetPosition = target.Position, TargetRadius = target.Radius };
+        return new ActionTarget() 
+        {
+            TargetEntity = target.Entity, 
+            TargetPosition = target.Position, 
+            TargetRadius = target.Radius, 
+            IsUnit = target.IsUnit, 
+            OccupiesFullHex = target.OccupiesFullHex,
+            GatherTarget = target.GatherTarget,
+            IsResource = target.IsResource
+        };
     }
 
     public Entity Entity;
     public FractionalHex Position;
     public Fix64 Radius;
+    public bool IsUnit;
+
+    public bool OccupiesFullHex;
+
+    public bool GatherTarget;
+    public bool IsResource;
+
 }

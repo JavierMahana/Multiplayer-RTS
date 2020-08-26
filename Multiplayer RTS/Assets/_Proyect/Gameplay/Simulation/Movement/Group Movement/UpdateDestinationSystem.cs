@@ -70,6 +70,9 @@ public class UpdateDestinationSystem : ComponentSystem
             }                                   
         });
     }
+    /// <summary>
+    /// A new destination is needed if you cannot reach the destination or if its occupied
+    /// </summary>
     private static bool NewDestinationNeeded(FractionalHex startPos, Hex end, RuntimeMap map, out Hex newDestination)
     {
         Hex startHex = startPos.Round();

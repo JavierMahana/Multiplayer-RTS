@@ -30,7 +30,7 @@ public class CommandStorageSystem : ComponentSystem
     //puede existir un solo commando de cada tipo por entidad
     private static Dictionary<Entity, MoveCommand> volatileMoveCommands                       = new Dictionary<Entity, MoveCommand>();
     private static Dictionary<Entity, ChangeBehaviourCommand> volatileChangeBehaviourCommands = new Dictionary<Entity, ChangeBehaviourCommand>();
-
+    private static Dictionary<Entity, GatherCommand> volatileGatherCommands                   = new Dictionary<Entity, GatherCommand>();
 
 
 
@@ -40,7 +40,7 @@ public class CommandStorageSystem : ComponentSystem
     //there will be multiples dictionaries one for each command type with the queued commands for each lockstep turn
     public static Dictionary<int, List<MoveCommand>> QueuedMoveCommands { get; private set; }                       = new Dictionary<int, List<MoveCommand>>();
     public static Dictionary<int, List<ChangeBehaviourCommand>> QueuedChangeBehaviourCommands { get; private set; } = new Dictionary<int, List<ChangeBehaviourCommand>>();
-
+    public static Dictionary<int, List<GatherCommand>> QueuedGatherCommands { get; private set; } = new Dictionary<int, List<GatherCommand>>();
 
 
     //----------------Esta es la funcion por la cual se ingresan commandos (de este cliente) al systema....................
@@ -105,13 +105,41 @@ public class CommandStorageSystem : ComponentSystem
             return false;
         }
     }
+    public static bool TryAddLocalCommand(GatherCommand command, World world)
+    {
+        if (CommandUtils.CommandIsValid(command, world))
+        {
+            if (volatileGatherCommands.ContainsKey(command.Target))
+            {
+                //el commando es igual al que ya esta almacenado
+                if (volatileGatherCommands[command.Target].Equals(command))
+                {
+                    return false;
+                }
+                else
+                {
+                    volatileGatherCommands[command.Target] = command;
+                    return true;
+                }
+            }
+            else
+            {
+                volatileGatherCommands.Add(command.Target, command);
+                return true;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 
 
     /// <summary>
     /// Esta es la funcion por la que se ingresan commandos externos al systema
     /// </summary>    
-    public static void QueueNetworkedCommands(int turnToQueue, MoveCommand[] moveCommands, ChangeBehaviourCommand[] changeBehaviourCommands)
+    public static void QueueNetworkedCommands(int turnToQueue, MoveCommand[] moveCommands, ChangeBehaviourCommand[] changeBehaviourCommands, GatherCommand[] gatherCommands)
     {
         if (moveCommands != null)
         {
@@ -120,6 +148,10 @@ public class CommandStorageSystem : ComponentSystem
         if (changeBehaviourCommands != null)
         {
             InsertObjectsToDictionaryAtKey(turnToQueue, QueuedChangeBehaviourCommands, changeBehaviourCommands);
+        }
+        if(gatherCommands != null)
+        {
+            InsertObjectsToDictionaryAtKey(turnToQueue, QueuedGatherCommands, gatherCommands);
         }
         
     }
@@ -158,20 +190,38 @@ public class CommandStorageSystem : ComponentSystem
         }
         else
             changeBehaviourCommandsSerialized = null;
-        
+
+
+
+        GatherCommand[] gatherCommands = CommandDictionaryToArray(volatileGatherCommands);
+        object[] gatherCommandsSerialized;
+        if (gatherCommands != null)
+        {
+            gatherCommandsSerialized = new object[gatherCommands.Length];
+            for (int i = 0; i < gatherCommands.Length; i++)
+            {
+                gatherCommandsSerialized[i] = CommandUtils.Serialize(gatherCommands[i]);
+            }
+        }
+        else
+            gatherCommandsSerialized = null;
+
 
         return new object[]
         {
             moveCommandsSerialized,
-            changeBehaviourCommandsSerialized
+            changeBehaviourCommandsSerialized,
+            gatherCommandsSerialized
         };
             
     }
     public static bool AreVolatileCommands()
-    {        
+    {
         if (volatileMoveCommands.Count > 0)
             return true;
         else if (volatileChangeBehaviourCommands.Count > 0)
+            return true;
+        else if (volatileGatherCommands.Count > 0)
             return true;
         else
             return false;
@@ -179,7 +229,7 @@ public class CommandStorageSystem : ComponentSystem
     public static void QueueVolatileCommands(int turnToQueue)
     {
         int count = CommandDictionaryToList(volatileMoveCommands) == null ? 0 : CommandDictionaryToList(volatileMoveCommands).Count;
-        if(count != 0 && logg) Debug.Log($"Queueing {count} command(s) at turn: {MainSimulationLoopSystem.CurrentLockstepTurn}.");
+        if(count != 0 && logg) Debug.Log($"Queueing move {count} command(s) at turn: {MainSimulationLoopSystem.CurrentLockstepTurn}.");
 
 
         //inject volatile commands to the list.
@@ -189,6 +239,10 @@ public class CommandStorageSystem : ComponentSystem
 
         InsertObjectsToDictionaryAtKey(turnToQueue, QueuedChangeBehaviourCommands, CommandDictionaryToList(volatileChangeBehaviourCommands));
         volatileChangeBehaviourCommands.Clear();
+
+
+        InsertObjectsToDictionaryAtKey(turnToQueue, QueuedGatherCommands, CommandDictionaryToList(volatileGatherCommands));
+        volatileGatherCommands.Clear();
         //other commands.
     }
 
@@ -270,8 +324,13 @@ public class CommandStorageSystem : ComponentSystem
         volatileMoveCommands.Clear();
         QueuedMoveCommands.Clear();
 
+
         volatileChangeBehaviourCommands.Clear();
         QueuedChangeBehaviourCommands.Clear();
+
+
+        volatileGatherCommands.Clear();
+        QueuedGatherCommands.Clear();
     }
 
 }

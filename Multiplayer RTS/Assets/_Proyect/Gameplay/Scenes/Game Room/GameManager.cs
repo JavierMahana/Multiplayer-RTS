@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Sirenix.OdinInspector;
+
 using Unity.Entities;
 
 using Photon.Pun;
@@ -13,6 +15,14 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
     public static List<int> PlayerTeams { get; private set; } = new List<int>();     
     public bool togleOfflineMode;
+    [ShowIf("i_ShowControlAllTeamsFlag")]
+    public bool controlAllTeamsOnOfflineMode = true;
+    [ShowIf("i_ShowListOfControlablableTeam")]
+    public List<int> offlineTeams = new List<int>();
+
+    //INSPECTOR PROPERTIES;
+    private bool i_ShowControlAllTeamsFlag => togleOfflineMode;
+    private bool i_ShowListOfControlablableTeam => i_ShowControlAllTeamsFlag && !controlAllTeamsOnOfflineMode;
 
     #region Unity CallBacks
     private void Start()
@@ -66,24 +76,36 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
     private void SetTeamsOnOfflineMode()
     {
-        var teamQuerry = World.Active.EntityManager.CreateEntityQuery(typeof(Team));
+        //check de seguridad, por si el usuario no pone un equipo para la lista de equipos, el modo offline te da acceso a todos los equipos.
+        bool offlineTeamsListExistAndIsNotEmpty = offlineTeams != null;
+        if (offlineTeamsListExistAndIsNotEmpty) offlineTeamsListExistAndIsNotEmpty = offlineTeams.Count != 0;
 
-        var allTeamComponents = teamQuerry.ToComponentDataArray<Team>(Unity.Collections.Allocator.TempJob);
-
-        List<int> listOfAllTeams = new List<int>();
-        foreach (var team in allTeamComponents)
+        if (controlAllTeamsOnOfflineMode || ! offlineTeamsListExistAndIsNotEmpty)
         {
-            if (listOfAllTeams.Contains(team.Number))
+            var teamQuerry = World.Active.EntityManager.CreateEntityQuery(typeof(Team));
+
+            var allTeamComponents = teamQuerry.ToComponentDataArray<Team>(Unity.Collections.Allocator.TempJob);
+
+            List<int> listOfAllTeams = new List<int>();
+            foreach (var team in allTeamComponents)
             {
-                continue;
+                if (listOfAllTeams.Contains(team.Number))
+                {
+                    continue;
+                }
+                else
+                {
+                    listOfAllTeams.Add(team.Number);
+                }
             }
-            else 
-            {
-                listOfAllTeams.Add(team.Number);
-            }
+            allTeamComponents.Dispose();
+            PlayerTeams = listOfAllTeams;
         }
-        allTeamComponents.Dispose();
-        PlayerTeams = listOfAllTeams;
+        //HAY UNA LISTA DE EQUIPOS A CONTROLAR
+        else 
+        {
+            PlayerTeams = offlineTeams;
+        }
     }
     private void StartSimulation()
     {

@@ -17,8 +17,8 @@ public class EntityOnVision
         this.team = team;
         this.position = position;
     }
-    public Entity entity;
-    public Collider collider;
-    public int team;
-    public FractionalHex position;
+    public readonly Entity entity;
+    public readonly Collider collider;
+    public readonly int team;
+    public readonly FractionalHex position;
 }

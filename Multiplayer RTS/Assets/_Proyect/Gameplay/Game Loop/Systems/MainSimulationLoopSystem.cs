@@ -12,13 +12,13 @@ public struct MainSimulationStateComponent : ISystemStateComponentData { }
 public class MainSimulationLoopSystem : ComponentSystem
 {
     public static int CurrentLockstepTurn { get; private set; } = 0;
-    public static int CurrentGameTurn { get; private set; }     = 0;
-    public static Fix64 SimulationTime { get; private set; }    = Fix64.Zero;
-    public static Fix64 UnprocessedTime { get; private set; }   = Fix64.Zero;
+    public static int CurrentGameTurn { get; private set; } = 0;
+    public static Fix64 SimulationTime { get; private set; } = Fix64.Zero;
+    public static Fix64 UnprocessedTime { get; private set; } = Fix64.Zero;
 
-    public static readonly Fix64 SimulationDeltaTime            = (Fix64)0.05;
-    public const int GAME_TURNS_REQUIRED_FOR_LOCKSTEP_TURN      = 4;
-    public const int COMMANDS_DELAY                             = 2;
+    public static readonly Fix64 SimulationDeltaTime = (Fix64)0.05;
+    public const int GAME_TURNS_REQUIRED_FOR_LOCKSTEP_TURN = 4;
+    public const int COMMANDS_DELAY = 2;
 
 
     private bool lockstepIsOpen = false;
@@ -33,6 +33,8 @@ public class MainSimulationLoopSystem : ComponentSystem
     //private SimulationSystemGroup simulationSystemGroup;
     //private LateSimulationSystemGroup lateSimulationSystemGroup;
     //private ApplicationSystemGroup applicationSystemGroup;
+    private BlockMovementSystem blockMovementSystem;
+
     private OnGroupCheckSystem onGroupCheckSystem;
 
     private UpdateReachableHexListSystem updateReachableHexListSystem;
@@ -72,6 +74,8 @@ public class MainSimulationLoopSystem : ComponentSystem
         lockstepSystemGroup.AddSystemToUpdateList(World.GetOrCreateSystem<CommandExecutionSystem>());
         lockstepSystemGroup.AddSystemToUpdateList(World.GetOrCreateSystem<VolatileCommandSystem>());
         lockstepSystemGroup.AddSystemToUpdateList(World.GetOrCreateSystem<CommandableSafetySystem>());
+
+        blockMovementSystem      = World.GetOrCreateSystem<BlockMovementSystem>();
 
         onGroupCheckSystem       = World.GetOrCreateSystem<OnGroupCheckSystem>();
 
@@ -138,6 +142,7 @@ public class MainSimulationLoopSystem : ComponentSystem
 
             if (SimulationDeltaTime <= UnprocessedTime)
             {
+                blockMovementSystem.Update();
 
                 onGroupCheckSystem.Update();
 

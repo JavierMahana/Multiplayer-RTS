@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9daafb11d85e447b4f9e77e1e58cbd, type: 3}
+  m_Name: big_gold
+  m_EditorClassIdentifier: 
+  isEmpty: 0
+  isResource: 1
+  resourceData:
+    sprite: {fileID: 2611001134890112705, guid: 61abbfe97a13f6546abcfdfe08fa0454,
+      type: 3}
+    ammount: 1500
+    resourceType: 2
+  hexMaterial: {fileID: 2100000, guid: 09eb97acf3d319648aa92f177f056561, type: 2}

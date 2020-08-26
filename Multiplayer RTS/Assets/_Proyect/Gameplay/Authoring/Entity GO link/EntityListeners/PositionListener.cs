@@ -3,28 +3,59 @@ using System.Collections.Generic;
 using UnityEngine;
 using FixMath.NET;
 
-//this class listens to the entity of the entity filter and moves itself to the corresponding place.
-//it diferentiates tiles and other agents.
 
+public enum PosListenerMode
+{
+    HEX_POS = 0,
+    BUILDING = 1,
+    RESOURCE = 2
+}
+
+/// <summary>
+///this class listens to the entity of the entity filter and moves itself to the corresponding place.
+///TO WORK NEEDS: a HexPosition or a Building or a ResourceSource component.
+///it diferentiates tiles and other agents.
+/// </summary>
 [RequireComponent(typeof(EntityFilter))]
 
 public class PositionListener : MonoBehaviour
 {
     public const float AGENTS_EXTRA_Z_VALUE = 0.5f;
-    private EntityFilter entityFilter; 
+    private EntityFilter entityFilter;
+    private PosListenerMode mode;
     private int minZValue;
+    private const int DISTANCE_TO_CAMERA = 4;
 
     private void Awake()
     {
         var camera = Camera.main;
-        minZValue = Mathf.CeilToInt(camera.transform.position.z + camera.nearClipPlane + 1);
+        minZValue = Mathf.CeilToInt(camera.transform.position.z + camera.nearClipPlane + DISTANCE_TO_CAMERA);
         entityFilter = GetComponent<EntityFilter>();
     }
     private void Start()
     {
+        var camera = Camera.main;
+        minZValue = Mathf.CeilToInt(camera.transform.position.z + camera.nearClipPlane + DISTANCE_TO_CAMERA);
+        entityFilter = GetComponent<EntityFilter>();
+
+
         var entity = entityFilter.Entity;
         var entityManager = entityFilter.EntityManager;
-        Debug.Assert(entityManager.HasComponent<HexPosition>(entity), "the position listener component requires that the entity have a hexposition comp");
+        bool hasHexPos = entityManager.HasComponent<HexPosition>(entity);
+        bool hasBuilding = entityManager.HasComponent<Building>(entity);
+        bool hasResSource = entityManager.HasComponent<ResourceSource>(entity);
+        Debug.Assert(hasHexPos || hasBuilding || hasResSource, "the position listener component requires that the entity have a hexposition or a building or a resourceSource comp");
+        if (hasHexPos)
+            mode = PosListenerMode.HEX_POS;
+        else if (hasBuilding)
+            mode = PosListenerMode.BUILDING;
+        else if (hasResSource)
+            mode = PosListenerMode.RESOURCE;
+        else 
+        {
+            Debug.LogWarning("The pos listener will not work because the entity don't have any of the required comps to work.");
+            mode = (PosListenerMode)666;
+        }
     }
 
     private void Update()
@@ -33,7 +64,24 @@ public class PositionListener : MonoBehaviour
         if (MapManager.ActiveMap == null)
             return;
 
-        var hexPosition = entityFilter.EntityManager.GetComponentData<HexPosition>(entityFilter.Entity);
+        FractionalHex hexCoords;
+
+        switch (mode)
+        {
+            case PosListenerMode.HEX_POS:
+                hexCoords = entityFilter.EntityManager.GetComponentData<HexPosition>(entityFilter.Entity).HexCoordinates;
+                break;
+            case PosListenerMode.BUILDING:
+                hexCoords = (FractionalHex)entityFilter.EntityManager.GetComponentData<Building>(entityFilter.Entity).position;
+                break;
+            case PosListenerMode.RESOURCE:
+                
+                hexCoords = (FractionalHex)entityFilter.EntityManager.GetComponentData<ResourceSource>(entityFilter.Entity).position;
+                break;
+            default:
+                return;
+        }
+         
         Fix64 radius = Fix64.Zero;
         if (entityFilter.EntityManager.HasComponent<Collider>(entityFilter.Entity))
         {
@@ -41,11 +89,11 @@ public class PositionListener : MonoBehaviour
         }
 
         
-        float elevation = MapUtilities.GetElevationOfPosition(hexPosition.HexCoordinates);
-        var worldPosition = activeMap.layout.HexToWorld(hexPosition.HexCoordinates);
+        float elevation = MapUtilities.GetElevationOfPosition(hexCoords);
+        var worldPosition = activeMap.layout.HexToWorld(hexCoords);
 
         //this takes into consideration the radius of the object. so the visuals are not cutted when walking into another hex. the point goes down by the radius.
-        var coordinateForZValue = hexPosition.HexCoordinates - new FractionalHex(-(Fix64)0.5, (Fix64)1,-(Fix64)0.5) * radius;
+        var coordinateForZValue = hexCoords - new FractionalHex(-(Fix64)0.5, (Fix64)1,-(Fix64)0.5) * radius;
         // if the y coordinate is lower, it must be closer
         float zCoordinate = minZValue + coordinateForZValue.Round().r - AGENTS_EXTRA_Z_VALUE;
 
@@ -92,3 +140,4 @@ public class PositionListener : MonoBehaviour
     }
 
 }
+

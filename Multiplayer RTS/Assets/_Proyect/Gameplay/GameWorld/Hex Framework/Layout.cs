@@ -77,6 +77,7 @@ public struct Layout
     }
 
 
+
     public FixVector2 CornerOffSet(int corner)
     {
         if (!initialized) throw new System.Exception("The Layout is not initialized and cannot be used.");

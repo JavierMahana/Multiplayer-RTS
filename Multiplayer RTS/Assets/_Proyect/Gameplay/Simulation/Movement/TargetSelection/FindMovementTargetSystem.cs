@@ -11,6 +11,11 @@ using UnityEngine;
 using System;
 
 [DisableAutoCreation]
+
+// este sistema esta encargado de escribir en el steering target component.
+//acá se diferencian entre distintos tipos de entidad, ya que en el sistema de steering todos son iguales.
+ 
+
 //por ahora el sistema solo considera grupos de 9 como maximo para las formaciones
 public class FindMovementTargetSystem : ComponentSystem
 {
@@ -93,10 +98,11 @@ public class FindMovementTargetSystem : ComponentSystem
     }
     protected override void OnUpdate()
     {
+       
 
         #region On group movement target find.
 
-        
+
         int groupCount = m_GroupQuery.CalculateEntityCount();
         var groupPosition = new FractionalHex[groupCount];
         var groupDirections = new FractionalHex[groupCount];
@@ -163,6 +169,9 @@ public class FindMovementTargetSystem : ComponentSystem
 
 
         //goes for each group and sets the temp targets
+        //the temp target are;
+        //when moving: the position of the group offsetted by the direction of the group and the position of the unit relative to its siblins.
+        //when standing: the formation position.
         foreach (var groupUnitList in groupMemberHashMap)
         {
             var siblinList = new List<int>(groupUnitList.Value);
@@ -234,6 +243,8 @@ public class FindMovementTargetSystem : ComponentSystem
         });
 
 
+        //sin target de accion -> es decir sigue el comportamiento por defecto de los grupos.
+        //aka: utiliza el tempTargets asignado anteriormente
         Entities.WithAll<OnGroup>().WithNone<ActionTarget>().ForEach((Entity entity, Parent parent, ref SteeringTarget target) =>
         {
             int parentGroupIndex;
@@ -276,9 +287,9 @@ public class FindMovementTargetSystem : ComponentSystem
 
             target.TargetPosition = (FractionalHex)buffer[waypointIndex.Value].Value;
         });
-
+        #endregion
     }
-    #endregion
+
 }
 
 //private static bool StopAtTarget

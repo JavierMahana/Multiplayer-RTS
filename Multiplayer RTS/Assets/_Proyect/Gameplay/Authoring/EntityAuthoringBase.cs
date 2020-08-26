@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
 
+[DisallowMultipleComponent]
 [RequireComponent(typeof(EntityFilter))]
 public abstract class EntityAuthoringBase : MonoBehaviour
 {

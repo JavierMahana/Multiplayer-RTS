@@ -55,7 +55,7 @@
 
                 fixed4 col = tex2D(_FirstTex, i.uv) * (1 - _ExploredFogAlpha) + tex2D(_SecondTex, i.uv) * _ExploredFogAlpha;
                 fixed alpha = 1 - (col.r + col.g + col.b) / 3;
-                fixed4 newcol = fixed4(col.r, col.g, col.b, alpha);
+                fixed4 newcol = fixed4(0, 0, 0, alpha);
                 return newcol;
             }
             ENDCG

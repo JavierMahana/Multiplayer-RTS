@@ -352,7 +352,7 @@ public static class MapUtilities
 
         if ((hexB - hexA).Lenght() > 1)
         {
-            Debug.LogWarning("you are checking if two hexes that are not adjacent are traversable.");
+            Debug.LogWarning($"you are checking if two hexes that are not adjacent are traversable.({hexA} y {hexB})");
             return false;
         }
 
