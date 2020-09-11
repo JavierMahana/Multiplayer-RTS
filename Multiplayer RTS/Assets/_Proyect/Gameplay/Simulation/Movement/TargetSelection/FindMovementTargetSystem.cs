@@ -98,11 +98,11 @@ public class FindMovementTargetSystem : ComponentSystem
     }
     protected override void OnUpdate()
     {
-       
+
 
         #region On group movement target find.
 
-
+        #region init collections
         int groupCount = m_GroupQuery.CalculateEntityCount();
         var groupPosition = new FractionalHex[groupCount];
         var groupDirections = new FractionalHex[groupCount];
@@ -114,6 +114,7 @@ public class FindMovementTargetSystem : ComponentSystem
         var onGroupEntityToIndex = new Dictionary<int, int>(onGroupCount);
         var onGroupPositions     = new FractionalHex[onGroupCount];
         var onGroupActRange      = new Fix64[onGroupCount];
+        var onGroupIsMelee       = new bool[onGroupCount];
         var onGroupRadius        = new Fix64[onGroupCount];
         var groupMemberHashMap   = new Dictionary<int, List<int>>(onGroupCount);
         var unitsParents         = new Entity[onGroupCount];
@@ -146,6 +147,7 @@ public class FindMovementTargetSystem : ComponentSystem
             onGroupPositions[collectionIndex] = position.HexCoordinates;
             onGroupRadius[collectionIndex] = collider.Radius;
             onGroupActRange[collectionIndex] = actAttributes.ActRange;
+            onGroupIsMelee[collectionIndex] = actAttributes.Melee;
         });
         Entities.WithAll<OnGroup>().ForEach((Entity entity, Parent parent) =>
         {
@@ -166,8 +168,9 @@ public class FindMovementTargetSystem : ComponentSystem
                 groupMemberHashMap.Add(parentIndex, sameGroupIndices);
             }
         });
+        #endregion
 
-
+        #region writes default steering targets(NO ACTION TARGET)
         //goes for each group and sets the temp targets
         //the temp target are;
         //when moving: the position of the group offsetted by the direction of the group and the position of the unit relative to its siblins.
@@ -217,36 +220,11 @@ public class FindMovementTargetSystem : ComponentSystem
             }
         }
         //writes on the steering target component
-
-        //with action target
-        Entities.WithAll<OnGroup>().ForEach((Entity entity, Parent parent, ref ActionTarget actionTarget, ref SteeringTarget steeringTarget) =>
-        {
-            int onGroupIndex = onGroupEntityToIndex[entity.Index];
-            var pos          = onGroupPositions[onGroupIndex];
-            var radius       = onGroupRadius[onGroupIndex];
-            var actRange     = onGroupActRange[onGroupIndex];
-            var distance     = pos.Distance(actionTarget.TargetPosition);
-
-            //fuera de rango de acción.
-            if (distance > actRange + radius + actionTarget.TargetRadius + TARGET_OFFSET)
-            {
-                var directionToTarget = (actionTarget.TargetPosition - pos).NormalizedManhathan();
-
-                steeringTarget.TargetPosition = pos + (directionToTarget * (distance - (actionTarget.TargetRadius + radius + actRange)));
-                steeringTarget.StopAtTarget = true;
-            }
-            else //dentro de rango de acción
-            {
-                steeringTarget.TargetPosition = pos;
-                steeringTarget.StopAtTarget = true;
-            }
-        });
-
-
         //sin target de accion -> es decir sigue el comportamiento por defecto de los grupos.
         //aka: utiliza el tempTargets asignado anteriormente
-        Entities.WithAll<OnGroup>().WithNone<ActionTarget>().ForEach((Entity entity, Parent parent, ref SteeringTarget target) =>
+        Entities.WithAll<OnGroup, PathWaypoint>().WithNone<ActionTarget>().ForEach((Entity entity, Parent parent, ref HexPosition hexPos, ref PathWaypointIndex waypointIndex, ref SteeringTarget target) =>
         {
+            var pos = hexPos.HexCoordinates;
             int parentGroupIndex;
             int collectionIndex = onGroupEntityToIndex[entity.Index];
 
@@ -257,13 +235,123 @@ public class FindMovementTargetSystem : ComponentSystem
             }
             bool parentReachedDestination = groupReachedDestination[parentGroupIndex];
 
-            target.TargetPosition = unitsTempTargets[collectionIndex];
-            
-            if (parentReachedDestination)
-                target.StopAtTarget = true;
-            else
-                target.StopAtTarget = false;
+
+            var desiredTarget = unitsTempTargets[collectionIndex];
+            if (MapUtilities.PathToPointIsClear(pos, desiredTarget))
+            {
+                target.TargetPosition = desiredTarget;
+                if (parentReachedDestination)
+                    target.StopAtTarget = true;
+                else
+                    target.StopAtTarget = false;
+            }
+            else 
+            {
+                var buffer = EntityManager.GetBuffer<PathWaypoint>(entity);
+
+                if (waypointIndex.Value >= buffer.Length)
+                {
+                    PostUpdateCommands.AddComponent<RefreshPathNow>(entity);
+                    target.TargetPosition = pos;
+                    return;
+                }
+
+
+                if (waypointIndex.Value == buffer.Length - 1)
+                    target.StopAtTarget = true;
+                else
+                    target.StopAtTarget = false;
+
+
+                target.TargetPosition = (FractionalHex)buffer[waypointIndex.Value].Value;
+
+            }
+
+            //target.TargetPosition = unitsTempTargets[collectionIndex];
+
+
+            //if (parentReachedDestination)
+            //    target.StopAtTarget = true;
+            //else
+            //    target.StopAtTarget = false;
         });
+        #endregion
+
+        #region writes steering targets WITH ACTION TARGET
+        //with action target
+        Entities.WithAll<OnGroup, PathWaypoint>().ForEach((Entity entity, Parent parent, ref ActionTarget actionTarget, ref SteeringTarget steeringTarget, ref PathWaypointIndex waypointIndex, ref Steering steeringValues) =>
+        {
+            int onGroupIndex = onGroupEntityToIndex[entity.Index];
+            var pos          = onGroupPositions[onGroupIndex];
+            var radius       = onGroupRadius[onGroupIndex];
+            var actRange     = onGroupActRange[onGroupIndex];
+            bool isMelee     = onGroupIsMelee[onGroupIndex];
+            var distance     = pos.Distance(actionTarget.TargetPosition);
+            
+
+            bool isActing = EntityManager.HasComponent<IsActing>(entity);
+
+            if (!isActing)
+            {
+                var directionToTarget = (actionTarget.TargetPosition - pos).NormalizedManhathan();
+                var steeringTargetPos = pos + (directionToTarget * (distance - (actionTarget.TargetRadius + radius + actRange)));
+
+
+
+                bool pathToTargetIsClear;
+                if (isMelee)
+                {
+                    if (actionTarget.OccupiesFullHex)
+                    {
+                        pathToTargetIsClear = MapUtilities.PathToPointIsClear(pos, (FractionalHex)actionTarget.OccupyingHex, pathIsClearEvenIfDestPointIsBlocked: true);
+                    }
+                    else
+                    {
+                        pathToTargetIsClear = MapUtilities.PathToPointIsClear(pos, steeringTargetPos);
+                    }
+                }
+                else
+                {
+                    pathToTargetIsClear = MapUtilities.PathToPointIsClear(pos, steeringTargetPos);
+                }
+                
+
+                if (pathToTargetIsClear)
+                {
+                    steeringTarget.TargetPosition = pos + (directionToTarget * (distance - (actionTarget.TargetRadius + radius + actRange - steeringValues.satisfactionDistance)));
+                    steeringTarget.StopAtTarget = true;
+                }
+                else
+                {
+                    var buffer = EntityManager.GetBuffer<PathWaypoint>(entity);
+
+                    if (waypointIndex.Value >= buffer.Length)
+                    {
+                        PostUpdateCommands.AddComponent<RefreshPathNow>(entity);
+                        steeringTarget.TargetPosition = pos;
+                        return;
+                    }
+
+                    
+                    if (waypointIndex.Value == buffer.Length - 1)
+                        steeringTarget.StopAtTarget = true;
+                    else
+                        steeringTarget.StopAtTarget = false;
+                    
+
+                    steeringTarget.TargetPosition = (FractionalHex)buffer[waypointIndex.Value].Value;
+
+                }
+            }
+            else //los que estan enmedio de una accion de quedan quietos.
+            {
+                steeringTarget.TargetPosition = pos;
+                steeringTarget.StopAtTarget = true;
+            }
+        });
+        #endregion
+
+
         #endregion
 
 

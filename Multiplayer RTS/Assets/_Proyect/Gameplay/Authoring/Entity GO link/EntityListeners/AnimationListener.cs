@@ -33,7 +33,9 @@ public class AnimationListener : MonoBehaviour
 
     private void Update()
     {
-        
+        if (! entityFilter.EntityManager.HasComponent<DirectionAverage>(entityFilter.Entity))
+            return;
+
         var hexDirection = entityFilter.EntityManager.GetComponentData<DirectionAverage>(entityFilter.Entity).Value;
         var direction = FractionalHex.HexSpaceToCartesianSpace(hexDirection, Orientation.pointy);
 

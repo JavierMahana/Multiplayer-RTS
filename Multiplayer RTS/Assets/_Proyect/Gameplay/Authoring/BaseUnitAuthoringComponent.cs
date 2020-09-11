@@ -10,6 +10,9 @@ public abstract class BaseUnitAuthoringComponent : EntityAuthoringBase
     [SerializeField]
     private EntityFilter parentEntityFilter = null;
 
+    [SerializeField]
+    private int health = 80;
+
 
     [SerializeField]
     private float waypointReachedDistance = 0.1f;
@@ -30,6 +33,8 @@ public abstract class BaseUnitAuthoringComponent : EntityAuthoringBase
     private float sightRange = 1.4f;
     [SerializeField]
     private float actionRange = 0.5f;
+    [SerializeField]
+    private bool meleeAction = false;
 
     [SerializeField]
     private bool log = false;
@@ -56,11 +61,13 @@ public abstract class BaseUnitAuthoringComponent : EntityAuthoringBase
 
         entityManager.AddComponentData<OnReinforcement>(entity, new OnReinforcement());
 
+        //health
+        entityManager.AddComponentData<Health>(entity, new Health() { MaxHealth = health, CurrentHealth = health });
 
         //Act
-        entityManager.AddComponentData<ActionAttributes>(entity, new ActionAttributes() { ActRange = (Fix64)actionRange });
+        entityManager.AddComponentData<ActionAttributes>(entity, new ActionAttributes() { ActRange = (Fix64)actionRange, Melee = meleeAction });
 
-        //Pathfinding
+        //Pathfinding components.
         entityManager.AddComponentData<RefreshPathTimer>(entity, new RefreshPathTimer() { TurnsRequired = turnsTorefreshPath, TurnsWithoutRefresh = 0 });
         entityManager.AddComponentData<PathWaypointIndex>(entity, new PathWaypointIndex() { Value = 0 });
         var buffer = entityManager.AddBuffer<PathWaypoint>(entity);

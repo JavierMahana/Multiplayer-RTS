@@ -6,7 +6,7 @@ using Unity.Mathematics;
 
 [Serializable]
 /// <summary>
-/// componente que es usado para determinar si es que una unidad eha llegado a su destino de movimiento o no.
+/// componente que es usado para determinar si es que una unidad(UN GRUPO) eha llegado a su destino de movimiento o no.
 /// </summary>
 public struct MovementState : IComponentData
 {

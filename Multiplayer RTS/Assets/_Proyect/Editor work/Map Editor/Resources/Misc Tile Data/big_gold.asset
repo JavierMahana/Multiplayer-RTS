@@ -18,5 +18,7 @@ MonoBehaviour:
     sprite: {fileID: 2611001134890112705, guid: 61abbfe97a13f6546abcfdfe08fa0454,
       type: 3}
     ammount: 1500
+    maxGatherers: 4
     resourceType: 2
+    ticksForExtraction: 150
   hexMaterial: {fileID: 2100000, guid: 09eb97acf3d319648aa92f177f056561, type: 2}

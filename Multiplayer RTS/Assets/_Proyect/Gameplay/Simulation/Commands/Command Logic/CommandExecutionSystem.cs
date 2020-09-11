@@ -55,7 +55,7 @@ public class CommandExecutionSystem : ComponentSystem
 
     private void ExecuteCommand(MoveCommand command)    
     {
-        Debug.Log("setting the destination by command");
+        //Debug.Log("setting the destination by command");
         PostUpdateCommands.SetComponent(command.Target, command.Destination);
         PostUpdateCommands.AddComponent(command.Target, new RefreshPathNow());
 
@@ -69,7 +69,7 @@ public class CommandExecutionSystem : ComponentSystem
     }
     private void ExecuteCommand(GatherCommand command)
     {
-        PostUpdateCommands.SetComponent(command.Target, new TriggerGather() {targetResourcePos = command.TargetPos });
+        PostUpdateCommands.AddComponent(command.Target, new TriggerGather() {targetResourcePos = command.TargetPos });
 
         //además mueve al grupo hacia el recurso
         PostUpdateCommands.SetComponent(command.Target, new DestinationHex() { FinalDestination = command.TargetPos });

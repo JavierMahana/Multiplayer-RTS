@@ -7,6 +7,7 @@ using Unity.Transforms;
 using static Unity.Mathematics.math;
 using System;
 using UnityEngine;
+using FixMath.NET;
 
 [DisableAutoCreation]
 //it creates pathfindig triggers in the following cases:
@@ -21,7 +22,7 @@ using UnityEngine;
 public class PathRefreshSystem : ComponentSystem
 {
 
-    private void TriggerPathFindingOnReinforcementUnit(Entity entity, Parent parent, ref RefreshPathTimer refreshPathTimer)
+    private void TriggerPathFindingToParent(Entity entity, Parent parent, ref RefreshPathTimer refreshPathTimer)
     {
         if (!EntityManager.HasComponent<HexPosition>(parent.ParentEntity))
         {
@@ -33,6 +34,14 @@ public class PathRefreshSystem : ComponentSystem
         PostUpdateCommands.AddComponent(entity, new TriggerPathfinding() { Destination = parentPosition.HexCoordinates.Round() });
         refreshPathTimer.TurnsWithoutRefresh = 0;
     }
+    private void TriggerPathFindingOnUnitWithTarget(Entity entity, FractionalHex pos, ActionTarget target, RuntimeMap map, ref RefreshPathTimer refreshPathTimer)
+    {
+        Hex dest;
+        MapUtilities.TryFindClosestOpenAndReachableHex(out dest, (FractionalHex)target.OccupyingHex, pos, map.MovementMapValues);
+        PostUpdateCommands.AddComponent(entity, new TriggerPathfinding() { Destination = dest });
+        refreshPathTimer.TurnsWithoutRefresh = 0;
+    }
+
     private void TriggerPathFindingOnCommandedGroup(Entity entity, Hex destinationHex, ref RefreshPathTimer refreshPathTimer)
     {        
         PostUpdateCommands.AddComponent(entity, new TriggerPathfinding() { Destination = destinationHex });
@@ -42,6 +51,9 @@ public class PathRefreshSystem : ComponentSystem
 
     protected override void OnUpdate()
     {
+        var map = MapManager.ActiveMap;
+        Debug.Assert(map != null, "the active map must be set before this systems updates");
+
 
         #region refresh pathnow
         #region group variants
@@ -63,29 +75,73 @@ public class PathRefreshSystem : ComponentSystem
 
 
         #endregion
-        Entities.WithAll<RefreshPathNow, OnReinforcement>().ForEach(
+
+        //,OnReinforcement
+        Entities.WithAll<RefreshPathNow>().WithNone<ActionTarget>().ForEach(
         (Entity entity, Parent parent, ref RefreshPathTimer timer) => 
         {            
-            TriggerPathFindingOnReinforcementUnit(entity, parent, ref timer);
+            TriggerPathFindingToParent(entity, parent, ref timer);
             PostUpdateCommands.RemoveComponent<RefreshPathNow>(entity);
         });
+
+
+        Entities.WithAll<RefreshPathNow, OnGroup>().ForEach(
+        (Entity entity, ref HexPosition pos, ref ActionTarget target, ref RefreshPathTimer timer) =>
+        {
+            TriggerPathFindingOnUnitWithTarget(entity, pos.HexCoordinates, target, map.map, ref timer);
+            PostUpdateCommands.RemoveComponent<RefreshPathNow>(entity);
+
+            //if (!MapUtilities.PathToPointIsClear(pos.HexCoordinates, target.TargetPosition))
+            //{
+            //    TriggerPathFindingOnUnitWithTarget(entity, pos.HexCoordinates, target, map.map, ref timer);
+            //    PostUpdateCommands.RemoveComponent<RefreshPathNow>(entity);
+            //}
+
+        });
+
         #endregion
 
 
 
         #region automatic refresh
-        Entities.WithAll<OnReinforcement, PathRefreshSystemState>().ForEach(
+        //,OnReinforcement
+        Entities.WithAll<PathRefreshSystemState>().WithNone<ActionTarget>().ForEach(
         (Entity entity, Parent parent, ref RefreshPathTimer refreshPathTimer) => 
         {
             if (refreshPathTimer.TurnsRequired <= refreshPathTimer.TurnsWithoutRefresh)
             {
-                TriggerPathFindingOnReinforcementUnit(entity, parent, ref refreshPathTimer);
+                TriggerPathFindingToParent(entity, parent, ref refreshPathTimer);
             }
             else
             {
                 refreshPathTimer.TurnsWithoutRefresh += 1;
             }
         });
+
+        Entities.WithAll<OnGroup, PathRefreshSystemState>().ForEach(
+        (Entity entity, ref HexPosition pos, ref ActionTarget target, ref RefreshPathTimer refreshPathTimer) =>
+        {
+            if (refreshPathTimer.TurnsRequired <= refreshPathTimer.TurnsWithoutRefresh)
+            {
+                TriggerPathFindingOnUnitWithTarget(entity, pos.HexCoordinates, target, map.map, ref refreshPathTimer);
+            }
+            else
+            {
+                refreshPathTimer.TurnsWithoutRefresh += 1;
+            }
+            //if (!MapUtilities.PathToPointIsClear(pos.HexCoordinates, target.TargetPosition))
+            //{
+            //    if (refreshPathTimer.TurnsRequired <= refreshPathTimer.TurnsWithoutRefresh)
+            //    {
+            //        TriggerPathFindingOnUnitWithTarget(entity, pos.HexCoordinates, target, map.map, ref refreshPathTimer);
+            //    }
+            //    else
+            //    {
+            //        refreshPathTimer.TurnsWithoutRefresh += 1;
+            //    }
+            //}
+        });
+
 
         #region group variants
         Entities.WithAll<Group, PathRefreshSystemState>().WithNone<PriorityGroupTarget>().ForEach(
@@ -119,17 +175,12 @@ public class PathRefreshSystem : ComponentSystem
 
 
         #region refresh counter managment
-        Entities.WithAll<OnReinforcement, RefreshPathTimer>().WithNone<PathRefreshSystemState>().ForEach((Entity entity) =>
-        {
-            PostUpdateCommands.AddComponent<PathRefreshSystemState>(entity);
-        });
-        Entities.WithAll<Group, RefreshPathTimer>().WithNone<PathRefreshSystemState>().ForEach((Entity entity) =>
+        Entities.WithAll<RefreshPathTimer>().WithNone<PathRefreshSystemState>().ForEach((Entity entity) =>
         {
             PostUpdateCommands.AddComponent<PathRefreshSystemState>(entity);
         });
 
-
-        Entities.WithAll<PathRefreshSystemState>().WithNone<Group, OnReinforcement>().ForEach((Entity entity) =>
+        Entities.WithAll<PathRefreshSystemState>().WithNone<RefreshPathTimer>().ForEach((Entity entity) =>
         {
             PostUpdateCommands.RemoveComponent<PathRefreshSystemState>(entity);
         });

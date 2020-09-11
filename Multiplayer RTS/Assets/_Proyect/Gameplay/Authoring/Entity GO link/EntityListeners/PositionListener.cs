@@ -8,7 +8,8 @@ public enum PosListenerMode
 {
     HEX_POS = 0,
     BUILDING = 1,
-    RESOURCE = 2
+    RESOURCE = 2,
+    SUBSTITUTE = 3
 }
 
 /// <summary>
@@ -44,14 +45,17 @@ public class PositionListener : MonoBehaviour
         bool hasHexPos = entityManager.HasComponent<HexPosition>(entity);
         bool hasBuilding = entityManager.HasComponent<Building>(entity);
         bool hasResSource = entityManager.HasComponent<ResourceSource>(entity);
-        Debug.Assert(hasHexPos || hasBuilding || hasResSource, "the position listener component requires that the entity have a hexposition or a building or a resourceSource comp");
+        bool hasSubstitute = entityManager.HasComponent<Substitute>(entity);
+        Debug.Assert(hasHexPos || hasBuilding || hasResSource || hasSubstitute, "the position listener component requires that the entity have a hexposition or a building or a resourceSource comp");
         if (hasHexPos)
             mode = PosListenerMode.HEX_POS;
         else if (hasBuilding)
             mode = PosListenerMode.BUILDING;
         else if (hasResSource)
             mode = PosListenerMode.RESOURCE;
-        else 
+        else if (hasSubstitute)
+            mode = PosListenerMode.SUBSTITUTE;
+        else
         {
             Debug.LogWarning("The pos listener will not work because the entity don't have any of the required comps to work.");
             mode = (PosListenerMode)666;
@@ -69,14 +73,28 @@ public class PositionListener : MonoBehaviour
         switch (mode)
         {
             case PosListenerMode.HEX_POS:
-                hexCoords = entityFilter.EntityManager.GetComponentData<HexPosition>(entityFilter.Entity).HexCoordinates;
+                if (entityFilter.EntityManager.HasComponent<HexPosition>(entityFilter.Entity))
+                    hexCoords = entityFilter.EntityManager.GetComponentData<HexPosition>(entityFilter.Entity).HexCoordinates;
+                else
+                    return;
                 break;
-            case PosListenerMode.BUILDING:
-                hexCoords = (FractionalHex)entityFilter.EntityManager.GetComponentData<Building>(entityFilter.Entity).position;
+            case PosListenerMode.BUILDING:                
+                if (entityFilter.EntityManager.HasComponent<Building>(entityFilter.Entity))
+                    hexCoords = (FractionalHex)entityFilter.EntityManager.GetComponentData<Building>(entityFilter.Entity).position;
+                else                 
+                    return;                                                 
                 break;
-            case PosListenerMode.RESOURCE:
-                
-                hexCoords = (FractionalHex)entityFilter.EntityManager.GetComponentData<ResourceSource>(entityFilter.Entity).position;
+            case PosListenerMode.RESOURCE:               
+                if (entityFilter.EntityManager.HasComponent<ResourceSource>(entityFilter.Entity))
+                    hexCoords = (FractionalHex)entityFilter.EntityManager.GetComponentData<ResourceSource>(entityFilter.Entity).position;
+                else
+                    return;
+                break;
+            case PosListenerMode.SUBSTITUTE:
+                if (entityFilter.EntityManager.HasComponent<Substitute>(entityFilter.Entity))
+                    hexCoords = (FractionalHex)entityFilter.EntityManager.GetComponentData<Substitute>(entityFilter.Entity).position;
+                else
+                    return;
                 break;
             default:
                 return;

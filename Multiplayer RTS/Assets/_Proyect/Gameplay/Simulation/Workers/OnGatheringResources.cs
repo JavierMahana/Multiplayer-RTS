@@ -12,5 +12,6 @@ public struct OnGatheringResources : IComponentData
     public int maxCargo;
 
     public Entity gatheringResEntity;
+    public FractionalHex resPosition;
     public ResourceType gatheringResType;
 }

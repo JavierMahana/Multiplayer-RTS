@@ -44,10 +44,11 @@ public class CollisionSystem : ComponentSystem
         var collidersRadious = new Fix64[colliderCount];        
         var collidersLayers  = new ColliderLayer[colliderCount];
         var teams            = new int[colliderCount];
+        var areActing        = new bool[colliderCount];
 
         //init the collections
         int collectionIndex = 0;
-        Entities.ForEach((ref HexPosition hexPosition, ref Collider collider, ref Team team) =>
+        Entities.ForEach((Entity entity, ref HexPosition hexPosition, ref Collider collider, ref Team team) =>
         {
             var position = hexPosition.HexCoordinates;
 
@@ -56,7 +57,12 @@ public class CollisionSystem : ComponentSystem
             collidersLayers[collectionIndex] = collider.Layer;
             teams[collectionIndex] = team.Number;
 
-            collectionIndex++;
+            if (EntityManager.HasComponent<IsActing>(entity))
+                areActing[collectionIndex] = true;
+            else
+                areActing[collectionIndex] = false;
+
+                collectionIndex++;
         });
 
         var pointsSorted = SpartialSortUtils.GetPointsSpartiallySorted(positions, 1);
@@ -109,7 +115,7 @@ public class CollisionSystem : ComponentSystem
 
                 //SimpleCollisionCheckAndResponse(ref hexPosition, collider.Radious,  positions, collidersRadious, teams, thisIndex, collidableIndices);
                 //vamos a intentar una collision de dos pasos.
-                DoubleStepCollision(ref hexPosition, collider.Radius, team, positions, collidersRadious, teams, thisIndex, collidableIndices);
+                DoubleStepCollision(ref hexPosition, collider.Radius, team, positions, collidersRadious, teams, areActing, thisIndex, collidableIndices);
             }
         });
     }
@@ -190,25 +196,27 @@ public class CollisionSystem : ComponentSystem
         positions[thisIndex] = hexPosition.HexCoordinates;
     }
 
-    private static void DoubleStepCollision(ref HexPosition hexPosition, Fix64 radius, Team team, FractionalHex[] positions, Fix64[] collidersRadious, int[] teams, int thisIndex, List<int> collidableIndices)
+    private static void DoubleStepCollision(ref HexPosition hexPosition, Fix64 radius, Team team, FractionalHex[] positions, Fix64[] collidersRadious, int[] teams, bool[] areActing, int thisIndex, List<int> collidableIndices)
     {
-        var sameTeamIndices = new List<int>();
-        var otherTeamIndices = new List<int>();
+        var simpleCollisionIndices = new List<int>();
+        var complexCollisionIndices = new List<int>();
         foreach (int index in collidableIndices)
         {            
-            var currTeam = teams[index];
-            if (currTeam == team.Number)
+            int currTeam = teams[index];
+            bool acting = areActing[index];
+
+            if (currTeam == team.Number && !acting)
             {
-                sameTeamIndices.Add(index);
+                simpleCollisionIndices.Add(index);
             }
             else
             {
-                otherTeamIndices.Add(index);
+                complexCollisionIndices.Add(index);
             }
         }
 
-        SimpleCollisionCheckAndResponse(ref hexPosition, radius, positions, collidersRadious, teams, thisIndex, sameTeamIndices, true);
-        ComplexCollisionCheckAndResponse(ref hexPosition, radius, positions, collidersRadious, teams, thisIndex, otherTeamIndices, 6);
+        SimpleCollisionCheckAndResponse(ref hexPosition, radius, positions, collidersRadious, teams, thisIndex, simpleCollisionIndices, true);
+        ComplexCollisionCheckAndResponse(ref hexPosition, radius, positions, collidersRadious, teams, thisIndex, complexCollisionIndices, 6);
         //SimpleCollisionCheckAndResponse(ref hexPosition, radius, positions, collidersRadious, teams, thisIndex, otherTeamIndices, false);
     }
 

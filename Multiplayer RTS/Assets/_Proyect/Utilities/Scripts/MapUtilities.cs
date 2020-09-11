@@ -87,7 +87,7 @@ public static class MapUtilities
         bool simple_DownRight = downRight_h != right_h && downRight_h != left_h && left_h == topRight_h && left_h == topLeft_h && right_h == downLeft_h;
         bool simple_DownLeft = downLeft_h != left_h && downLeft_h != right_h && right_h == topRight_h && right_h == topLeft_h && left_h == downRight_h;
         bool simple_Left = left_h != downLeft_h && left_h != right_h && right_h == topRight_h && right_h == downRight_h && downLeft_h == topLeft_h;
-        bool simple_TopLeft = topLeft_h != left_h && topLeft_h != right_h && right_h == topRight_h && right_h == downRight_h && left_h == topRight_h;
+        bool simple_TopLeft = topLeft_h != left_h && topLeft_h != right_h && right_h == downLeft_h && right_h == downRight_h && left_h == topRight_h;
 
 
         bool double_TopRight = topRight_h == right_h && right_h != downRight_h && right_h != left_h && left_h == downLeft_h && downRight_h == topLeft_h;
@@ -337,8 +337,6 @@ public static class MapUtilities
     /// </summary>
     public static bool IsTraversable(Hex hexA, Hex hexB, MapType mapToUse = MapType.GEOGRAPHYC, ActiveMap customActiveMap = null)
     {
-        //FALTA REVISAR SI ES WALKABLE
-
         ActiveMap activeMap;
         if (customActiveMap == null)
         {
@@ -472,6 +470,7 @@ public static class MapUtilities
         else
             return false;
     }
+
     public static HexDirection GetDirectionToAdjacentHex(Hex startHex, Hex other)
     {
         Hex diference = other - startHex;
@@ -498,7 +497,7 @@ public static class MapUtilities
     /// <summary>
     /// gets if there is clear direct path bewtween the two points.
     /// </summary>
-    public static bool PathToPointIsClear(FractionalHex position, FractionalHex point , ActiveMap customActiveMap = null)
+    public static bool PathToPointIsClear(FractionalHex position, FractionalHex point , ActiveMap customActiveMap = null, bool pathIsClearEvenIfDestPointIsBlocked = false)
     {
         ActiveMap activeMap;
         if (customActiveMap == null)
@@ -511,81 +510,180 @@ public static class MapUtilities
             activeMap = customActiveMap;
         }
 
-
+        Hex pointHex = point.Round();
         var hexesInBewtween = Hex.HexesInBetween(position, point);
         for (int i = 0; i < hexesInBewtween.Count - 1; i++)
         {
             Hex hexA = hexesInBewtween[i];
             Hex hexB = hexesInBewtween[i + 1];
 
-            if (!MapUtilities.IsTraversable(hexA, hexB, MapUtilities.MapType.MOVEMENT, activeMap))
+            if (pointHex == hexB && pathIsClearEvenIfDestPointIsBlocked)
             {
-                return false;
+                if (!MapUtilities.IsTraversable(hexA, hexB, MapUtilities.MapType.GEOGRAPHYC, activeMap))
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (!MapUtilities.IsTraversable(hexA, hexB, MapUtilities.MapType.MOVEMENT, activeMap))
+                {
+                    return false;
+                }
             }
         }
         return true;
     }
-
-    //comented because it doesent make SENSE!!!! the size is art dependent. NOT DEPENDENT OF THE MESH.
-    //public static Layout GetHexLayout(Vector2 tileSize, Mesh mesh, Vector2 originPoint, Vector2 offSet)
-    //{
-    //    Vector3 quadExtents = mesh.bounds.extents;        
-    //    FixVector2 origin = new FixVector2((Fix64)originPoint.x, (Fix64)originPoint.y);
-    //    FixVector2 hexSize = new FixVector2(
-    //        ((Fix64)tileSize.x * (Fix64)quadExtents.x) + (Fix64)offSet.x,
-    //        ((Fix64)tileSize.y * (Fix64)quadExtents.y) + (Fix64)offSet.y);
-    //    Layout hexLayout = new Layout(Orientation.pointy, hexSize, origin);
-    //    return hexLayout;
-    //}
-
     /// <summary>
     /// mode = true, uses the movementMap. mode = false, uses the unitOcupationMap
     /// </summary>    
     public static Hex FindClosestOpenHex(FractionalHex position, RuntimeMap map, bool mode)
     {
+        Dictionary<Hex, bool> mapValuesToUse;
         if (mode)
         {
-            var closestOpenHex = Hex.Zero;
-            Fix64 closestOpenHexDistance = Fix64.MaxValue;
-            foreach (var hexValuePair in map.MovementMapValues)
-            {
-                if (!hexValuePair.Value) { continue; }
-
-                var hex = hexValuePair.Key;
-                var distance = position.Distance((FractionalHex)hex);
-
-                if (distance <= closestOpenHexDistance)
-                {
-                    closestOpenHex = hex;
-                    closestOpenHexDistance = distance;
-                }
-            }
-
-            return closestOpenHex;
+            mapValuesToUse = new Dictionary<Hex, bool>(map.MovementMapValues);
         }
         else 
         {
-            var closestOpenHex = Hex.Zero;
-            Fix64 closestOpenHexDistance = Fix64.MaxValue;
-            foreach (var hexValuePair in map.UnitsMapValues)
-            {
-                if (!hexValuePair.Value) { continue; }
-
-                var hex = hexValuePair.Key;
-                var distance = position.Distance((FractionalHex)hex);
-
-                if (distance <= closestOpenHexDistance)
-                {
-                    closestOpenHex = hex;
-                    closestOpenHexDistance = distance;
-                }
-            }
-
-            return closestOpenHex;
+            mapValuesToUse = new Dictionary<Hex, bool>(map.UnitsMapValues);
         }
 
-        
+        var closestOpenHex = Hex.Zero;
+        Fix64 closestOpenHexDistance = Fix64.MaxValue;
+        foreach (var hexValuePair in mapValuesToUse)
+        {
+            if (!hexValuePair.Value) { continue; }
+
+            var hex = hexValuePair.Key;
+            var distance = position.Distance((FractionalHex)hex);
+
+            if (distance <= closestOpenHexDistance)
+            {
+                closestOpenHex = hex;
+                closestOpenHexDistance = distance;
+            }
+        }
+
+        return closestOpenHex;
+
     }
+    /// <summary>
+    /// REVISA EN UNA LINEA DESDE LA POSICION DE REFERENCIA Y EL INICIO Y REVISA TODOS LOS VECINOS DE ESA LINEA.
+    /// </summary>
+    public static bool TryFindClosestOpenAndReachableHex(out Hex closestOpenHex, FractionalHex referencePos, FractionalHex startingPos, Dictionary<Hex,bool> mapValues)
+    {
+        
+        bool hexFound = false;
+
+        Hex startingHexRound = startingPos.Round();
+        closestOpenHex = startingHexRound;
+
+        var hexesInBewtween = Hex.HexesInBetween(referencePos, startingPos);
+        if (hexesInBewtween.Count > 1)
+        {
+            for (int i = 0; i < hexesInBewtween.Count; i++)
+            {
+                Hex curr = hexesInBewtween[i];
+                if (HexIsOpenAndReachable(startingHexRound, curr, mapValues))
+                {
+                    //si este hexagono esta libre y desocupado usamos este como nuevo blanco.
+                    closestOpenHex = curr;
+                    hexFound = true;
+                    break;
+                }
+                else
+                {
+                    var openNeightbors = new List<Hex>();
+                    for (int j = 0; j < 6; j++)
+                    {
+                        Hex neightbor = curr.Neightbor(j);
+                        if (HexIsOpenAndReachable(startingHexRound, neightbor, mapValues))
+                        {
+                            openNeightbors.Add(neightbor);
+                        }                        
+                    }
+
+                    if (openNeightbors.Count > 0)
+                    {
+                        Hex closestNeightbor = openNeightbors[0];
+                        bool closestNeightborIsTraversable = IsTraversable(curr, closestNeightbor);
+                        Fix64 closestDist = startingPos.Distance((FractionalHex)closestNeightbor);
+                        
+                        for (int j = 1; j < openNeightbors.Count; j++)
+                        {
+                            Fix64 dist = startingPos.Distance((FractionalHex)openNeightbors[j]);
+                            bool canTraverseToNeightbor = IsTraversable(curr, openNeightbors[j]);
+                            if (closestNeightborIsTraversable)
+                            {
+                                if (canTraverseToNeightbor)
+                                {
+                                    if (dist < closestDist)
+                                    {
+                                        closestNeightbor = openNeightbors[j];
+                                        closestDist = dist;
+                                        closestNeightborIsTraversable = true;
+                                    }
+                                }
+                            }
+                            else 
+                            {
+                                if (canTraverseToNeightbor)
+                                {
+                                    closestNeightbor = openNeightbors[j];
+                                    closestDist = dist;
+                                    closestNeightborIsTraversable = true;
+                                }
+                                else 
+                                {
+                                    if (dist < closestDist)
+                                    {
+                                        closestNeightbor = openNeightbors[j];
+                                        closestDist = dist;
+                                        closestNeightborIsTraversable = false;
+                                    }
+                                } 
+                            }                            
+                        }
+
+                        closestOpenHex = closestNeightbor;
+                        hexFound = true;
+                        break;
+                    } 
+                }
+            }
+        }
+        else 
+        {
+            closestOpenHex = startingHexRound;
+            return HexIsOpen(startingHexRound, mapValues);
+        }
+
+
+        return hexFound;
+    }
+
+    private static bool HexIsOpen(Hex hex, Dictionary<Hex, bool> mapValues)
+    {
+        if (mapValues.TryGetValue(hex, out bool open))
+        {
+            return open;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public static bool HexIsOpenAndReachable(Hex current, Hex end, Dictionary<Hex, bool> mapValues)
+    {
+        bool reachable = UpdateReachableHexListSystem.IsReachable(current, end);
+        bool free = HexIsOpen(end, mapValues);
+        //Debug.Log($"the hex is free:{free} and reachable:{reachable}");
+        return reachable && free;
+    }
+
+
+
     public enum HexDirection { TOP_RIGHT = 0, RIGHT = 1, DOWN_RIGHT = 2, DOWN_LEFT = 3,LEFT = 4, TOP_LEFT = 5 }
     public enum MapType {GEOGRAPHYC, MOVEMENT, UNIT }
     private enum SimpleSlopeDirection { UNDEFINED = 0, LEFT, TOP_LEFT, TOP_RIGHT, RIGHT, DOWN_RIGHT, DOWN_LEFT }

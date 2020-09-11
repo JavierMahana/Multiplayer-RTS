@@ -49,6 +49,7 @@ public class SteeringSystem : ComponentSystem
     //collecting the data
     protected override void OnUpdate()
     {
+        var map = MapManager.ActiveMap;
 
         #region On Reinforcement Unit Steering
 
@@ -80,7 +81,6 @@ public class SteeringSystem : ComponentSystem
         int OnGroupUnitCount = m_OnGroupUnitQuerry.CalculateEntityCount();
 
         //voy a crear más basura de lo necesario por mas readibilidad.
-        //Agrugar collección -> unitpos y unitDirection
 
         var entityToIndex = new Dictionary<int, int>(OnGroupUnitCount);
         var groupCohesions = new FractionalHex[OnGroupUnitCount];
@@ -242,8 +242,28 @@ public class SteeringSystem : ComponentSystem
             
             if (!countOfChilds.ContainsKey(entity)) 
             {
-                Debug.Log("there are a group without any child in the 'OnGroup' state. _steering system_");
-                desiredMovement.Value = FractionalHex.Zero;
+                Debug.Log("there are a group without any child in the 'OnGroup' state the group will move to the closest open hex. _steering system_");
+                if (map != null)
+                {
+                    var newTarget = (FractionalHex)MapUtilities.FindClosestOpenHex(position.HexCoordinates, map.map, true);
+                    postionDelta = newTarget - position.HexCoordinates;
+                    distance = postionDelta.Lenght();
+                    var maxSpeedMovementDistance = speed.Value * MainSimulationLoopSystem.SimulationDeltaTime;
+                    if (distance <= maxSpeedMovementDistance)
+                    {
+                        desiredMovement.Value = postionDelta.NormalizedManhathan() * distance;
+                        return;
+                    }
+                    desiredMovement.Value = postionDelta.NormalizedManhathan() * maxSpeedMovementDistance;
+                }
+                else 
+                {
+                    Debug.Log("WTF why there is no map?");
+                    desiredMovement.Value = FractionalHex.Zero;
+                }
+                
+                
+                
             }
             else
             {
@@ -432,6 +452,8 @@ public class SteeringSystem : ComponentSystem
         }
     }
     #endregion
+
+
     /// <summary>
     /// se mueve siempre en la misma linea. lo que se hace es que se mueve a una velocidad la cual respeta la pocision de sus hijos
     /// </summary>  
@@ -469,14 +491,7 @@ public class SteeringSystem : ComponentSystem
 
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="direction">IMPORTANT: this must be a normalized vector</param>
-    /// <param name="maxSpeed"></param>
-    /// <param name="originPoint"></param>
-    /// <param name="targetPoint"></param>
-    /// <param name="closestPointInMovementSegment"></param>
+
     /// <returns>returns true if the closeest point is not the start niether the end of the segment</returns>
     public static bool NotFullSpeedMovementIsNeeded(FractionalHex direction, Fix64 maxSpeed, FractionalHex originPoint, FractionalHex targetPoint, out FractionalHex closestPointInMovementSegment)
     {

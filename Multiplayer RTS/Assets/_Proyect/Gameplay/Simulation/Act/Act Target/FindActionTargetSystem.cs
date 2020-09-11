@@ -36,7 +36,6 @@ public class FindActionTargetSystem : ComponentSystem
                 typeof(BEPosibleTarget),
                 typeof(GroupBehaviour) 
             },
-            //None = new ComponentType[] { typeof(GroupOnGather) }
         });
         m_OnGroupDefaultQuery = GetEntityQuery( new EntityQueryDesc()
         {
@@ -49,12 +48,6 @@ public class FindActionTargetSystem : ComponentSystem
                 typeof(HexPosition), 
                 typeof(ActionAttributes)
             }
-            //Any = new ComponentType[]
-            //{ 
-            //    typeof(Gatherer),
-            //    typeof(OnGroup)
-            //}
-            //None = new ComponentType[] { typeof(Gather) }
         });
 
         m_GathererGroupQuery = GetEntityQuery(typeof(Group), typeof(GroupOnGather), typeof(BEPosibleTarget));
@@ -72,12 +65,14 @@ public class FindActionTargetSystem : ComponentSystem
 
         #region ENTITIES WITH GROUP (default)
 
+        #region init collections
         int groupCount            = m_GroupDefaultQuery.CalculateEntityCount();        
         var groupHaveTargets      = new bool[groupCount];
         var groupIndices          = new Dictionary<int, int>(groupCount);
         var groupMemberPostionSum = new FractionalHex[groupCount];
         var groupBehaviours        = new Behaviour[groupCount];
         var groupTargetsAreForGatherers = new bool[groupCount];
+
 
 
         int onGroupCount         = m_OnGroupDefaultQuery.CalculateEntityCount();        
@@ -87,7 +82,7 @@ public class FindActionTargetSystem : ComponentSystem
         var onGroupSightRanges = new Fix64[onGroupCount];
         var onGroupRadiuses      = new Fix64[onGroupCount];
         var onGroupHaveCargo = new bool[onGroupCount];
-
+        var onGroupIsMelee = new bool[onGroupCount];
 
 
         //Esto vincula la entidad del padre con el indice que se utiliza en los arreglos con los datos de los hijos.
@@ -122,6 +117,7 @@ public class FindActionTargetSystem : ComponentSystem
             onGroupActRanges[onGroupIterator]   = actAttributes.ActRange;
             onGroupSightRanges[onGroupIterator] = sightRange.Value;
             onGroupRadiuses[onGroupIterator]    = collider.Radius;
+            onGroupIsMelee[onGroupIterator] = actAttributes.Melee;
 
             if (EntityManager.HasComponent<WithCargo>(entity))
             {
@@ -156,7 +152,7 @@ public class FindActionTargetSystem : ComponentSystem
 
             onGroupIterator++;
         });
-
+        #endregion
 
         //sets the temporal target for all the members of a group.
         foreach (var groupMemberKeyValue in groupMemberHashMap)
@@ -174,18 +170,21 @@ public class FindActionTargetSystem : ComponentSystem
             bool parentHaveTargets = groupHaveTargets[parentIndex];
             bool parentTargetIsForGatherers = groupTargetsAreForGatherers[parentIndex];
 
+            
+
             if (parentHaveTargets)
             {
                 var parentTargetsBuffer = EntityManager.GetBuffer<BEPosibleTarget>(parentEntity);
                 Debug.Assert(parentTargetsBuffer.IsCreated && parentTargetsBuffer.Length > 0, $"The target buffer of enity:{parentEntityIndex} has a problem. iscreated:{parentTargetsBuffer.IsCreated}. lenght:{parentTargetsBuffer.Length}");
 
-
+                #region FOR GATHERERS
                 if (parentTargetIsForGatherers)
                 {
                     foreach (var gathererIdx in groupMemberList)
                     {
                         bool haveCargo = onGroupHaveCargo[gathererIdx];
                         var position = onGroupPositions[gathererIdx];
+                        var actRange = onGroupActRanges[gathererIdx];
 
                         bool haveTarget = false;
                         Fix64 closestTargetDistance = Fix64.MaxValue;
@@ -196,9 +195,31 @@ public class FindActionTargetSystem : ComponentSystem
                             if ((posibleTarget.IsResource && !haveCargo) || (!posibleTarget.IsResource && haveCargo))
                             {
                                 Fix64 distance = position.Distance(posibleTarget.Position);
+                                
                                 if (distance < closestTargetDistance)
                                 {
-                                    closestTarget = posibleTarget;
+                                    if (posibleTarget.OccupiesFullHex)
+                                    {
+                                        var reversedDirection = (position - posibleTarget.Position).NormalizedManhathan();
+                                        var fullHexTargetPos = FractionalHex.GetBorderPointOfTheHex(posibleTarget.Position.Round(), reversedDirection);
+                                        var adjustedPosTarget = new ActionTarget()
+                                        {
+                                            TargetPosition = fullHexTargetPos,
+                                            TargetEntity = posibleTarget.Entity,
+                                            TargetRadius = Fix64.Zero,
+                                            IsUnit = posibleTarget.IsUnit,
+                                            GatherTarget = posibleTarget.GatherTarget,
+                                            IsResource = posibleTarget.IsResource,
+                                            OccupiesFullHex = true,
+                                            OccupyingHex = posibleTarget.OccupyingHex,
+                                            ActTypeTarget = posibleTarget.ActTypeTarget
+                                        };
+                                        closestTarget = adjustedPosTarget;
+                                    }
+                                    else
+                                    {
+                                        closestTarget = posibleTarget;
+                                    }
 
                                     closestTargetDistance = distance;
                                     haveTarget = true;
@@ -212,17 +233,18 @@ public class FindActionTargetSystem : ComponentSystem
 
                     }
                 }
-                else 
+                #endregion
+                else
                 {
                     switch (parentBehaviour)
                     {
                         case Behaviour.DEFAULT: //va al más cercano
-                            SetTemporalActTargetsDefaultMethod(onGroupPositions, onGroupActRanges, onGroupSightRanges, tempTargets, groupMemberList, groupAveragePosition, parentTargetsBuffer);
+                            SetTemporalActTargetsDefaultMethod(onGroupPositions, onGroupActRanges, onGroupSightRanges, onGroupIsMelee, tempTargets, groupMemberList, groupAveragePosition, parentTargetsBuffer);
                             break;
 
 
 
-                        case Behaviour.PASSIVE://no hay targets de un hexagono????
+                        case Behaviour.PASSIVE://no hay targets de un hexagono????//no esta actualizado. D:
                             foreach (int member in groupMemberList)
                             {
                                 var pos = onGroupPositions[member];
@@ -258,7 +280,7 @@ public class FindActionTargetSystem : ComponentSystem
                             }
                             break;
                         case Behaviour.AGRESIVE:
-                            SetTemporalActTargetsDefaultMethod(onGroupPositions, onGroupActRanges, onGroupSightRanges, tempTargets, groupMemberList, groupAveragePosition, parentTargetsBuffer);
+                            SetTemporalActTargetsDefaultMethod(onGroupPositions, onGroupActRanges, onGroupSightRanges, onGroupIsMelee, tempTargets, groupMemberList, groupAveragePosition, parentTargetsBuffer);
                             break;
                         //throw new System.NotImplementedException();
                         default:
@@ -271,7 +293,7 @@ public class FindActionTargetSystem : ComponentSystem
         #endregion
 
 
-        //adds or updates the action targets
+        #region adds or updates the action targets
         Entities.ForEach((Entity entity, ref ActionTarget actionTarget) =>
         {
             if (onGroupEntityToIndex.TryGetValue(entity.Index, out int index))
@@ -282,7 +304,10 @@ public class FindActionTargetSystem : ComponentSystem
                 }
                 else //it doesn't have a target
                 {
-                    PostUpdateCommands.RemoveComponent<ActionTarget>(entity);
+                    if (! EntityManager.HasComponent<OnGatheringResources>(entity))//HACK: lo que pasa es que si se llena un recurso de trabajadores este no se incluye en los posibles objetivos. Por esto es posible que la lista de posibles objetivos este vacia, pero enverdad hay entridades que ya estan trabajando.
+                    {
+                        PostUpdateCommands.RemoveComponent<ActionTarget>(entity);
+                    }
                 }
             }
             else//it is not on a group, for that it can't have an action target
@@ -304,59 +329,72 @@ public class FindActionTargetSystem : ComponentSystem
                 Debug.LogError($"This entity: {entity.Index} is on a group and its index is not on the dictionary! maybe the parent or the hexPosition component are missing");
             }
         });
+        #endregion
     }
+
+
+
+
 
     /// <summary>
     /// El action target es el que esta más cercano a la unidad. Prioriza a las unidades antes que a las estructuras.
     /// </summary>
-    private static void SetTemporalActTargetsDefaultMethod(FractionalHex[] onGroupPositions, Fix64[] onGroupActRanges, Fix64[] onGroupSightRanges, Dictionary<int, ActionTarget> tempTargets, List<int> groupMemberList, FractionalHex groupAveragePosition, DynamicBuffer<BEPosibleTarget> parentTargetsBuffer)
+    private static void SetTemporalActTargetsDefaultMethod(FractionalHex[] onGroupPositions, Fix64[] onGroupActRanges, Fix64[] onGroupSightRanges, bool[]onGroupIsMelees, Dictionary<int, ActionTarget> tempTargets, List<int> groupMemberList, FractionalHex groupAveragePosition, DynamicBuffer<BEPosibleTarget> parentTargetsBuffer)
     {
         foreach (int member in groupMemberList)
         {
-            //lo primero es filtrar los objetivos dependiendo del range y su el mapa.
+            //lo primero es filtrar los objetivos dependiendo del range y el mapa.
             var pos = onGroupPositions[member];
             var sightRange = onGroupSightRanges[member];
             var actRange = onGroupActRanges[member];
+            bool isMelee = onGroupIsMelees[member];
 
-            //primero se ve si los poaibles blancos son alcanzables y se llena una lista
+            //primero se ve si los posibles blancos son alcanzables y se llena una lista
             var reachableTargets = new List<ActionTarget>();
             foreach (var posibleTarget in parentTargetsBuffer)
             {
-                //Acá seria un buen punto para diferenciar las estructuras de las unidades.
-                bool isFullHex = posibleTarget.OccupiesFullHex;
-                if (!isFullHex)
+                var positionOfAction = GetPositionOfAction(posibleTarget, pos, actRange);
+
+                bool canReach;
+                if (isMelee)
                 {
-                    var reversedDirection = (pos - posibleTarget.Position).NormalizedManhathan();
-                    //es el punto en el que uno realmente quiere llegar.
-                    var realTargetPos = posibleTarget.Position + reversedDirection * (actRange + posibleTarget.Radius); //it use the act range + the target radius.
-                    if (MapUtilities.PathToPointIsClear(pos, realTargetPos))
-                    {
-                        reachableTargets.Add(posibleTarget);
-                    }
+                    if(posibleTarget.OccupiesFullHex)
+                        canReach = MapUtilities.PathToPointIsClear(pos, posibleTarget.Position, pathIsClearEvenIfDestPointIsBlocked: true);
+                    else
+                        canReach = MapUtilities.PathToPointIsClear(pos, posibleTarget.Position);
                 }
                 else 
                 {
-                    var reversedDirection = (pos - posibleTarget.Position).NormalizedManhathan();
+                    canReach = MapUtilities.PathToPointIsClear(pos, positionOfAction);
+                }
 
-                    var realTargetPos = FractionalHex.GetBorderPointOfTheHex(posibleTarget.Position.Round(), reversedDirection) + reversedDirection * Fix64.Max(actRange, (Fix64)0.001);//Es necesario q tenga un offset
-                    if (MapUtilities.PathToPointIsClear(pos, realTargetPos))
+
+
+                if (canReach)
+                {                    
+                    if (!posibleTarget.OccupiesFullHex)
                     {
+                        reachableTargets.Add(posibleTarget);
+                    }
+                    else
+                    {
+                        var reversedDirection = (pos - posibleTarget.Position).NormalizedManhathan();
+                        var fullHexTargetPos = FractionalHex.GetBorderPointOfTheHex(posibleTarget.Position.Round(), reversedDirection);
                         var adjustedPosTarget = new ActionTarget()
                         {
-                            TargetPosition = realTargetPos,
+                            TargetPosition = fullHexTargetPos,
                             TargetEntity = posibleTarget.Entity,
-                            TargetRadius = posibleTarget.Radius,//o igual a 0
+                            TargetRadius = posibleTarget.Radius,
                             IsUnit = posibleTarget.IsUnit,
                             GatherTarget = posibleTarget.GatherTarget,
                             IsResource = posibleTarget.IsResource,
-                            OccupiesFullHex = true
-                            //IsUnit = false
+                            OccupiesFullHex = posibleTarget.OccupiesFullHex,
+                            OccupyingHex = posibleTarget.OccupyingHex,
+                            ActTypeTarget = posibleTarget.ActTypeTarget
                         };
                         reachableTargets.Add(adjustedPosTarget);
                     }
                 }
-            
-
             }
 
 
@@ -364,6 +402,7 @@ public class FindActionTargetSystem : ComponentSystem
             if (reachableTargets.Count == 0) continue;
 
 
+            #region se elige el más cercano respectivo a la posicion del grupo.
             //esto usa el average grupal para lograr lo que desea.
             //Se hace esto para repartir de cierta manera los targets más variadamente y no todos a uno
             var distanceRelativeToAverage = groupAveragePosition - pos;
@@ -419,6 +458,30 @@ public class FindActionTargetSystem : ComponentSystem
 
             //esto ya usa la vision global edl equipo, asi que puede agregar al más cercano.
             tempTargets.Add(member, closestTarget);
+            #endregion
         }
+    }
+
+    /// <summary>
+    /// El punto real es el que cuenta el rango de accion que tiene la entidad, y ve si ocupa todo el hexagono o no.
+    /// </summary>
+    private static FractionalHex GetPositionOfAction(BEPosibleTarget initialTarget, FractionalHex entityPosition, Fix64 entityActionRange)
+    {
+        bool isFullHex = initialTarget.OccupiesFullHex;
+        FractionalHex realTargetPos;
+        if (!isFullHex)
+        {
+            var reversedDirection = (entityPosition - initialTarget.Position).NormalizedManhathan();
+            //es el punto en el que uno realmente quiere llegar.
+            realTargetPos = initialTarget.Position + reversedDirection * (entityActionRange + initialTarget.Radius); //it use the act range + the target radius.
+        }
+        else
+        {
+            var reversedDirection = (entityPosition - initialTarget.Position).NormalizedManhathan();
+
+            realTargetPos = FractionalHex.GetBorderPointOfTheHex(initialTarget.Position.Round(), reversedDirection) + reversedDirection * Fix64.Max(entityActionRange, (Fix64)0.001);//Es necesario q tenga un offset
+        }
+
+        return realTargetPos;
     }
 }

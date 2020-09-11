@@ -12,13 +12,16 @@ public struct ActionTarget : IComponentData
     public Fix64 TargetRadius;
     public bool IsUnit;
 
-
-
     public bool OccupiesFullHex;
+    public Hex OccupyingHex;
+
+
+    public ActType ActTypeTarget;
     /// <summary>
     /// Solo usado cuando se esta recolectando recursos, por lo que el target es un recurso o un dropoffPoint.
     /// </summary>
     public bool GatherTarget;
     public bool IsResource;
     //agregar un booleano podria arreglar que diferencie si es un drop point o un recurso
+
 }

@@ -7,6 +7,7 @@ using Unity.Transforms;
 using static Unity.Mathematics.math;
 using UnityEngine;
 
+[DisableAutoCreation]
 public class BlockMovementSystem : ComponentSystem
 {
     protected override void OnUpdate()

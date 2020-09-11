@@ -180,6 +180,10 @@ public class PathFindingSystem : ComponentSystem
                     var simplifiedPath = new List<Hex>(HexFunnelAlgorithm(path, true));
                     Paths.Add(entity, simplifiedPath);
 
+                    
+                    //var path0 = new List<Hex>(path.GetRange(1, path.Count - 1));
+                    //Paths.Add(entity, path0);
+
 
                     openList.Dispose();
                     closedList.Dispose();

@@ -25,6 +25,9 @@ public abstract class BaseGroupAuthoringComponent : EntityAuthoringBase
     [SerializeField]
     protected bool actOnTeamates = false;
     [SerializeField]
+    protected ActType actType = ActType.ATTACK;
+
+    [SerializeField]
     protected float sightRange = 2;
 
     [SerializeField]
@@ -72,7 +75,8 @@ public abstract class BaseGroupAuthoringComponent : EntityAuthoringBase
         entityManager.AddComponentData<ActTargetFilters>(entity, new ActTargetFilters()
         {
             ActOnEnemies = actOnEnemyTeam,
-            ActOnTeamates = actOnTeamates
+            ActOnTeamates = actOnTeamates,
+            actType = actType
         });
 
 
@@ -99,7 +103,7 @@ public abstract class BaseGroupAuthoringComponent : EntityAuthoringBase
             DestinationIsReachedDistance = (Fix64)destinationReachedDistance
         });
         entityManager.AddComponentData<Speed>(entity, new Speed() { Value = (Fix64)parentSpeed });
-        entityManager.AddComponentData<DestinationHex>(entity, new DestinationHex() { FinalDestination = hexPos.Round() });
+        entityManager.AddComponentData<DestinationHex>(entity, new DestinationHex() { FinalDestination = MapUtilities.FindClosestOpenHex( hexPos, MapManager.ActiveMap.map, true) });
 
 
         //  steering

@@ -321,14 +321,26 @@ public class MapManager : SerializedMonoBehaviour
     {
         var entityManager = World.Active.EntityManager;
         var entity = entityManager.CreateEntity(typeof(ResourceSource), typeof(BlockMovement));
-        entityManager.SetComponentData<ResourceSource>(entity, new ResourceSource() {position = hex, resourcesRemaining = resourceData.ammount, resourceType = resourceData.resourceType });
+        entityManager.SetComponentData<ResourceSource>(entity, new ResourceSource() 
+        {
+            position = hex,
+            resourcesRemaining = resourceData.ammount,
+            resourceType = resourceData.resourceType, 
+            maxGatherers = resourceData.maxGatherers, 
+            ticksForExtraction = resourceData.ticksForExtraction 
+        });
         entityManager.SetComponentData<BlockMovement>(entity, new BlockMovement() { position = hex });
 
         return entity;
     }
     private void CreateResourceMonobehaviour(Sprite sprite, Entity entity, ResourceSpotData resourceData, Hex hex)
     {
-        var resGO = new GameObject($"{resourceData.resourceType} spot | {hex}", typeof(SpriteRenderer), typeof(EntityFilter), typeof(PositionListener));
+        var resGO = new GameObject($"{resourceData.resourceType} spot | {hex}", 
+            typeof(SpriteRenderer),
+            typeof(EntityFilter),
+            typeof(PositionListener),
+            typeof(CreateSubstituteVisibilityListener)
+            );
         var spRenderer = resGO.GetComponent<SpriteRenderer>();
         var entityFilter = resGO.GetComponent<EntityFilter>();
         //var posListener = resGO.GetComponent<PositionListener>();

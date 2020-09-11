@@ -38,6 +38,15 @@ public class MainSimulationLoopSystem : ComponentSystem
     private OnGroupCheckSystem onGroupCheckSystem;
 
     private UpdateReachableHexListSystem updateReachableHexListSystem;
+    
+    private ResourceSourceManagerSystem resourceSourceManagerSystem;
+    private TriggerGatherSystem triggerGatherSystem;
+
+    private DropPointSystem dropPointSystem; 
+
+    private TriggerUpdateResBufferSystem triggerUpdateResBufferSystem;
+    private UpdateResourceBufferSystem updateResourceBufferSystem;
+
 
     private UpdateOcupationMapSystem updateOcupationMapSystem;
     private UpdateDestinationSystem updateDestinationSystem;
@@ -57,11 +66,32 @@ public class MainSimulationLoopSystem : ComponentSystem
     private TranslationSystem translationSystem;
     private MovementFinisherSystem movementFinisherSystem;
 
+
+
+
     private CollisionSystem collisionSystem;
     private DirectionSystem directionSystem;
 
-    private DamageSystem damageSystem;
+
+    //action start.
+    private StartActSystem startActSystem;
+    private RemoveReceivingActComponentsSystem removeReceivingActComponentsSystem;
+    private InitReceivingActComponentsSystem initReceivingActComponentsSystem;
+    //action execution.
+    private AttackSystem attackSystem;
+    private ReceiveDamageSystem receiveDamageSystem;
+    private GatherSystem gatherSystem;
+    private ExtractResourceSystem extractResourceSystem;
+    private UpdateGathererAmmountSystem updateGathererAmmountSystem;
+    //action end.
+    private EndActionSystem endActionSystem;
+
+
+    private ResourceSystem resourceSystem;
+
     private DeathSystem deathSystem;
+
+
 
 
     protected override void OnCreate()
@@ -80,6 +110,16 @@ public class MainSimulationLoopSystem : ComponentSystem
         onGroupCheckSystem       = World.GetOrCreateSystem<OnGroupCheckSystem>();
 
         updateReachableHexListSystem = World.GetOrCreateSystem<UpdateReachableHexListSystem>();
+
+        resourceSourceManagerSystem  = World.GetOrCreateSystem<ResourceSourceManagerSystem>();
+        triggerGatherSystem          = World.GetOrCreateSystem<TriggerGatherSystem>();
+
+        dropPointSystem = World.GetOrCreateSystem<DropPointSystem>();
+
+        triggerUpdateResBufferSystem = World.GetOrCreateSystem<TriggerUpdateResBufferSystem>();
+        updateResourceBufferSystem   = World.GetOrCreateSystem<UpdateResourceBufferSystem>();
+
+        
         updateOcupationMapSystem     = World.GetOrCreateSystem<UpdateOcupationMapSystem>();
         updateDestinationSystem      = World.GetOrCreateSystem<UpdateDestinationSystem>();
 
@@ -97,11 +137,27 @@ public class MainSimulationLoopSystem : ComponentSystem
         translationSystem        = World.GetOrCreateSystem<TranslationSystem>();
         movementFinisherSystem   = World.GetOrCreateSystem<MovementFinisherSystem>();
 
+
+
+
         collisionSystem          = World.GetOrCreateSystem<CollisionSystem>();
         directionSystem          = World.GetOrCreateSystem<DirectionSystem>();
 
 
-        damageSystem             = World.GetOrCreateSystem<DamageSystem>();
+        startActSystem = World.GetOrCreateSystem<StartActSystem>();
+        removeReceivingActComponentsSystem = World.GetOrCreateSystem<RemoveReceivingActComponentsSystem>();
+        initReceivingActComponentsSystem = World.GetOrCreateSystem<InitReceivingActComponentsSystem>();
+        attackSystem = World.GetOrCreateSystem<AttackSystem>();
+        receiveDamageSystem = World.GetOrCreateSystem<ReceiveDamageSystem>();
+        gatherSystem = World.GetOrCreateSystem<GatherSystem>();
+        extractResourceSystem = World.GetOrCreateSystem<ExtractResourceSystem>();
+        updateGathererAmmountSystem = World.GetOrCreateSystem<UpdateGathererAmmountSystem>();
+        endActionSystem = World.GetOrCreateSystem<EndActionSystem>();
+
+
+        resourceSystem = World.GetOrCreateSystem<ResourceSystem>();
+
+        
         deathSystem              = World.GetOrCreateSystem<DeathSystem>();
         //simulationSystemGroup = World.GetOrCreateSystem<SimulationSystemGroup>();
         //simulationSystemGroup.AddSystemToUpdateList(World.GetOrCreateSystem<PathFindingSystem>());
@@ -148,7 +204,13 @@ public class MainSimulationLoopSystem : ComponentSystem
 
                 updateReachableHexListSystem.Update();
 
-                
+
+                resourceSourceManagerSystem.Update();
+                triggerGatherSystem.Update();
+                dropPointSystem.Update();
+                triggerUpdateResBufferSystem.Update();
+                updateResourceBufferSystem.Update();
+
                 updateOcupationMapSystem.Update();
                 updateDestinationSystem.Update();
 
@@ -168,13 +230,27 @@ public class MainSimulationLoopSystem : ComponentSystem
                 translationSystem.Update();
                 movementFinisherSystem.Update();
 
-                directionSystem.Update();
+                
 
                 //collisions systems
                 collisionSystem.Update();
+                directionSystem.Update();
+
+                //all the action systems.
+                startActSystem.Update();
+                removeReceivingActComponentsSystem.Update();
+                initReceivingActComponentsSystem.Update();
+                attackSystem.Update();
+                receiveDamageSystem.Update();
+                gatherSystem.Update();
+                extractResourceSystem.Update();
+                updateGathererAmmountSystem.Update();
+                endActionSystem.Update();
 
 
-                damageSystem.Update();
+                resourceSystem.Update();
+
+                
                 deathSystem.Update();
 
                 //simulationSystemGroup.Update();

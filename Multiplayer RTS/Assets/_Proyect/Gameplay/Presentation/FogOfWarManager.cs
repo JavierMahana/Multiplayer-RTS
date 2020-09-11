@@ -54,8 +54,9 @@ public class FogOfWarManager : MonoBehaviour
         var layout = activeMap.layout;
 
         int loadedMapIndex = mapManager.mapToLoad;
-        Map loadedMap = mapManager.maps[loadedMapIndex];
+        Map loadedMap = mapManager.maps[loadedMapIndex];        
         var mapProportions = loadedMap.mapProportions;
+        
 
         var mainCamera = Camera.main;
         var zFogCoord = mainCamera.transform.position.z + mainCamera.nearClipPlane + FOG_Z_OFFSET;

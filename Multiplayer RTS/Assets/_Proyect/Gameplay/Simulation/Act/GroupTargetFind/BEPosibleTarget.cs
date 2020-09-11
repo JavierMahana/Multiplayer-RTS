@@ -17,7 +17,9 @@ public struct BEPosibleTarget : IBufferElementData
             IsUnit = target.IsUnit, 
             OccupiesFullHex = target.OccupiesFullHex,
             GatherTarget = target.GatherTarget,
-            IsResource = target.IsResource
+            IsResource = target.IsResource,
+            ActTypeTarget = target.ActTypeTarget,
+            OccupyingHex = target.OccupyingHex
         };
     }
 
@@ -27,6 +29,9 @@ public struct BEPosibleTarget : IBufferElementData
     public bool IsUnit;
 
     public bool OccupiesFullHex;
+    public Hex OccupyingHex;
+
+    public ActType ActTypeTarget;
 
     public bool GatherTarget;
     public bool IsResource;

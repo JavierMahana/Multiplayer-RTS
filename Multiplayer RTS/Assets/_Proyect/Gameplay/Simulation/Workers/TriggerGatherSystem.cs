@@ -24,6 +24,7 @@ public class TriggerGatherSystem : ComponentSystem
         Entities.WithAll<BEResourceSource>().ForEach((Entity entity, ref TriggerGather trigger) =>
         {
             var buffer = EntityManager.GetBuffer<BEResourceSource>(entity);
+            buffer.Clear();
             //necesito conocer donde hay recursos.
             ResourceSourceAndEntity res;
 
@@ -35,8 +36,15 @@ public class TriggerGatherSystem : ComponentSystem
                 {
                     buffer.Add((BEResourceSource)keyValue.Value);
                 }
-                PostUpdateCommands.AddComponent<GroupOnGather>(entity, new GroupOnGather() { GatheringResourceType = type });
 
+                if (EntityManager.HasComponent<GroupOnGather>(entity))
+                {
+                    PostUpdateCommands.SetComponent<GroupOnGather>(entity, new GroupOnGather() { GatheringResourceType = type });
+                }
+                else
+                {
+                    PostUpdateCommands.AddComponent<GroupOnGather>(entity, new GroupOnGather() { GatheringResourceType = type });
+                }
             }
             else
             {

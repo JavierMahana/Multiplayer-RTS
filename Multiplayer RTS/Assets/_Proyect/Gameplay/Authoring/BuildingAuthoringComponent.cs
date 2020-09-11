@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class BuildingAuthoringComponent : EntityAuthoringBase
 {
+    public int health = 500;
 
     public int team = 0;
     public float sightRange = 1;
@@ -25,6 +26,8 @@ public class BuildingAuthoringComponent : EntityAuthoringBase
         Hex hex = fractionalHex.Round();
 
         entityManager.AddComponentData<Building>(entity, new Building() { position = hex });
+
+        entityManager.AddComponentData<Health>(entity, new Health() { MaxHealth = health, CurrentHealth = health });
 
         if (blockMovement)
             entityManager.AddComponentData<BlockMovement>(entity, new BlockMovement() { position = hex });

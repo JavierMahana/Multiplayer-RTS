@@ -57,7 +57,7 @@ public class FindPosibleTargetsSystem : ComponentSystem
 
 
         //normal group entities.
-        #region Group that targets entities on vition.
+        #region Group that targets entities on vision.
 
         Entities.WithAll<Group, BEPosibleTarget>().WithNone<GroupOnGather>().ForEach((Entity entity, ref HexPosition hexPosition, ref SightRange sightRange, ref GroupBehaviour behaviour, ref ActTargetFilters filters, ref Team team, ref MovementState movementState) =>
         {
@@ -138,10 +138,16 @@ public class FindPosibleTargetsSystem : ComponentSystem
         
         Entities.WithAll<Group, BEPosibleTarget, BEResourceSource>().ForEach((Entity entity, ref GroupOnGather onGather, ref HexPosition hexPosition, ref SightRange sightRange, ref Team team, ref MovementState movementState) => 
         {
+            //UnityEngine.Debug.Log($"Group on gather. Entity: {entity.Index}. Gather resource: {onGather.GatheringResourceType}.");
             //Los targets son: todos los elementos del BEResourceSource + todos los elementos de los droppoints
             var posTargetBuffer = EntityManager.GetBuffer<BEPosibleTarget>(entity);
 
             posTargetBuffer.Clear();
+            if (!movementState.DestinationReached)
+            {
+                return;
+            }
+
 
             var resSourceBuffer = EntityManager.GetBuffer<BEResourceSource>(entity);
             var allDropPointsOfTeam = DropPointSystem.GetAllDropPointsOfTeam(onGather.GatheringResourceType, team.Number);
@@ -161,7 +167,9 @@ public class FindPosibleTargetsSystem : ComponentSystem
                     IsUnit = false,
                     GatherTarget = true,
                     IsResource = true,
-                    OccupiesFullHex = true
+                    OccupiesFullHex = true,
+                    OccupyingHex = resSource.position,
+                    ActTypeTarget = ActType.GATHER,
                 };
                 posTargetBuffer.Add(posTarget);
             }
@@ -176,8 +184,10 @@ public class FindPosibleTargetsSystem : ComponentSystem
                     Radius = Fix64.Zero,
                     IsUnit = false,
                     GatherTarget = true,
-                    IsResource = true,
-                    OccupiesFullHex = true
+                    IsResource = false,
+                    OccupiesFullHex = true,
+                    OccupyingHex = dropPoint.Key,
+                    ActTypeTarget = ActType.STORE
                 };
                 posTargetBuffer.Add(posTarget);
             }
@@ -241,14 +251,22 @@ public class FindPosibleTargetsSystem : ComponentSystem
 
         }
     }
+
+
+
+
     /// <summary>
     /// Gets the target if true.
     /// debo ver una buena manera de conseguir el parent entity.
     /// </summary>
-    private static bool GetPriorityTargetAndAddPosibleTargets(out PriorityGroupTarget target, FractionalHex position, Fix64 sightRange, Team team, ActTargetFilters filters, Dictionary<Hex, List<EntityOnVision>> entitiesForeachHex, List<BuildingOnVision> buildingsOnSight, DynamicBuffer<BEPosibleTarget> buffer)
+    private static bool GetPriorityTargetAndAddPosibleTargets(out PriorityGroupTarget target, FractionalHex position, Fix64 sightRange, Team team, ActTargetFilters filters, Dictionary<Hex, List<EntityOnVision>> unitsForeachHex, List<BuildingOnVision> buildingsOnSight, DynamicBuffer<BEPosibleTarget> buffer)
     {
+        //no es lo más eficiente. Pero es más facil de mantener.
+        FindAndAddPosibleTargetsToBuffer(position, sightRange, filters, team, unitsForeachHex, buildingsOnSight, buffer);
+
+
         Hex roundedPosition = position.Round();
-        var pointsOfHex = SpartialSortUtils.GetAllPointsAtRange(roundedPosition, (int)Fix64.Ceiling(sightRange), entitiesForeachHex);
+        var pointsOfHex = SpartialSortUtils.GetAllPointsAtRange(roundedPosition, (int)Fix64.Ceiling(sightRange), unitsForeachHex);
 
         target = new PriorityGroupTarget();
         var bestTargetDistance = Fix64.MaxValue;
@@ -266,15 +284,16 @@ public class FindPosibleTargetsSystem : ComponentSystem
 
             if (ValidPossibleTarget(position, sightRange, team.Number, filters, point.position, pointRadius, pointTeam))
             {
-                buffer.Add(new BEPosibleTarget()
-                {
-                    Position = point.position,
-                    Radius = pointRadius,
-                    Entity = pointEntity,
-                    IsUnit = true,
-                    GatherTarget = false,
-                    OccupiesFullHex = false
-                });
+                //buffer.Add(new BEPosibleTarget()
+                //{
+                //    Position = point.position,
+                //    Radius = pointRadius,
+                //    Entity = pointEntity,
+                //    IsUnit = true,
+                //    GatherTarget = false,
+                //    OccupiesFullHex = false,
+                //    ActTypeTarget = filters.actType
+                //});
                 //hay que ver si hay algo que bloquea el paso
                 if (MapUtilities.PathToPointIsClear(position, point.position))
                 {
@@ -300,48 +319,58 @@ public class FindPosibleTargetsSystem : ComponentSystem
         {
             var buildingPos = (FractionalHex)building.building.position;
 
+            //if (ValidPossibleTarget(position, sightRange, team.Number, filters, buildingPos, (Fix64)0.5, building.team))
+            //{
+            //    buffer.Add(new BEPosibleTarget()
+            //    {
+            //        Position = buildingPos,
+            //        Radius = Fix64.Zero,
+            //        Entity = building.entity,
+            //        IsUnit = false,
+            //        GatherTarget = false,
+            //        OccupiesFullHex = true,
+            //        ActTypeTarget = filters.actType
+            //    });
+            //}
             if (ValidPossibleTarget(position, sightRange, team.Number, filters, buildingPos, (Fix64)0.5, building.team))
             {
-                buffer.Add(new BEPosibleTarget()
+                if (!areUnitPriorityTarget)
                 {
-                    Position = buildingPos,
-                    Radius = Fix64.Zero,
-                    Entity = building.entity,
-                    IsUnit = false,
-                    GatherTarget = false,
-                    OccupiesFullHex = true                    
-                });
-            }
-            if(!areUnitPriorityTarget) 
-            {
-                if (MapUtilities.PathToPointIsClear(position, buildingPos))
-                {
-                    arePrioriryTarget = true;
-                    var distance = buildingPos.Distance(position);
-                    if (distance < bestTargetDistance)
+                    if (MapUtilities.PathToPointIsClear(position, buildingPos))
                     {
-                        bestTargetDistance = distance;
-                        target = new PriorityGroupTarget() {
-                            //TargetPosition = buildingPos, 
-                            //TargetEntity = building.entity,
-                            TargetHex = buildingPos.Round(),
-                            //IsUnit = false
-                        };
+                        arePrioriryTarget = true;
+                        var distance = buildingPos.Distance(position);
+                        if (distance < bestTargetDistance)
+                        {
+                            bestTargetDistance = distance;
+                            target = new PriorityGroupTarget()
+                            {
+                                //TargetPosition = buildingPos, 
+                                //TargetEntity = building.entity,
+                                TargetHex = buildingPos.Round(),
+                                //IsUnit = false
+                            };
+                        }
                     }
                 }
-            }            
+            }
+                
         }
 
         return arePrioriryTarget;
     }
-    private static void FindAndAddPosibleTargetsToBuffer(FractionalHex position, Fix64 sightRange, ActTargetFilters filters, Team team, Dictionary<Hex, List<EntityOnVision>> entitiesForeachHex, List<BuildingOnVision> buildingsOnSight, DynamicBuffer<BEPosibleTarget> buffer)
+    private static void FindAndAddPosibleTargetsToBuffer(FractionalHex position, Fix64 sightRange, ActTargetFilters filters, Team team, Dictionary<Hex, List<EntityOnVision>> unitsForeachHex, List<BuildingOnVision> buildingsOnSight, DynamicBuffer<BEPosibleTarget> buffer)
     {        
         Hex roundedPosition = position.Round();
 
         //buildings
         foreach (var building in buildingsOnSight)
         {
-            var buildingPos = (FractionalHex)building.building.position;
+            var buildingHex = building.building.position;
+            var reversedDirection = (position - (FractionalHex)buildingHex).NormalizedManhathan();
+            var fullHexTargetPos = FractionalHex.GetBorderPointOfTheHex(buildingHex, reversedDirection);
+
+            var buildingPos = (FractionalHex)buildingHex;
             
             if(ValidPossibleTarget(position, sightRange, team.Number, filters, buildingPos, (Fix64)0.5, building.team)) 
             {
@@ -352,14 +381,16 @@ public class FindPosibleTargetsSystem : ComponentSystem
                     Entity = building.entity,
                     IsUnit = false,
                     OccupiesFullHex = true,
+                    OccupyingHex = buildingHex,
                     GatherTarget = false,
+                    ActTypeTarget = filters.actType
                 });
             }
         }
 
 
         //units
-        var pointsOfHex = SpartialSortUtils.GetAllPointsAtRange(roundedPosition, (int)Fix64.Ceiling(sightRange), entitiesForeachHex);
+        var pointsOfHex = SpartialSortUtils.GetAllPointsAtRange(roundedPosition, (int)Fix64.Ceiling(sightRange), unitsForeachHex);
 
         foreach (var point in pointsOfHex)
         {
@@ -377,8 +408,10 @@ public class FindPosibleTargetsSystem : ComponentSystem
                     Entity = pointEntity,
                     IsUnit = true,
                     OccupiesFullHex = false,
+                    OccupyingHex = point.position.Round(),
                     GatherTarget = false,
-                }); 
+                    ActTypeTarget = filters.actType
+                }) ; 
             }
         }
     }

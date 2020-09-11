@@ -11,5 +11,6 @@ public struct ActionAttributes : IComponentData
     /// esta distancia debe ser usada como distancia despues del radio.
     /// </summary>
     public Fix64 ActRange;
+    public bool Melee;
     
 }

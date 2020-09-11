@@ -19,6 +19,6 @@ MonoBehaviour:
   cohesionWeight: 2
   separationWeight: 2
   groupalSeparationWeigth: 7
-  satisfactionArea: 0.1
+  satisfactionArea: 0.01
   separationDistance: 0.2
   singleSeparationDistance: 0.13

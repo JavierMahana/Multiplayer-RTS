@@ -12,5 +12,7 @@ public struct ResourceSource : IComponentData
     public int currentGatherers;
 
     public int resourcesRemaining;
-    public ResourceType resourceType; 
+    public ResourceType resourceType;
+
+    public int ticksForExtraction;
 }

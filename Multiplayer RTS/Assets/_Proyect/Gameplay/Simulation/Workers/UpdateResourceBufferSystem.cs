@@ -21,7 +21,9 @@ public class UpdateResourceBufferSystem : ComponentSystem
         /*
          para lograrlo lo que hace es que actualiza todas las frames el buffer.
          */
-        Entities.WithAll<BEResourceSource, UpdateResourceBuffer>().ForEach((Entity entity, ref GroupOnGather onGather) => 
+
+        //ANTES INCLUIA EL COMPONENTE UpdateResourceBuffer EN EL WITH ALL
+        Entities.WithAll<BEResourceSource>().ForEach((Entity entity, ref GroupOnGather onGather) => 
         {
             var buffer = EntityManager.GetBuffer<BEResourceSource>(entity);
 
@@ -49,12 +51,12 @@ public class UpdateResourceBufferSystem : ComponentSystem
                     buffer.Add((BEResourceSource)keyValue.Value);
                 }
             }
-            else 
-            {
-                PostUpdateCommands.RemoveComponent<GroupOnGather>(entity);
+            //else 
+            //{
+            //    PostUpdateCommands.RemoveComponent<GroupOnGather>(entity);
 
 
-            }
+            //}
 
 
 

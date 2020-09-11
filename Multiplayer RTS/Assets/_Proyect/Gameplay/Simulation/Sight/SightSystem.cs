@@ -32,7 +32,7 @@ public class VisionPoint
 public class SightSystem : ComponentSystem
 {
     //DONT USE IN SIMULATION!
-    //IT CONTAINTS ENTITIES THAT HAVE THE dontrun in simulation component.
+    //IT CONTAINTS ENTITIES THAT HAVE THE dontrun in simulation component. USED IN VISIBILITY listener.
     private static Dictionary<int, HashSet<Entity>> EntitiesOnVisionRangeOfTeamsHashset { get; set; } = new Dictionary<int, HashSet<Entity>>();
 
     //this dictionary contains the entities that each team can see.
@@ -271,7 +271,8 @@ public class SightSystem : ComponentSystem
         BuildingsOnVisionRangeOfTeams = new Dictionary<int, List<BuildingOnVision>>(observableBuildingCount);
 
         var observableBuildings = new Dictionary<Hex, BuildingOnVision>(observableBuildingCount);
-        var obserbableSubstitutes = new Dictionary<Hex, SubstituteOnVision>();
+        var obserbableSubstitutes = new Dictionary<Hex, Entity>();
+        var obserbableResources = new Dictionary<Hex, Entity>();//unico uso es para la visibilidad de monobehaviour.
 
         EntitiesOnVisionRangeOfTeamsHashset = new Dictionary<int, HashSet<Entity>>(observableUnitCount + observableBuildingCount);
 
@@ -299,16 +300,26 @@ public class SightSystem : ComponentSystem
                 observableBuildings.Add(hex, new BuildingOnVision(entity, building, team));
             }            
         });
-        Entities.WithAll<Substitute>().ForEach((Entity entity, ref Building building) => 
+        Entities.ForEach((Entity entity, ref Substitute substitute) => 
         {
-            Hex hex = building.position;
-            if ( obserbableSubstitutes.ContainsKey(hex))
+            if (obserbableSubstitutes.ContainsKey(substitute.position))
             {
-                Debug.LogError($"In {hex} are more than 1 substitute.");
+                Debug.LogError($"In {substitute.position} are more than 1 substitute. And the current sight system only supports 1 substitute per hex.");
             }
             else
             {
-                obserbableSubstitutes.Add(hex, new SubstituteOnVision(entity, building));
+                obserbableSubstitutes.Add(substitute.position, entity);
+            }
+        });
+        Entities.ForEach((Entity entity, ref ResourceSource resource) =>
+        {
+            if (obserbableResources.ContainsKey(resource.position))
+            {
+                Debug.LogError($"In {resource.position} are more than 1 resource. And the current sight system only supports 1 resource per hex.");
+            }
+            else
+            {
+                obserbableResources.Add(resource.position, entity);
             }
         });
 
@@ -354,6 +365,7 @@ public class SightSystem : ComponentSystem
         // loopea por todas las ENTIDADES(unidades y estructuras) con sight range y luego en cada una revisa las ENTIDADES obserbables (dentro de los hexagonos de su vision) 
         // y si es que estan en su rango de vision los agrega a unidades/buildings en vista y a la hashset de entidades.
         // hay que agragar que esto revisa por las estructuras a la vista.
+        //  -> llena la coleccion que es usada para la vision en la presentacion y las coleccione para la simulacion. 
         Entities.WithNone<Group, HexTile, ExcludeFromSimulation>().WithAny<HexPosition, Building>().ForEach((Entity entity, ref SightRange sightRange, ref Team team) => 
         {
             FractionalHex position;
@@ -413,20 +425,41 @@ public class SightSystem : ComponentSystem
                 //substitutes to hashset.
                 if (obserbableSubstitutes.ContainsKey(visHex)) 
                 {
-                    var subst = obserbableSubstitutes[visHex]; 
+                    var subsEntity = obserbableSubstitutes[visHex]; 
 
                     HashSet<Entity> entitiesOnSightOfTeamHashSet;
                     if (EntitiesOnVisionRangeOfTeamsHashset.TryGetValue(team.Number, out entitiesOnSightOfTeamHashSet))
                     {
-                        if (!entitiesOnSightOfTeamHashSet.Contains(subst.entity))
+                        if (!entitiesOnSightOfTeamHashSet.Contains(subsEntity))
                         {
-                            entitiesOnSightOfTeamHashSet.Add(subst.entity);
+                            entitiesOnSightOfTeamHashSet.Add(subsEntity);
                             EntitiesOnVisionRangeOfTeamsHashset[team.Number] = entitiesOnSightOfTeamHashSet;
                         }
                     }
                     else
                     {
-                        entitiesOnSightOfTeamHashSet = new HashSet<Entity>() { subst.entity };
+                        entitiesOnSightOfTeamHashSet = new HashSet<Entity>() { subsEntity };
+                        EntitiesOnVisionRangeOfTeamsHashset.Add(team.Number, entitiesOnSightOfTeamHashSet);
+                    }
+                }
+
+                //resources to hashset
+                if (obserbableResources.ContainsKey(visHex))
+                {
+                    var resEntity = obserbableResources[visHex];
+
+                    HashSet<Entity> entitiesOnSightOfTeamHashSet;
+                    if (EntitiesOnVisionRangeOfTeamsHashset.TryGetValue(team.Number, out entitiesOnSightOfTeamHashSet))
+                    {
+                        if (!entitiesOnSightOfTeamHashSet.Contains(resEntity))
+                        {
+                            entitiesOnSightOfTeamHashSet.Add(resEntity);
+                            EntitiesOnVisionRangeOfTeamsHashset[team.Number] = entitiesOnSightOfTeamHashSet;
+                        }
+                    }
+                    else
+                    {
+                        entitiesOnSightOfTeamHashSet = new HashSet<Entity>() { resEntity };
                         EntitiesOnVisionRangeOfTeamsHashset.Add(team.Number, entitiesOnSightOfTeamHashSet);
                     }
                 }

@@ -77,30 +77,11 @@ public class UpdateDestinationSystem : ComponentSystem
     {
         Hex startHex = startPos.Round();
         newDestination = end;
-        bool destinationIsAvalible = HexIsFreeAndReachable(startHex, end, map);
+        bool destinationIsAvalible = MapUtilities.HexIsOpenAndReachable(startHex, end, map.UnitsMapValues);// HexIsFreeAndReachable(startHex, end, map);
 
         if (!destinationIsAvalible)
         {
-            //starting in the destination hex
-            var hexesInBewtween = Hex.HexesInBetween(end, startHex);
-            if (hexesInBewtween.Count > 1)
-            {
-                for (int i = 1; i < hexesInBewtween.Count; i++)
-                {
-                    newDestination = hexesInBewtween[i];
-                    if (HexIsFreeAndReachable(startHex, newDestination, map))
-                    {
-                        //si este hexagono esta libre y desocupado usamos este como nuevo blanco.
-                        break;
-                    }
-                }
-            }
-            else //if we are here it means that the current hex we are standing is our destination and is occupied
-            {
-                Debug.Log("the current hex we are standing is our destination and is occupied, we return the closest free hex");
-                newDestination = MapUtilities.FindClosestOpenHex(startPos, map, false);
-            }
-
+            MapUtilities.TryFindClosestOpenAndReachableHex(out newDestination, (FractionalHex)end, (FractionalHex)startHex, map.UnitsMapValues);
             return true;
         }
         else
@@ -109,26 +90,23 @@ public class UpdateDestinationSystem : ComponentSystem
         }
     }
 
-    private static bool HexIsFreeAndReachable(Hex current, Hex end, RuntimeMap map)
-    {
-        
+    //private static bool HexIsFreeAndReachable(Hex current, Hex end, RuntimeMap map)
+    //{
+    //    bool reachable = UpdateReachableHexListSystem.IsReachable(current, end);
+    //    bool free = HexIsFree(end, map);
+    //    //Debug.Log($"the hex is free:{free} and reachable:{reachable}");
+    //    return reachable && free;
+    //}
 
-        bool reachable = UpdateReachableHexListSystem.IsReachable(current, end);
-        bool free = HexIsFree(end, map);
-        //Debug.Log($"the hex is free:{free} and reachable:{reachable}");
-        return reachable && free;
-    }
-
-    private static bool HexIsFree(Hex hex, RuntimeMap map)
-    {
-        if (map.UnitsMapValues.TryGetValue(hex, out bool free))
-        {
-            return free;
-        }
-
-        else
-        {
-            return false;
-        }
-    }
+    //private static bool HexIsFree(Hex hex, RuntimeMap map)
+    //{
+    //    if (map.UnitsMapValues.TryGetValue(hex, out bool free))
+    //    {
+    //        return free;
+    //    }
+    //    else
+    //    {
+    //        return false;
+    //    }
+    //}
 }

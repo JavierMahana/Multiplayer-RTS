@@ -15,7 +15,7 @@ MonoBehaviour:
   walkable: 1
   hexMaterial: {fileID: 2100000, guid: ded1e4c808b3f6e40afc8794fb671d45, type: 2}
   sprite: {fileID: -4138650958225797974, guid: b79fbc6c4fb1e6d4c868ac0bacf967a9, type: 3}
-  heightLevel: 6
+  heightLevel: 3
   isSlope: 1
   heightSide_TopRight: 3
   heightSide_Right: 1
