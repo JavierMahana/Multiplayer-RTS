@@ -224,6 +224,9 @@ public class FindPosibleTargetsSystem : ComponentSystem
 
         }
     }
+
+
+
     private static List<BuildingOnVision> GetBuildingOnTeamVision(int team, List<BuildingOnVision> BOVTeam_0, List<BuildingOnVision> BOVTeam_1,
         List<BuildingOnVision> BOVTeam_2, List<BuildingOnVision> BOVTeam_3, List<BuildingOnVision> BOVTeam_4,
         List<BuildingOnVision> BOVTeam_5, List<BuildingOnVision> BOVTeam_6, List<BuildingOnVision> BOVTeam_7)
@@ -359,6 +362,7 @@ public class FindPosibleTargetsSystem : ComponentSystem
 
         return arePrioriryTarget;
     }
+
     private static void FindAndAddPosibleTargetsToBuffer(FractionalHex position, Fix64 sightRange, ActTargetFilters filters, Team team, Dictionary<Hex, List<EntityOnVision>> unitsForeachHex, List<BuildingOnVision> buildingsOnSight, DynamicBuffer<BEPosibleTarget> buffer)
     {        
         Hex roundedPosition = position.Round();
@@ -415,6 +419,7 @@ public class FindPosibleTargetsSystem : ComponentSystem
             }
         }
     }
+
     private static bool ValidPossibleTarget(FractionalHex position, Fix64 sightRange, int team, ActTargetFilters filters, FractionalHex pointPos, Fix64 pointRadius, int pointTeam)
     {
         if (pointPos.Distance(position) > sightRange + pointRadius)
@@ -426,6 +431,7 @@ public class FindPosibleTargetsSystem : ComponentSystem
             return PassTeamFilter(filters, team, pointTeam);
         }
     }
+
     private static bool PassTeamFilter(ActTargetFilters filters ,int team, int teamB)
     {
         bool sameTeam = team == teamB;

@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -495,6 +496,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1793,6 +1795,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2280,6 +2283,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2323,7 +2327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &695003587
 Light:
   m_ObjectHideFlags: 0
@@ -3382,6 +3386,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3556,6 +3561,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4121,6 +4127,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4524,6 +4531,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4828,6 +4836,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4901,6 +4910,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7988,7 +7998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1699466f79cb74dbbb48f2b92c4690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  togleOfflineMode: 1
+  togleOfflineMode: 0
   controlAllTeamsOnOfflineMode: 0
   offlineTeams: 01000000
 --- !u!4 &2103512182
@@ -8102,14 +8112,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7454008015632838164, guid: bcdc3d417a472434dbf1b4a0bb7dd517,
         type: 3}
-      propertyPath: filterIterations
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7454008015632838164, guid: bcdc3d417a472434dbf1b4a0bb7dd517,
-        type: 3}
       propertyPath: mapManager
       value: 
       objectReference: {fileID: 188910028}
+    - target: {fileID: 7454008015632838164, guid: bcdc3d417a472434dbf1b4a0bb7dd517,
+        type: 3}
+      propertyPath: filterIterations
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454008015632838165, guid: bcdc3d417a472434dbf1b4a0bb7dd517,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 7454008015632838165, guid: bcdc3d417a472434dbf1b4a0bb7dd517,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8127,6 +8142,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7454008015632838165, guid: bcdc3d417a472434dbf1b4a0bb7dd517,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454008015632838165, guid: bcdc3d417a472434dbf1b4a0bb7dd517,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -8139,16 +8159,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7454008015632838165, guid: bcdc3d417a472434dbf1b4a0bb7dd517,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7454008015632838165, guid: bcdc3d417a472434dbf1b4a0bb7dd517,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7454008015632838165, guid: bcdc3d417a472434dbf1b4a0bb7dd517,
         type: 3}
